@@ -1,11 +1,6 @@
 # springboot-1
 *[SpringBoot+MyBatis搭建迷你小程序](https://www.imooc.com/learn/945)*<br>
 
-
-## 第1章 SpringBoot 简介<br>
-*SpringBoot 简介*<br>
-- 1-1 SpringBoot 简介<br>
-
 ## 第1章 课程介绍<br>
 *本章节讲解本门课程的主旨，便于同学掌握课程的来龙去脉*<br>
 - 1-1 课程介绍<br>
