@@ -1,5 +1,5 @@
 # springboot-1
-*[SpringBoot+MyBatis搭建迷你小程序](https://www.imooc.com/learn/945)*
+*[SpringBoot+MyBatis搭建迷你小程序](https://www.imooc.com/learn/945)*<br>
 *[源码](https://www.imooc.com/learn/945)*
 
 ## 第1章 课程介绍
