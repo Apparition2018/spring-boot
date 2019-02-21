@@ -1,6 +1,6 @@
 # springboot-1
 *[SpringBoot+MyBatis搭建迷你小程序](https://www.imooc.com/learn/945)*<br>
-*[源码](https://gitee.com/xiangze/demo/tree/master/src/main/java/com/imooc/demo)*
+*[作者源码](https://gitee.com/xiangze/demo/tree/master/src/main/java/com/imooc/demo)*
 
 ## 第1章 课程介绍
 *本章节讲解本门课程的主旨，便于同学掌握课程的来龙去脉*
