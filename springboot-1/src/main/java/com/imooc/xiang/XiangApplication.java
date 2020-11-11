@@ -3,7 +3,6 @@ package com.imooc.xiang;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 /**
  * SpringBoot+MyBatis搭建迷你小程序
  *
@@ -12,9 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class XiangApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(XiangApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(XiangApplication.class, args);
+    }
 
 }
 
