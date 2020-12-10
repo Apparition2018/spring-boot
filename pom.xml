@@ -5,22 +5,29 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.22.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>2.3.5.RELEASE</version>
+        <relativePath/>
     </parent>
     <groupId>com.ljh</groupId>
-    <artifactId>springboot</artifactId>
+    <artifactId>spring-boot</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <!-- SpringBoot+MyBatis搭建迷你小程序 -->
-        <module>springboot-1</module>
-        <!-- SpringBoot构建电商基础秒杀项目 -->
-        <module>springboot-2</module>
         <!-- SpringBoot开发常用技术整合 -->
-        <module>springboot-3</module>
+        <module>spring-boot-common</module>
     </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- dependency -->
+        <druid-spring-boot-starter>1.2.3</druid-spring-boot-starter>
+        <pagehelper-spring-boot-starter>1.3.0</pagehelper-spring-boot-starter>
+        <mapper-spring-boot-starter>2.1.5</mapper-spring-boot-starter>
+        <mybatis-generator>1.4.0</mybatis-generator>
+    </properties>
 
     <build>
         <plugins>
