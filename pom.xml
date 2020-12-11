@@ -16,18 +16,46 @@
     <modules>
         <!-- SpringBoot开发常用技术整合 -->
         <module>spring-boot-common</module>
+        <!-- 探秘 Spring AOP -->
+        <module>spring-aop</module>
+        <module>spring-boot-batch</module>
     </modules>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <!-- dependency -->
         <druid-spring-boot-starter>1.2.3</druid-spring-boot-starter>
         <pagehelper-spring-boot-starter>1.3.0</pagehelper-spring-boot-starter>
         <mapper-spring-boot-starter>2.1.5</mapper-spring-boot-starter>
         <mybatis-generator>1.4.0</mybatis-generator>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
