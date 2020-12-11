@@ -7,13 +7,8 @@
         <artifactId>spring-boot</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>spring-aop</artifactId>
+    <artifactId>spring-boot-aop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <properties>
-        <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <fastjson.version>1.2.75</fastjson.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -45,14 +40,5 @@
             <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
