@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  * created on 2019/2/20 2:30
  */
 //@RestControllerAdvice
-public class IMoocAjaxExceptionHandler {
+public class AjaxExceptionHandler {
 
 //    @ExceptionHandler(value = Exception.class)
     public LeeJSONResult defaultErrorHandler(HttpServletRequest req, Exception e) {

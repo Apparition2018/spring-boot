@@ -1,4 +1,4 @@
-package com.ljh.utils;
+package com.ljh.util;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ljh.utils;
+package com.ljh.util;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;

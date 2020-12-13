@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
  * created on 2019/2/19 1:46
  */
 @Configuration
-@ConfigurationProperties(prefix="com.imooc.opensource")
+@ConfigurationProperties(prefix="com.ljh.opensource")
 @PropertySource(value="classpath:resource.properties")
 public class Resource {
 

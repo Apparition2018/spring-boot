@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
  * created on 2019/2/20 2:24
  */
 @ControllerAdvice
-public class IMoocExceptionHandler {
+public class MyExceptionHandler {
 
-    private static final String IMOOC_ERROR_VIEW = "error";
+    private static final String ERROR_VIEW = "error";
 
 //    @ExceptionHandler(value = Exception.class)
 //    public Object errorHandler(HttpServletRequest request, HttpServletResponse response, Exception e) {
@@ -26,7 +26,7 @@ public class IMoocExceptionHandler {
 //        ModelAndView mav = new ModelAndView();
 //        mav.addObject("exception", e);
 //        mav.addObject("url", request.getRequestURL());
-//        mav.setViewName(IMOOC_ERROR_VIEW);
+//        mav.setViewName(ERROR_VIEW);
 //        return mav;
 //    }
 
@@ -40,15 +40,15 @@ public class IMoocExceptionHandler {
             ModelAndView mav = new ModelAndView();
             mav.addObject("exception", e);
             mav.addObject("url", request.getRequestURL());
-            mav.setViewName(IMOOC_ERROR_VIEW);
+            mav.setViewName(ERROR_VIEW);
             return mav;
         }
     }
 
     /**
      *
-     * @Title: IMoocExceptionHandler.java
-     * @Package com.imooc.exception
+     * @Title: MyExceptionHandler.java
+     * @Package com.ljh.exception
      * @Description: 判断是否是ajax请求
      * Copyright: Copyright (c) 2017
      * Company:FURUIBOKE.SCIENCE.AND.TECHNOLOGY

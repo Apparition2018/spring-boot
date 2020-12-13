@@ -115,5 +115,4 @@ public class UserServiceImpl implements UserService {
         userMapper.updateByPrimaryKeySelective(user);
     }
 
-
 }

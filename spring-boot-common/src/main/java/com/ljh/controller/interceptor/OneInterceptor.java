@@ -1,7 +1,7 @@
 package com.ljh.controller.interceptor;
 
 import com.ljh.pojo.LeeJSONResult;
-import com.ljh.utils.JsonUtils;
+import com.ljh.util.JsonUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

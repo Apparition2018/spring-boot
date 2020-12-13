@@ -22,17 +22,17 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 // 扫描 mybatis mapper 包路径
-@MapperScan(basePackages = "com.imooc.mapper")
+@MapperScan(basePackages = "com.ljh.mapper")
 // 扫描所有需要的包，包含一些自用的工具类包所在的路径
 @ComponentScan(basePackages = {"com.ljh", "org.n3r.idworker"})
 // 开启定时任务
 @EnableScheduling
 // 开启异步调用方法
 @EnableAsync
-public class ImoocApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ImoocApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ljh.utils.JsonUtils;
+import com.ljh.util.JsonUtils;
 
 public class TwoInterceptor implements HandlerInterceptor  {
 

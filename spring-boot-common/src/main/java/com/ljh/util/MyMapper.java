@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package com.ljh.utils;
+package com.ljh.util;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
