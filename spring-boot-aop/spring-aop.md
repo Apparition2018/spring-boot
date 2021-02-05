@@ -81,6 +81,7 @@
 >   <p>
 >       <img src="https://img3.mukewang.com/5e0db1c60001328619201080.jpg" alt="代理模式" width="400">
 >   </p>
+>
 >   - 动态代理
 >       - 基于接口代理：JDK
 >       - 基于继承代理：Cglib
@@ -121,8 +122,7 @@
 >### AOP 如何链式调用
 ><p>
 >   <img src="https://img1.mukewang.com/5e0db65a0001456b19201080.jpg" alt="责任链模式" width="450"/>
-></p>
->
+></p></br>
 >---
 ## 实战
 >### 实战案例背景/目标
