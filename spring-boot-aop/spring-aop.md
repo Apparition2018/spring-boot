@@ -85,11 +85,9 @@
 >   - 动态代理
 >       - 基于接口代理：JDK
 >       - 基于继承代理：Cglib
->---
 >>#### JDK 与 Cglib 代理区别
 >>- JDK 只能针对有接口的类的接口方法进行动态代理，由于接口不能有 private 方法，所以无法对 private 方法进行代理
 >>- Cglib 基于继承来实现代理，无法对 static / final 类进行代理，无法对 private / static 方法进行代理
->>---
 >### Spring 如何选择动态代理模式
 >```
 >@SuppressWarning("serial")
@@ -118,27 +116,25 @@
 >   @EnableAspectAutoProxy(proxyTargetClass = true)
 >   public class AopDemoApplication() { ... }
 >   ```
->---
 >### AOP 如何链式调用
 ><p>
 >   <img src="https://img1.mukewang.com/5e0db65a0001456b19201080.jpg" alt="责任链模式" width="450"/>
-></p></br>
->---
+></p>
+---
 ## 实战
 >### 实战案例背景/目标
 >- 商家产品管理系统
 >- 记录产品修改的操作记录
 >- 什么人在什么时间修改了哪些产品的哪些字段修改为什么值
->---
 >### 实现思路
 >- 利用 aspect 去拦截增删改方法
 >- 利用反射获取对象的新旧值
 >- 利用 @Around 去记录操作记录
->---
 >### 领域模型
 >![实战领域模型](./实战领域模型.png)
->---
+---
 ## 使用 SpringAop 的注意事项
 - 不宜把重要的业务逻辑放到 AOP 中处理
 - 无法拦截 static/final/private 方法
 - 无法拦截内部方法调用
+---
