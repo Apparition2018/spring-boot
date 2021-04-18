@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -33,22 +34,34 @@ public class CrossDomainController {
         log.info("login");
         return "thymeleaf/login-c";
     }
-
+    
+    /**
+     * http://demo.x.com/cross/doLogin
+     * http://demo.y.com/cross/doLogin
+     */
     @RequestMapping("doLogin")
-    public String doLogin(String username, String password, String gotoUrl, HttpServletResponse response) {
-        boolean ok = User.checkLogin(username, password);
-        if (ok) {
-            Cookie cookie = new Cookie("sso", "sso");
-            // 关键代码
-            cookie.setDomain(".x.com");
-            cookie.setPath("/");
-            response.addCookie(cookie);
-            log.info("redirect:" + gotoUrl);
+    public String doLogin(String username, String password, String gotoUrl) {
+        String url = "http://demo.z.com/cross/doLogin";
+        Map<String, String> map = new HashMap<>();
+        map.put("username", username);
+        map.put("password", password);
+        if (doGet(url, map)) {
             return "redirect:" + gotoUrl;
         }
-        return null;
+        return "thymeleaf/login-c";
     }
 
+    /**
+     * http://demo.z.com/cross/doLogin
+     */
+    @RequestMapping("doLogin")
+    public boolean doLogin(Map<String, String> map) {
+        return User.checkLogin(map.get("username"), map.get("password"));
+    }
+
+    /**
+     * http://demo.z.com/cross/doLogin
+     */
     @RequestMapping("checkCookie")
     @ResponseBody
     public boolean checkCookie(String cookieName, String cookieValue) {
@@ -56,12 +69,15 @@ public class CrossDomainController {
         return User.checkCookie(cookieName, cookieValue);
     }
 
+    /**
+     * http://demo.x.com/cross/success1
+     */
     @RequestMapping("success1")
     public String success1(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("sso")) {
-                String url = "http://demo1.x.com/same-parent/checkCookie";
+                String url = "http://demo.x.com/cross/checkCookie";
                 if (doGet(cookie.getName(), cookie.getValue())) {
                     return "thymeleaf/success1";
                 }
@@ -70,12 +86,15 @@ public class CrossDomainController {
         return "thymeleaf/login-sp";
     }
 
+    /**
+     * http://demo.y.com/cross/success2
+     */
     @RequestMapping("success2")
     public String success2(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("sso")) {
-                String url = "http://demo2.x.com/same-parent/checkCookie";
+                String url = "http://demo.y.com/cross/checkCookie";
                 if (doGet(cookie.getName(), cookie.getValue())) {
                     return "thymeleaf/success2";
                 }
@@ -86,11 +105,11 @@ public class CrossDomainController {
 
     public boolean doGet(String url, Map<String, String> map) {
         RestTemplate restTemplate = new RestTemplate();
-        StringBuffer tmpUrl = new StringBuffer(url).append("?");
+        StringBuilder tmpUrl = new StringBuilder(url).append("?");
         for (Map.Entry<String, String> entry : map.entrySet()) {
             tmpUrl.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
         }
-        url = tmpUrl.toString().substring(0, url.length() - 1);
+        url = tmpUrl.substring(0, url.length() - 1);
         Boolean result = restTemplate.getForObject(url, Boolean.class);
         return result != null && result;
     }

@@ -33,6 +33,9 @@ public class SameParentDomainController {
         return "thymeleaf/login-sp";
     }
 
+    /**
+     * http://check.x.com/same-parent/doLogin
+     */
     @RequestMapping("doLogin")
     public String doLogin(String username, String password, String gotoUrl, HttpServletResponse response) {
         boolean ok = User.checkLogin(username, password);
@@ -48,6 +51,11 @@ public class SameParentDomainController {
         return null;
     }
 
+    /**
+     * http://demo1.x.com/same-parent/doLogin
+     * http://demo2.x.com/same-parent/doLogin
+     * http://check.x.com/same-parent/doLogin
+     */
     @RequestMapping("checkCookie")
     @ResponseBody
     public boolean checkCookie(String cookieName, String cookieValue) {
@@ -55,12 +63,15 @@ public class SameParentDomainController {
         return User.checkCookie(cookieName, cookieValue);
     }
 
+    /**
+     * http://demo1.x.com/same-parent/success1
+     */
     @RequestMapping("success1")
     public String success1(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("sso")) {
-                String url = "http://demo1.x.com/same-parent/checkCookie";
+                String url = "http://check.x.com/same-parent/checkCookie";
                 if (doGet(url, cookie.getName(), cookie.getValue())) {
                     return "thymeleaf/success1";
                 }
@@ -69,12 +80,15 @@ public class SameParentDomainController {
         return "thymeleaf/login-sp";
     }
 
+    /**
+     * http://demo2.x.com/same-parent/success2
+     */
     @RequestMapping("success2")
     public String success2(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("sso")) {
-                String url = "http://demo2.x.com/same-parent/checkCookie";
+                String url = "http://check.x.com/same-parent/checkCookie";
                 if (doGet(url, cookie.getName(), cookie.getValue())) {
                     return "thymeleaf/success2";
                 }
