@@ -21,7 +21,7 @@ public class TestTask {
     // spring-boot 不支持年
     @Scheduled(cron = "4-40 * * * * ? ")
     public void reportCurrentTime() {
-        System.out.println("现在时间：" + dataFormat.format(new Date()));
+//        System.out.println("现在时间：" + dataFormat.format(new Date()));
     }
 
 }

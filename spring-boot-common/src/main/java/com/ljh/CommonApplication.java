@@ -29,10 +29,10 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableScheduling
 // 开启异步调用方法
 @EnableAsync
-public class Application {
+public class CommonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(CommonApplication.class, args);
 	}
 
 }
