@@ -7,17 +7,16 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 
-
 /**
  * hibernate
  * jpa
  * mybatis 注解
  * jdbc template
- *
+ * <p>
  * nosql: mongodb, memcached
- *
+ * <p>
  * zookeeper, dubbo
- *
+ * <p>
  * springcloud
  */
 @SpringBootApplication
@@ -31,8 +30,8 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableAsync
 public class CommonApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CommonApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CommonApplication.class, args);
+    }
 
 }
