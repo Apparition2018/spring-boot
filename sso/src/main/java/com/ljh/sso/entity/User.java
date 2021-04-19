@@ -31,7 +31,7 @@ public class User {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("sso") && cookie.getValue().equals("sso")) {
+                if (cookie.getName().equals("ssoCookie") && cookie.getValue().equals("sso")) {
                     return true;
                 }
             }
@@ -40,6 +40,6 @@ public class User {
     }
 
     public static boolean checkCookie(String cookieName, String cookieValue) {
-        return cookieName.equals("sso") && cookieValue.equals("sso");
+        return cookieName.equals("ssoCookie") && cookieValue.equals("sso");
     }
 }

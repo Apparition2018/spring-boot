@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Success</title>
 </head>
 <body>
-    <h1>Success2</h1>
+<h1>Success2</h1>
+<div th:each="addCookieUrl, state : ${addCookieUrlList}">
+    <iframe th:src="${addCookieUrl}"></iframe>
+</div>
 </body>
 </html>

@@ -25,8 +25,8 @@ public class SameDomainController {
      * http://localhost/same/login1
      */
     @RequestMapping("login1")
-    public String login1(ModelMap map, HttpServletRequest request) {
-        map.addAttribute("gotoUrl", "login1");
+    public String login1(ModelMap modelMap, HttpServletRequest request) {
+        modelMap.addAttribute("gotoUrl", "login1");
         if (User.checkCookie(request)) {
             return "thymeleaf/success1";
         } else {
@@ -38,8 +38,8 @@ public class SameDomainController {
      * http://localhost/same/login2
      */
     @RequestMapping("login2")
-    public String login2(ModelMap map, HttpServletRequest request) {
-        map.addAttribute("gotoUrl", "login2");
+    public String login2(ModelMap modelMap, HttpServletRequest request) {
+        modelMap.addAttribute("gotoUrl", "login2");
         if (User.checkCookie(request)) {
             return "thymeleaf/success2";
         } else {
@@ -54,7 +54,7 @@ public class SameDomainController {
     public String doLogin(String username, String password, String gotoUrl, HttpServletResponse response) {
         boolean ok = User.checkLogin(username, password);
         if (ok) {
-            Cookie cookie = new Cookie("sso", "sso");
+            Cookie cookie = new Cookie("ssoCookie", "sso");
             cookie.setPath("/");
             response.addCookie(cookie);
             return "redirect:" + gotoUrl;

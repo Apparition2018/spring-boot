@@ -32,12 +32,12 @@ public class SameParentDomainController {
      * http://demo1.x.com/same-parent/login1
      */
     @RequestMapping("login1")
-    public String login1(ModelMap map, HttpServletRequest request) {
-        map.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login1");
+    public String login1(ModelMap modelMap, HttpServletRequest request) {
+        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login1");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("sso")) {
+                if (cookie.getName().equals("ssoCookie")) {
                     String url = "http://check.x.com/same-parent/checkCookie";
                     if (doGet(url, cookie.getName(), cookie.getValue())) {
                         return "thymeleaf/success1";
@@ -52,12 +52,12 @@ public class SameParentDomainController {
      * http://demo2.x.com/same-parent/login2
      */
     @RequestMapping("login2")
-    public String login2(ModelMap map, HttpServletRequest request) {
-        map.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login2");
+    public String login2(ModelMap modelMap, HttpServletRequest request) {
+        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login2");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("sso")) {
+                if (cookie.getName().equals("ssoCookie")) {
                     String url = "http://check.x.com/same-parent/checkCookie";
                     if (doGet(url, cookie.getName(), cookie.getValue())) {
                         return "thymeleaf/success2";
@@ -75,7 +75,7 @@ public class SameParentDomainController {
     public String doLogin(String username, String password, String gotoUrl, HttpServletResponse response) {
         boolean ok = User.checkLogin(username, password);
         if (ok) {
-            Cookie cookie = new Cookie("sso", "sso");
+            Cookie cookie = new Cookie("ssoCookie", "sso");
             // 关键代码，设置到同父域
             cookie.setDomain(".x.com");
             cookie.setPath("/");
@@ -91,7 +91,6 @@ public class SameParentDomainController {
     @RequestMapping("checkCookie")
     @ResponseBody
     public boolean checkCookie(String cookieName, String cookieValue) {
-        log.info("{}, {}", cookieName, cookieValue);
         return User.checkCookie(cookieName, cookieValue);
     }
 
