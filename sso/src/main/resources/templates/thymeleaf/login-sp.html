@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -14,7 +14,7 @@
         <label>密码：
             <input type="password" name="password"/>
         </label>
-        <input type="hidden" name="gotoUrl" value="http://demo1.x.com/same-parent/success1">
+        <input type="hidden" name="gotoUrl" th:value="${gotoUrl}">
         <input type="submit"/>
     </form>
 </div>

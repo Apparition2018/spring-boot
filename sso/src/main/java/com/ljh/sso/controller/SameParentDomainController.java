@@ -3,6 +3,7 @@ package com.ljh.sso.controller;
 import com.ljh.sso.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -26,13 +27,44 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("same-parent")
 public class SameParentDomainController {
+
     /**
-     * http://demo1.x.com/same-parent/login
-     * http://demo2.x.com/same-parent/login
+     * http://demo1.x.com/same-parent/login1
      */
-    @RequestMapping("login")
-    public String login() {
-        log.info("login");
+    @RequestMapping("login1")
+    public String login1(ModelMap map, HttpServletRequest request) {
+        map.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login1");
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("sso")) {
+                    String url = "http://check.x.com/same-parent/checkCookie";
+                    if (doGet(url, cookie.getName(), cookie.getValue())) {
+                        return "thymeleaf/success1";
+                    }
+                }
+            }
+        }
+        return "thymeleaf/login-sp";
+    }
+
+    /**
+     * http://demo2.x.com/same-parent/login2
+     */
+    @RequestMapping("login2")
+    public String login2(ModelMap map, HttpServletRequest request) {
+        map.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login2");
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("sso")) {
+                    String url = "http://check.x.com/same-parent/checkCookie";
+                    if (doGet(url, cookie.getName(), cookie.getValue())) {
+                        return "thymeleaf/success2";
+                    }
+                }
+            }
+        }
         return "thymeleaf/login-sp";
     }
 
@@ -61,40 +93,6 @@ public class SameParentDomainController {
     public boolean checkCookie(String cookieName, String cookieValue) {
         log.info("{}, {}", cookieName, cookieValue);
         return User.checkCookie(cookieName, cookieValue);
-    }
-
-    /**
-     * http://demo1.x.com/same-parent/success1
-     */
-    @RequestMapping("success1")
-    public String success1(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("sso")) {
-                String url = "http://check.x.com/same-parent/checkCookie";
-                if (doGet(url, cookie.getName(), cookie.getValue())) {
-                    return "thymeleaf/success1";
-                }
-            }
-        }
-        return "thymeleaf/login-sp";
-    }
-
-    /**
-     * http://demo2.x.com/same-parent/success2
-     */
-    @RequestMapping("success2")
-    public String success2(HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("sso")) {
-                String url = "http://check.x.com/same-parent/checkCookie";
-                if (doGet(url, cookie.getName(), cookie.getValue())) {
-                    return "thymeleaf/success2";
-                }
-            }
-        }
-        return "thymeleaf/login-sp";
     }
 
     public boolean doGet(String url, String cookieName, String cookieValue) {
