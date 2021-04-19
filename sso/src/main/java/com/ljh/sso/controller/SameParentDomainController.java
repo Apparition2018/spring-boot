@@ -26,7 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("same-parent")
 public class SameParentDomainController {
-
+    /**
+     * http://demo1.x.com/same-parent/login
+     * http://demo2.x.com/same-parent/login
+     */
     @RequestMapping("login")
     public String login() {
         log.info("login");
@@ -41,20 +44,17 @@ public class SameParentDomainController {
         boolean ok = User.checkLogin(username, password);
         if (ok) {
             Cookie cookie = new Cookie("sso", "sso");
-            // 关键代码
+            // 关键代码，设置到同父域
             cookie.setDomain(".x.com");
             cookie.setPath("/");
             response.addCookie(cookie);
-            log.info("redirect:" + gotoUrl);
             return "redirect:" + gotoUrl;
         }
         return null;
     }
 
     /**
-     * http://demo1.x.com/same-parent/doLogin
-     * http://demo2.x.com/same-parent/doLogin
-     * http://check.x.com/same-parent/doLogin
+     * http://check.x.com/same-parent/checkCookie
      */
     @RequestMapping("checkCookie")
     @ResponseBody

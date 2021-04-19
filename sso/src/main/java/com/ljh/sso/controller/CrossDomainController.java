@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,10 @@ import java.util.Map;
 @RequestMapping("cross")
 public class CrossDomainController {
 
+    /**
+     * http://demo.x.com/cross/login
+     * http://demo.y.com/cross/login
+     */
     @RequestMapping("login")
     public String login() {
         log.info("login");
@@ -55,6 +60,7 @@ public class CrossDomainController {
      * http://demo.z.com/cross/doLogin
      */
     @RequestMapping("doLogin")
+    @ResponseBody
     public boolean doLogin(Map<String, String> map) {
         return User.checkLogin(map.get("username"), map.get("password"));
     }
