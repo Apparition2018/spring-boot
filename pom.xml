@@ -21,6 +21,7 @@
         <module>message-queue</module>
         <module>querydsl</module>
         <module>sso</module>
+        <module>dubbo</module>
     </modules>
 
     <properties>
