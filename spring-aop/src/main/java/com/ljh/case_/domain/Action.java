@@ -1,4 +1,4 @@
-package com.ljh.combat.domain;
+package com.ljh.case_.domain;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
-package com.ljh.combat.util;
+package com.ljh.case_.util;
 
 import com.alibaba.fastjson.JSON;
-import com.ljh.combat.datalog.DataLog;
-import com.ljh.combat.domain.ChangeItem;
+import com.ljh.case_.datalog.DataLog;
+import com.ljh.case_.domain.ChangeItem;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

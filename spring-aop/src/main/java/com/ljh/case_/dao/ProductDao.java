@@ -1,11 +1,8 @@
-package com.ljh.combat.dao;
+package com.ljh.case_.dao;
 
-import com.ljh.combat.domain.Product;
+import com.ljh.case_.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-
-import java.util.Optional;
 
 /**
  * ProductDao

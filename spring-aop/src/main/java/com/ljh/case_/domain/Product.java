@@ -1,6 +1,6 @@
-package com.ljh.combat.domain;
+package com.ljh.case_.domain;
 
-import com.ljh.combat.datalog.DataLog;
+import com.ljh.case_.datalog.DataLog;
 import lombok.Data;
 
 import javax.persistence.Entity;

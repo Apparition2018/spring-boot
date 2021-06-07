@@ -1,6 +1,6 @@
-package com.ljh.combat.datalog;
+package com.ljh.case_.datalog;
 
-import com.ljh.combat.domain.Action;
+import com.ljh.case_.domain.Action;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

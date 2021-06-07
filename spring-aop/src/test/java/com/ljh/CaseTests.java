@@ -1,7 +1,7 @@
 package com.ljh;
 
-import com.ljh.combat.dao.ProductDao;
-import com.ljh.combat.domain.Product;
+import com.ljh.case_.dao.ProductDao;
+import com.ljh.case_.domain.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,18 +11,18 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * CombatTests
+ * CaseTests
  *
  * @author Arsenal
  * created on 2020/1/3 1:56
  */
 @SpringBootTest
-public class CombatTests {
+public class CaseTests {
 
     private final ProductDao productDao;
 
     @Autowired
-    public CombatTests(ProductDao productDao) {
+    public CaseTests(ProductDao productDao) {
         this.productDao = productDao;
     }
 

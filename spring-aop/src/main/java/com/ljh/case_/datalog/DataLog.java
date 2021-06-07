@@ -1,4 +1,4 @@
-package com.ljh.combat.datalog;
+package com.ljh.case_.datalog;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,9 +1,9 @@
-package com.ljh.combat.datalog;
+package com.ljh.case_.datalog;
 
-import com.ljh.combat.domain.Action;
-import com.ljh.combat.domain.ActionType;
-import com.ljh.combat.domain.ChangeItem;
-import com.ljh.combat.util.DiffUtil;
+import com.ljh.case_.domain.Action;
+import com.ljh.case_.domain.ActionType;
+import com.ljh.case_.domain.ChangeItem;
+import com.ljh.case_.util.DiffUtil;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -36,12 +36,12 @@ public class DataLogAspect {
         this.actionDao = actionDao;
     }
 
-    @Pointcut("execution(public * com.ljh.combat.dao.*.save*(..))")
+    @Pointcut("execution(public * com.ljh.case_.dao.*.save*(..))")
     public void save() {
 
     }
 
-    @Pointcut("execution(public * com.ljh.combat.dao.*.deleteById*(..))")
+    @Pointcut("execution(public * com.ljh.case_.dao.*.deleteById*(..))")
     public void deleteById() {
 
     }
