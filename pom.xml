@@ -16,13 +16,13 @@
     <modules>
         <!-- SpringBoot开发常用技术整合 -->
         <module>spring-boot-common</module>
+        <module>spring-boot-init</module>
         <!-- 探秘 Spring AOP -->
         <module>spring-aop</module>
+        <module>spring-cache</module>
         <module>message-queue</module>
         <module>querydsl</module>
         <module>sso</module>
-        <module>dubbo</module>
-        <module>spring-boot-init</module>
     </modules>
 
     <properties>

@@ -8,6 +8,13 @@
         <groupId>com.ljh</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>dubbo</artifactId>
+    <artifactId>spring-cache</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

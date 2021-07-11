@@ -7,18 +7,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import tk.mybatis.spring.annotation.MapperScan;
 
-/**
- * hibernate
- * jpa
- * mybatis 注解
- * jdbc template
- * <p>
- * nosql: mongodb, memcached
- * <p>
- * zookeeper, dubbo
- * <p>
- * springcloud
- */
 @SpringBootApplication
 // 扫描 mybatis mapper 包路径
 @MapperScan(basePackages = "com.ljh.mapper")
