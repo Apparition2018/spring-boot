@@ -5,6 +5,7 @@
 2. [史上最全的Spring Boot Cache使用与整合](https://blog.csdn.net/qq_32448349/article/details/101696892)
 3. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
 4. [keyGenerator](https://www.cnblogs.com/guchunchao/p/10112412.html)
+5. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
 ---
 ## 核心接口
 <img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
@@ -18,11 +19,11 @@
 |注解|解释|
 |:---|:---|
 |@EnableCaching|开启缓存注解的支持|
-|@CacheConfig|统一制定一些配置参数|
 |@Cacheable|已有缓存数据直接返回，否则执行方法并缓存结果|
 |@CachePut|执行方法并缓存结果|
 |@CacheEvict|清楚缓存|
-|@Caching|组合多个注解一起使用|
+|@CacheConfig|统一配置 @Cacheable @CachePut @CacheEvict 的参数|
+|@Caching|组合 @Cacheable @CachePut @CacheEvict 一起使用|
 >### 注解主要参数
 >|名称|注解|解释|示例|
 >|:---|:---|:---|:---|

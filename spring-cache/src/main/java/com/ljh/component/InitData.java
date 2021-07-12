@@ -20,7 +20,7 @@ public class InitData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         for (int i = 0; i < 10; i++) {
-            User user = new User(1, "姓名" + i, i % 2);
+            User user = new User(i, "姓名" + i, i + "@163.com", i % 2);
             users.add(user);
         }
     }
