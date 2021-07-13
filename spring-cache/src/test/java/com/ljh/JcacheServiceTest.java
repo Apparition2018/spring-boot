@@ -1,6 +1,6 @@
 package com.ljh;
 
-import com.ljh.service.UserService;
+import com.ljh.service.JcacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +14,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class JcacheServiceTest {
 
-    private final UserService userService;
+    private final JcacheService jcacheService;
 
     @Autowired
-    public JcacheServiceTest(UserService userService) {
-        this.userService = userService;
+    public JcacheServiceTest(JcacheService jcacheService) {
+        this.jcacheService = jcacheService;
     }
 
     @Test
     public void get() {
-        log.info(userService.get(1).toString());
-        log.info(userService.get(1).toString());
+        log.info(jcacheService.get(1).toString());
+        log.info(jcacheService.get(1).toString());
     }
 }

@@ -13,12 +13,10 @@ import java.util.Arrays;
  * created on 2021/7/13 16:35
  */
 @Configuration
-public class CacheKeyGeneratorConfig {
+public class KeyGeneratorConfig {
 
     @Bean
     public KeyGenerator myKeyGenerator() {
-        return (o, method, objects) -> {
-            return o.getClass().getSimpleName() + "." + method.getName() + Arrays.asList(objects);
-        };
+        return (o, method, objects) -> o.getClass().getSimpleName() + "." + method.getName() + Arrays.asList(objects);
     }
 }

@@ -19,4 +19,9 @@
             <ttl unit="seconds">600</ttl>
         </expiry>
     </cache>
+    <cache alias="redis" uses-template="default">
+        <expiry>
+            <ttl unit="seconds">600</ttl>
+        </expiry>
+    </cache>
 </config>

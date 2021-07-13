@@ -2,10 +2,9 @@
 
 ## 参考网站
 1. [第四篇：SpringBoot中Cache缓存的使用](https://blog.csdn.net/weixin_36279318/article/details/82820880)
-2. [史上最全的Spring Boot Cache使用与整合](https://blog.csdn.net/qq_32448349/article/details/101696892)
+2. [SpringBoot+SpringCache实现两级缓存(Redis+Caffeine)](https://www.cnblogs.com/cnndevelop/p/13429660.html)
 3. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
-4. [keyGenerator](https://www.cnblogs.com/guchunchao/p/10112412.html)
-5. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
+4. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
 ---
 ## 核心接口
 <img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
