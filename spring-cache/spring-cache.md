@@ -48,10 +48,30 @@
 >- 注2：使用方法参数时，可直接使用 #参数名 或 #p索引，如：@Cacheable("#name") @Cacheable("p0")
 >### [SpEl 运算符](https://blog.csdn.net/yuhui123999/article/details/84288177)
 ---
-## 使用
+## 基本使用
 1. @EnableCaching
 ```java
 @SpringBootApplication
 @EnableCaching
 public class SpringCacheApplication {}
 ```
+2. [UserService](.\src\main\java\com\ljh\service\UserService.java)
+---
+## 整合 Ehcache3
+1. 引入依赖
+```xml
+<project>
+    <dependency>
+        <groupId>org.ehcache</groupId>
+        <artifactId>ehcache</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>javax.cache</groupId>
+        <artifactId>cache-api</artifactId>
+    </dependency>
+</project>
+```
+2. [application.yml 配置](.\src\main\resources\application-jcache.yml)
+---
+3. [ehcache.xml](.\src\main\resources\ehcache.xml)
+---

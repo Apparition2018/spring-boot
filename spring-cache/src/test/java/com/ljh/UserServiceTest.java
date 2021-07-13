@@ -39,7 +39,7 @@ public class UserServiceTest {
     }
 
     /**
-     * 演示 @Caching
+     * 演示 @Caching(keyGenerator = true)
      */
     @Test
     public void get2() {
@@ -47,6 +47,14 @@ public class UserServiceTest {
         log.info(userService.getByName("姓名1").toString());
         // @Caching 注解的 get2() 缓存了以 name 为 key 的对象，所以没有执行方法，直接返回缓存数据
         // User(id=1, name=姓名1, email=1@163.com, gender=1)
+    }
+
+    /**
+     * 演示 @Cacheable
+     */
+    @Test
+    public void list() {
+        log.info(userService.list().toString());
     }
 
     /**

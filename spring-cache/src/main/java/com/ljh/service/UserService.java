@@ -1,13 +1,12 @@
 package com.ljh.service;
 
-import com.ljh.component.InitData;
 import com.ljh.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,18 +20,14 @@ import java.util.List;
 @CacheConfig(cacheNames = "user")
 public class UserService {
 
-    private final InitData initData;
-
-    @Autowired
-    public UserService(InitData initData) {
-        this.initData = initData;
-    }
+    @Resource(name = "users")
+    private List<User> users;
 
     // 因为类配置了 @CacheConfig(cacheNames = "user")，所以可以省略 cacheNames = "user",
     @Cacheable(/*cacheNames = "user", */key = "#id")
     public User get(Integer id) {
         log.info("into get");
-        return initData.getUsers().get(id);
+        return users.get(id);
     }
 
     /**
@@ -48,7 +43,7 @@ public class UserService {
     )
     public User get2(Integer id) {
         log.info("into get2");
-        return initData.getUsers().get(id);
+        return users.get(id);
     }
 
     @Cacheable(key = "#name")
@@ -57,16 +52,16 @@ public class UserService {
         return null;
     }
 
-    @Cacheable(cacheNames = "userList")
+    @Cacheable(cacheNames = "userList", keyGenerator = "myKeyGenerator")
     public List<User> list() {
         log.info("into list");
-        return initData.getUsers();
+        return users;
     }
 
     @CachePut(key = "#result.id")
     public User update(User user) {
         log.info("into update");
-        User oldUser = initData.getUsers().get(user.getId());
+        User oldUser = users.get(user.getId());
         BeanUtils.copyProperties(user, oldUser, "id");
         return oldUser;
     }

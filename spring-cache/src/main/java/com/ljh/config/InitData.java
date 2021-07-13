@@ -1,8 +1,9 @@
-package com.ljh.component;
+package com.ljh.config;
 
 import com.ljh.entity.User;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  * @author ljh
  * created on 2021/7/12 17:46
  */
-@Component
+@Configuration
 public class InitData implements CommandLineRunner {
     private final List<User> users = new ArrayList<>();
 
@@ -25,6 +26,7 @@ public class InitData implements CommandLineRunner {
         }
     }
 
+    @Bean("users")
     public List<User> getUsers() {
         return users;
     }
