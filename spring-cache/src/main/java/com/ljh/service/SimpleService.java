@@ -1,5 +1,6 @@
 package com.ljh.service;
 
+import com.ljh.annotation.UserCacheable;
 import com.ljh.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -10,24 +11,40 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * UserService
- *
  * @author ljh
  * created on 2021/7/12 17:52
  */
 @Slf4j
 @Service
-@CacheConfig(cacheNames = "user")
-public class UserService {
+@CacheConfig(cacheNames = "simple")
+public class SimpleService {
 
     @Resource(name = "users")
     private List<User> users;
 
-    // 因为类配置了 @CacheConfig(cacheNames = "user")，所以可以省略 cacheNames = "user",
-    @Cacheable(/*cacheNames = "user", */key = "#id")
+    // 因为类配置了 @CacheConfig(cacheNames = "simple")，所以可以省略 cacheNames = "simple",
+    @Cacheable(/*cacheNames = "simple", */key = "#id")
     public User get(Integer id) {
         log.info("into get");
         return users.get(id);
+    }
+
+    @CachePut(key = "#result.id")
+    public User update(User user) {
+        log.info("into update");
+        User oldUser = users.get(user.getId());
+        BeanUtils.copyProperties(user, oldUser, "id");
+        return oldUser;
+    }
+
+    @CacheEvict(key = "#p0")
+    public void delete(Integer id) {
+        log.info("into delete");
+    }
+
+    @CacheEvict(allEntries = true, beforeInvocation = true)
+    public void deleteAll() {
+        log.info("into deleteAll");
     }
 
     /**
@@ -52,27 +69,15 @@ public class UserService {
         return null;
     }
 
-    @Cacheable(cacheNames = "userList", keyGenerator = "myKeyGenerator")
+    @Cacheable(keyGenerator = "myKeyGenerator")
     public List<User> list() {
         log.info("into list");
         return users;
     }
 
-    @CachePut(key = "#result.id")
-    public User update(User user) {
-        log.info("into update");
-        User oldUser = users.get(user.getId());
-        BeanUtils.copyProperties(user, oldUser, "id");
-        return oldUser;
-    }
-
-    @CacheEvict(key = "#p0")
-    public void delete(Integer id) {
-        log.info("into delete");
-    }
-
-    @CacheEvict(allEntries = true, beforeInvocation = true)
-    public void deleteAll() {
-        log.info("into deleteAll");
+    @UserCacheable
+    public User get3(Integer id) {
+        log.info("into get3");
+        return users.get(id);
     }
 }

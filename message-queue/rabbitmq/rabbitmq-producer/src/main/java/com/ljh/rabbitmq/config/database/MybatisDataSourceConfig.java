@@ -10,7 +10,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
-import java.util.Objects;
 
 /**
  * MybatisDataSourceConfig

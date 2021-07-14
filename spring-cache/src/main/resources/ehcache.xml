@@ -2,19 +2,20 @@
         xmlns="http://www.ehcache.org/v3" xmlns:jsr107="http://www.ehcache.org/v3/jsr107"
         xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.2.xsd
 	                        http://www.ehcache.org/v3/jsr107 http://www.ehcache.org/schema/ehcache-107-ext-3.2.xsd">
-    <persistence directory="java.io.tmpdir"/>
+    <!-- XML Configuration: https://www.ehcache.org/documentation/3.8/xml.html -->
+    <persistence directory="${user.dir}/ehcache3/"/>
     <cache-template name="default">
         <resources>
             <heap unit="entries">2000</heap>
             <offheap unit="MB">100</offheap>
         </resources>
     </cache-template>
-    <cache alias="user" uses-template="default">
+    <cache alias="simple" uses-template="default">
         <expiry>
             <ttl unit="seconds">600</ttl>
         </expiry>
     </cache>
-    <cache alias="jcache" uses-template="default">
+    <cache alias="ehcache3" uses-template="default">
         <expiry>
             <ttl unit="seconds">600</ttl>
         </expiry>

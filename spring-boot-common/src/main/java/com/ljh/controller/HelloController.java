@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    private final Resource resource;
+
     @Autowired
-    private Resource resource;
+    public HelloController(Resource resource) {
+        this.resource = resource;
+    }
 
     @RequestMapping("/hello")
     public Object hello() {

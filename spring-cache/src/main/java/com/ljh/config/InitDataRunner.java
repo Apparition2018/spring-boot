@@ -15,7 +15,7 @@ import java.util.List;
  * created on 2021/7/12 17:46
  */
 @Configuration
-public class InitData implements CommandLineRunner {
+public class InitDataRunner implements CommandLineRunner {
     private final List<User> users = new ArrayList<>();
 
     @Override

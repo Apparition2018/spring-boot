@@ -16,8 +16,8 @@ import java.util.List;
 @Slf4j
 @Service
 // jcache 对应 ehcache.xml 中的 <cache></cache>
-@CacheConfig(cacheNames = "jcache")
-public class JcacheService {
+@CacheConfig(cacheNames = "ehcache3")
+public class Ehcache3Service {
 
     @Resource(name = "users")
     private List<User> users;

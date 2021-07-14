@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class SecurityAspect {
-    
+
     private final AuthService authService;
 
     @Autowired
@@ -26,9 +26,9 @@ public class SecurityAspect {
 
     @Pointcut("@annotation(com.ljh.example.security.AdminOnly)")
     public void adminOnly() {
-        
+
     }
-    
+
     @Before("adminOnly()")
     public void check() {
         authService.checkAccess();

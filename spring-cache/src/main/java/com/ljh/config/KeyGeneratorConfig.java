@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 /**
- * 自定义 Spring Cache Key 生成器
+ * 默认 Key 生成器: https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-cacheable-default-key
+ * 自定义 Key 生成器：https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-cacheable-key
  *
  * @author ljh
  * created on 2021/7/13 16:35
