@@ -22,6 +22,8 @@
         <module>message-queue</module>
         <module>querydsl</module>
         <module>sso</module>
+        <module>geode</module>
+        <module>jackson</module>
     </modules>
 
     <properties>
