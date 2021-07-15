@@ -10,11 +10,16 @@
 ---
 ## [核心模块](https://github.com/FasterXML/jackson#core-modules)
 1. jackson-core: streaming API
-    - [JsonFactory](https://github.com/FasterXML/jackson-core/wiki/JsonFactory-Features): 更改读写 JSON
-    - [JsonGenerator](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features): 更改流解析方式
-    - [JsonParser](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features): 更改流解析方式
+   - [JsonFactory](https://github.com/FasterXML/jackson-core/wiki/JsonFactory-Features): 配置和构建 JsonGenerator 和 JsonParser；线程安全的
+   - [JsonGenerator](https://github.com/FasterXML/jackson-core/wiki/JsonGenerator-Features): 生成 Json
+   - [JsonParser](https://github.com/FasterXML/jackson-core/wiki/JsonParser-Features): 读取 Json
 2. jackson-annotations: 包含标准 Jackson 注解
 3. jackson-databind: 实现数据绑定和对象序列化（ObjectMapper 所在模块）
+---
+## 基本概念
+1. Streaming: IO 流 
+2. Incremental Mode: 增量模式，表示每个部分一个一个地往上增加
+3. JsonToken: Json 每一部分都是一个独立的 Token，最终拼凑起来就是一个 Json
 ---
 ## 配置
 ```yaml
