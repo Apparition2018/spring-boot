@@ -3,6 +3,7 @@ package com.ljh;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import com.ljh.entity.Person;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,10 @@ public class JsonGeneratorTest extends com.ljh.Test {
         JsonFactory jsonFactory = new JsonFactory();
 
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(PERSON_JSON_FILE), JsonEncoding.UTF8)) {
+            // 格式化输出
+            jsonGenerator.useDefaultPrettyPrinter();
+            // 紧凑型输出
+            // jsonGenerator.setPrettyPrinter(new MinimalPrettyPrinter());
             jsonGenerator.writeStartObject(); // {
 
             jsonGenerator.writeStringField("name", "ljh");
@@ -44,18 +49,30 @@ public class JsonGeneratorTest extends com.ljh.Test {
         }
     }
 
+    /**
+     * JsonGenerator enable(Feature f)                      开启
+     * JsonGenerator disable(Feature f)                     关闭
+     * JsonGenerator configure(Feature f, boolean state)    开启/关闭
+     */
     @Test
     public void testFeature() throws IOException {
         JsonFactory jsonFactory = new JsonFactory();
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(System.out, JsonEncoding.UTF8)) {
             // 自动关闭流，默认 true
+            // jsonGenerator.close();
             jsonGenerator.enable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
             // 自动补齐，默认 true
             jsonGenerator.enable(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT);
             // 自动 flush，默认 true
+            // jsonGenerator.flush();
             jsonGenerator.enable(JsonGenerator.Feature.FLUSH_PASSED_TO_STREAM);
             // 使用 BigDecimal#toPlainString() 输出，默认 false
+            // 1E+11 → 100000000000
             jsonGenerator.enable(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN);
+            // 严格重复属性检测，默认 false
+            jsonGenerator.enable(JsonGenerator.Feature.STRICT_DUPLICATE_DETECTION);
+            //
+            jsonGenerator.enable(JsonGenerator.Feature.IGNORE_UNKNOWN);
 
         }
     }

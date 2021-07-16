@@ -23,6 +23,7 @@
 3. Streaming: IO 流 
 4. Incremental Mode: 增量模式，表示每个部分一个一个地往上增加
 5. JsonToken: Json 每一部分都是一个独立的 Token，最终拼凑起来就是一个 Json
+6. ObjectCodec: 解码器，ObjectMapper 继承了它，实现了序列化和反序列化、树模型等操作
 ---
 ## 配置
 ```yaml
