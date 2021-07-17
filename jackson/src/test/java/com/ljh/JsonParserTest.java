@@ -15,6 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * JsonParser
+ *
  * @author ljh
  * created on 2021/7/16 1:52
  */
@@ -60,6 +62,35 @@ public class JsonParserTest extends com.ljh.Test {
                 }
             }
 
+        }
+    }
+
+    /**
+     * JsonParser enable(Feature f)                     开启
+     * JsonParser disable(Feature f)                    关闭
+     * JsonParser configure(Feature f, boolean state)   开启/关闭
+     */
+    @Test
+    public void testFeature() throws IOException {
+        JsonFactory jsonFactory = new JsonFactory();
+        try (JsonParser jsonParser = jsonFactory.createParser(new File(PERSON_JSON_FILE))) {
+            // 自动关闭流，默认 true
+            // jsonParser.close();
+            jsonParser.enable(JsonParser.Feature.AUTO_CLOSE_SOURCE);
+            // 允许注释（/* */, //），默认 false
+            jsonParser.enable(JsonParser.Feature.ALLOW_COMMENTS);
+            // 允许注释（#），默认 false
+            jsonParser.enable(JsonParser.Feature.ALLOW_YAML_COMMENTS);
+            // 允许字段名不带双引号，默认 false
+            jsonParser.enable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES);
+            // 允许字段名支持单引号，默认 false
+            jsonParser.enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
+            // 严格重复属性检测，默认 false
+            jsonParser.enable(JsonParser.Feature.STRICT_DUPLICATE_DETECTION);
+            // 忽略没有定义的属性，作用于预先定义了格式的数据类型，如 Avro、protobuf 等，默认 false
+            jsonParser.enable(JsonParser.Feature.IGNORE_UNDEFINED);
+            // 是否构建 JsonLocation 对象来表示每个 part 的来源，默认 true
+            jsonParser.enable(JsonParser.Feature.INCLUDE_SOURCE_IN_LOCATION);
         }
     }
 

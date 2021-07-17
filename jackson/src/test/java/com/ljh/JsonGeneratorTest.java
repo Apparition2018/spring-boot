@@ -3,7 +3,6 @@ package com.ljh;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import com.ljh.entity.Person;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,8 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
+ * JsonGenerator
+ *
  * @author ljh
  * created on 2021/7/15 17:58
  */
@@ -71,7 +72,7 @@ public class JsonGeneratorTest extends com.ljh.Test {
             jsonGenerator.enable(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN);
             // 严格重复属性检测，默认 false
             jsonGenerator.enable(JsonGenerator.Feature.STRICT_DUPLICATE_DETECTION);
-            //
+            // 忽略没有定义的属性，作用于预先定义了格式的数据类型，如 Avro、protobuf 等，默认 false
             jsonGenerator.enable(JsonGenerator.Feature.IGNORE_UNKNOWN);
 
         }

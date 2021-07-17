@@ -4,7 +4,7 @@
 ## 参考网站
 1. [FasterXML/jackson](https://github.com/FasterXML/jackson#documentation)
 2. [FasterXML/jackson-docs](https://github.com/FasterXML/jackson-docs)
-3. [享学Jackson | YourBatman](https://fangshixiang.blog.csdn.net/article/details/103732359)
+3. [A哥学 Jackson](https://blog.csdn.net/f641385712/category_10175312.html)
 3. [Jackson 使用教程](https://blog.csdn.net/weixin_44747933/article/details/108301626)
 4. [SpringBoot 整合 Jackson](https://blog.csdn.net/prcyang/article/details/107881761)
 ---
@@ -20,10 +20,14 @@
 ## 基本概念
 1. Low-Level API: 细节需要自己处理，灵活性高，使用相对复制
 2. High-Level API: 屏蔽细节处理，使用相对简单
-3. Streaming: IO 流 
+3. Streaming: IO 流，因此理论上是支持任何格式
 4. Incremental Mode: 增量模式，表示每个部分一个一个地往上增加
 5. JsonToken: Json 每一部分都是一个独立的 Token，最终拼凑起来就是一个 Json
 6. ObjectCodec: 解码器，ObjectMapper 继承了它，实现了序列化和反序列化、树模型等操作
+---
+## 两大原则
+1. 写：100%遵顼规范
+2. 读：最大程度兼容
 ---
 ## 配置
 ```yaml
