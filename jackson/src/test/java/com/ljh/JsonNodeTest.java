@@ -1,8 +1,10 @@
 package com.ljh;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 /**
  * JsonNode
@@ -118,13 +121,17 @@ public class JsonNodeTest extends com.ljh.Test {
                 .enable(SerializationFeature.INDENT_OUTPUT)
                 // 遇到无法转换的属性则报错，默认 true
                 .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                // 遇到未知属性报错，默认 true
-                .enable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS)
                 // 日期转为时间戳，默认 true
                 .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
 
                 /* === DeserializationFeature === */
                 // 遇到未知属性报错，默认 true
-                .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
+
+
+                .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
+                .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
+                // 设置 DateFormat
+                .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
     }
 }
