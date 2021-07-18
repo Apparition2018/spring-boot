@@ -17,7 +17,7 @@ spring:
       # 允许对象忽略json中不存在的属性
       fail_on_unknown_properties: false
     parser:
-      # 允许出现单引号
+      # 允许注释（/* */, //）
+      allow_comments: true
+      # 允许字段名支持单引号
       allow_single_quotes: true
-
-

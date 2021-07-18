@@ -1,8 +1,10 @@
 package com.ljh.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +19,7 @@ public class Person {
 
     private String name;
     private Integer age;
+    private Date birth;
     private Dog dog;
     private List<String> hobbies;
 
@@ -25,7 +28,15 @@ public class Person {
         this.age = age;
     }
 
+    public Person(String name, Integer age, Date birth) {
+        this.name = name;
+        this.age = age;
+        this.birth = birth;
+    }
+
     @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class Dog {
         private String name;
         private Color color;

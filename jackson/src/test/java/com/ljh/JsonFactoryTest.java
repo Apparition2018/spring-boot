@@ -18,7 +18,7 @@ public class JsonFactoryTest {
     @Test
     public void testBuilder() {
         JsonFactory jsonFactory = new JsonFactoryBuilder()
-                /* JsonFactory.Feature */
+                /* === JsonFactory.Feature === */
                 // 字段名调用 intern()，默认 true，需要开启 CANONICALIZE_FIELD_NAMES
                 .enable(JsonFactory.Feature.INTERN_FIELD_NAMES)
                 // 规范化字段名，默认 true
@@ -29,7 +29,8 @@ public class JsonFactoryTest {
                 .enable(JsonFactory.Feature.FAIL_ON_SYMBOL_HASH_OVERFLOW)
                 // 是否使用 BufferRecycler、ThreadLocal、SoftReference 来有效的重用底层的输入/输出缓冲区，默认 true
                 .enable(JsonFactory.Feature.USE_THREAD_LOCAL_FOR_BUFFER_RECYCLING)
-                /* JsonWriteFeature */
+
+                /* === JsonWriteFeature === */
                 // 字段名是否使用双引号，默认 true
                 .enable(JsonWriteFeature.QUOTE_FIELD_NAMES)
                 // NaN 等写成字符串，默认 true
@@ -39,7 +40,8 @@ public class JsonFactoryTest {
                 .enable(JsonWriteFeature.WRITE_NUMBERS_AS_STRINGS)
                 // 取消对非 ASCII 字符的转码，默认 false
                 .enable(JsonWriteFeature.ESCAPE_NON_ASCII)
-                /* JsonReadFeature */
+
+                /* === JsonReadFeature === */
                 // 允许包含未转移控制字符，默认 false
                 // 值小于32的 ASCII 字符
                 .enable(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS)

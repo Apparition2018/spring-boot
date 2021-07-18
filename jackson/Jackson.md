@@ -7,6 +7,8 @@
 3. [A哥学 Jackson](https://blog.csdn.net/f641385712/category_10175312.html)
 3. [Jackson 使用教程](https://blog.csdn.net/weixin_44747933/article/details/108301626)
 4. [SpringBoot 整合 Jackson](https://blog.csdn.net/prcyang/article/details/107881761)
+5. [JSON 之 Jackson - 知乎](https://zhuanlan.zhihu.com/p/155914407)
+6. [Jackson 处理 json](https://blog.csdn.net/psh18513234633/article/details/88599509)
 ---
 ## [核心模块](https://github.com/FasterXML/jackson#core-modules)
 1. jackson-core: low-level streaming API
@@ -29,6 +31,11 @@
 1. 写：100%遵顼规范
 2. 读：最大程度兼容
 ---
+## 三种使用方法
+1. Streaming API
+2. [JsonMapper (ObjectMapper)](.\src\test\java\com\ljh\ObjectMapperTest.java)
+3. [Tree Model (JsonNode)](.\src\test\java\com\ljh\JsonNodeTest.java)
+---
 ## 配置
 ```yaml
 spring:
@@ -50,7 +57,9 @@ spring:
       # 允许对象忽略json中不存在的属性
       fail_on_unknown_properties: false
     parser:
-      # 允许出现单引号
+      # 允许注释（/* */, //）
+      allow_comments: true
+      # 允许字段名支持单引号
       allow_single_quotes: true
 ```
 ---
