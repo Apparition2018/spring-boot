@@ -36,30 +36,9 @@
 2. [JsonMapper (ObjectMapper)](.\src\test\java\com\ljh\ObjectMapperTest.java)
 3. [Tree Model (JsonNode)](.\src\test\java\com\ljh\JsonNodeTest.java)
 ---
-## 配置
-```yaml
-spring:
-  jackson:
-    # 日期格式化
-    date-format: yyyy-MM-dd HH:mm:ss
-    # 设置空如何序列化
-    default-property-inclusion: NON_EMPTY
-    serialization:
-      # 日期转 timestamps
-      write_date_as_timestamps: false
-      # 格式化输出
-      indent_output: true
-      # 忽略无法转换的对象
-      fail_on_empty_beans: false
-      # 允许出现特殊字符和转义符
-      allow_unescaped_control_chars: true
-    deserialization:
-      # 允许对象忽略json中不存在的属性
-      fail_on_unknown_properties: false
-    parser:
-      # 允许注释（/* */, //）
-      allow_comments: true
-      # 允许字段名支持单引号
-      allow_single_quotes: true
-```
+## [配置](.\src\main\resources\application.yml)
+
+---
+## [注解](.\src\test\java\com\ljh\AnnotationTest.java)
+
 ---
