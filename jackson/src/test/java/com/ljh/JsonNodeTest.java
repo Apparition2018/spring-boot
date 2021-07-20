@@ -127,8 +127,9 @@ public class JsonNodeTest extends com.ljh.Test {
                 // 遇到未知属性报错，默认 true
                 .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
 
-
+                // 设置空如何序列化
                 .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
+                // 同上，底层调用了 setDefaultPropertyInclusion(Include incl)
                 .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
                 // 设置 DateFormat
                 .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
