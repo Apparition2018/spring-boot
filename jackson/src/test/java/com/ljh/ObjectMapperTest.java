@@ -2,10 +2,12 @@ package com.ljh;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ljh.entity.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -27,7 +29,6 @@ import java.util.List;
  * @author ljh
  * created on 2021/7/18 12:59
  */
-@Slf4j
 public class ObjectMapperTest {
 
     /**
@@ -40,18 +41,18 @@ public class ObjectMapperTest {
         // String   writeValueAsString(Object value)
         // 写成字符串形式（最常用）
         String json = jsonMapper.writeValueAsString(new Person("ljh", 31, new Date()));
-        log.info("\n========== Obj → String ==========\n" + json);
+        System.out.println("========== Obj → String ==========\n" + json);
         // T        readValue(String content, Class<T> valueType)
         // 读为指定 Class 类型的对象
         Person person = jsonMapper.readValue(json, Person.class);
-        log.info("\n========== String → Obj ==========\n" + person + "\n");
+        System.out.println("========== String → Obj ==========\n" + person + "\n");
 
         json = jsonMapper.writeValueAsString(Arrays.asList(1, 2, 3));
-        log.info("\n========== List<Object> → String ==========\n" + json);
+        System.out.println("========== List<Object> → String ==========\n" + json);
         // T        readValue(String content, TypeReference<T> valueTypeRef)
         // 读为指定 TypeReference 类型的对象，一般用于泛型集合/Map的反序列化
         List<Long> list = jsonMapper.readValue(json, new TypeReference<List<Long>>() {
         });
-        log.info("\n========== String → List<Object> ==========\n" + list);
+        System.out.println("========== String → List<Object> ==========\n" + list);
     }
 }

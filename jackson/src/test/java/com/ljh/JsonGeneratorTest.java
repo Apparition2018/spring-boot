@@ -3,6 +3,7 @@ package com.ljh;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.type.ResolvedType;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.core.util.MinimalPrettyPrinter;
 import com.ljh.entity.Person;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +25,9 @@ public class JsonGeneratorTest extends com.ljh.Test {
 
         try (JsonGenerator jsonGenerator = jsonFactory.createGenerator(new File(PERSON_JSON_FILE), JsonEncoding.UTF8)) {
             // 格式化输出
-            jsonGenerator.useDefaultPrettyPrinter();
+            // jsonGenerator.useDefaultPrettyPrinter();
             // 紧凑型输出
-            // jsonGenerator.setPrettyPrinter(new MinimalPrettyPrinter());
+            jsonGenerator.setPrettyPrinter(new MinimalPrettyPrinter());
             jsonGenerator.writeStartObject(); // {
 
             jsonGenerator.writeStringField("name", "ljh");

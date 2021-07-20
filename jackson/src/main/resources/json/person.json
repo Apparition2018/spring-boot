@@ -1,9 +1,1 @@
-{
-  "name" : "ljh",
-  "age" : 31,
-  "dog" : {
-    "name" : "旺财",
-    "color" : "WHITE"
-  },
-  "hobbies" : [ "篮球", "football" ]
-}
+{"name":"ljh","age":31,"dog":{"name":"旺财","color":"WHITE"},"hobbies":["篮球","football"]}
