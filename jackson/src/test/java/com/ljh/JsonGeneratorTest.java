@@ -43,7 +43,7 @@ public class JsonGeneratorTest extends com.ljh.Test {
             // 写入一个数组
             jsonGenerator.writeFieldName("hobbies");
             jsonGenerator.writeStartArray();
-            jsonGenerator.writeString("篮球");
+            jsonGenerator.writeString("basketball");
             jsonGenerator.writeString("football");
             jsonGenerator.writeEndArray();
 

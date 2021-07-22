@@ -42,12 +42,14 @@ import java.util.Map;
 // 属性名策略
 @JsonNaming(PropertyNamingStrategy.LowerCaseStrategy.class)
 public class Person {
-
     // 格式化
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", locale = "en", timezone = "GMT+8")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss a", locale = "en", timezone = "GMT+8",
+            with = {JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY})
     // 反序列化别名
     @JsonAlias("birthday")
     private Date birth;
+    // 反序列化设置默认值
+    @JacksonInject("age")
     private Integer age;
     // 序列化反序列化时使用其它名字
     @JsonProperty("gender")
@@ -57,6 +59,7 @@ public class Person {
     private String password;
     private String hairStyle;
     private Dog dog;
+    private Cat cat;
     private List<String> hobbies;
     private String name;
     // 按原样序列化属性，用于序列化带"号的 json
@@ -84,15 +87,24 @@ public class Person {
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
+    @Accessors(chain = true)
     public static class Dog {
+        private String name;
+        private Color color;
+    }
+
+    @Data
+    // 不参与序列化和反序列化
+    @JsonIgnoreType
+    public static class Cat {
         private String name;
         private Color color;
     }
 
     public enum Color {
         RED,
+        // 反序列化默认枚举，需开启 mapper.enable(DeserializationFeature.READ_UNKNOWN_ENUM_VALUES_USING_DEFAULT_VALUE)
+        @JsonEnumDefaultValue
         WHITE,
         BLACK;
     }

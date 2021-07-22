@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 /**
  * FastJsonConvertUtil
  *
- * @author Administrator
+ * @author ljh
  * created on 2021/4/17 23:05
  */
 public class GsonConverter {
