@@ -1,13 +1,10 @@
 package com.ljh;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.*;
 import com.ljh.entity.Person;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 /**
  * JsonNode
@@ -58,6 +54,12 @@ public class JsonNodeTest extends com.ljh.Test {
         log.info("Pojo {} : {}", pojoNode.isPojo(), pojoNode.asText());
     }
 
+    /**
+     * 除了使用 JsonNodeFactory 创建 ArrayNode, ObjectNode
+     * 还是可以使用 ObjectMapper 创建
+     * ArrayNode jsonArray = objectMapper.createArrayNode();
+     * ObjectNode jsonObject = objectMapper.createObjectNode();
+     */
     @Test
     public void testContainerNode() {
         JsonNodeFactory jsonNodeFactory = JsonNodeFactory.instance;
@@ -81,7 +83,6 @@ public class JsonNodeTest extends com.ljh.Test {
 
     @Test
     public void testObjectMapperTree() throws IOException {
-
         Person person = new Person("ljh", 31);
         person.setDog(new Person.Dog("旺财", Person.Color.WHITE));
 
@@ -92,6 +93,9 @@ public class JsonNodeTest extends com.ljh.Test {
 
         // JsonNode                 readTree(File file)
         jsonNode = objectMapper.readTree(new File(PERSON_JSON_FILE));
+        log.info(jsonNode.toPrettyString());
+
+        jsonNode = objectMapper.readValue(new File(PERSON_JSON_FILE), JsonNode.class);
         log.info(jsonNode.toPrettyString());
 
         for (JsonNode nextJsonNode : jsonNode) {
@@ -109,29 +113,5 @@ public class JsonNodeTest extends com.ljh.Test {
             // void                 writeTree(JsonGenerator g, JsonNode rootNode)
             objectMapper.writeTree(jsonGenerator, jsonNode);
         }
-    }
-
-    @Test
-    public void testObjectMapperFeature() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper
-                /* === SerializationFeature === */
-                // 格式化输出，默认 false
-                .enable(SerializationFeature.INDENT_OUTPUT)
-                // 遇到无法转换的属性则报错，默认 true
-                .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS)
-                // 日期转为时间戳，默认 true
-                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-
-                /* === DeserializationFeature === */
-                // 遇到未知属性报错，默认 true
-                .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
-
-                // 设置空如何序列化
-                .setDefaultPropertyInclusion(JsonInclude.Include.NON_EMPTY)
-                // 同上，底层调用了 setDefaultPropertyInclusion(Include incl)
-                .setSerializationInclusion(JsonInclude.Include.NON_EMPTY)
-                // 设置 DateFormat
-                .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
     }
 }
