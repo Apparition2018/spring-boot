@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 /**
- * DruidDataSourceConifg
+ * DruidDataSourceConfig
  *
  * @author Arsenal
  * created on 2021/4/17 17:34
