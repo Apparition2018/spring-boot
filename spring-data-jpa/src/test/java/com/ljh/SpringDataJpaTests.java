@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 
 /**
  * 使用 Spring Data JPA 访问 MySQL：https://blog.didispace.com/spring-boot-learning-21-3-4/
@@ -18,7 +17,7 @@ import org.springframework.test.annotation.Rollback;
  * created on 2021/8/30 11:50
  */
 @SpringBootTest
-public class SpringDataJpaTest {
+public class SpringDataJpaTests {
 
     @Autowired
     private UserRepository userRepository;
