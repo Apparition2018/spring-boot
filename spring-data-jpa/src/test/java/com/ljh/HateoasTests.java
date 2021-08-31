@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(EmployeeController.class)
-public class EmployeeControllerTests {
+public class HateoasTests {
 
     @Autowired
     private MockMvc mockMvc;

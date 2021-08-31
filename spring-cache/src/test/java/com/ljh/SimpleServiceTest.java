@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.CacheManager;
 
 import java.util.Random;
 
@@ -18,14 +19,17 @@ import java.util.Random;
 public class SimpleServiceTest {
 
     private final SimpleService simpleService;
+    private final CacheManager cacheManager;
 
     @Autowired
-    public SimpleServiceTest(SimpleService simpleService) {
+    public SimpleServiceTest(SimpleService simpleService, CacheManager cacheManager) {
         this.simpleService = simpleService;
+        this.cacheManager = cacheManager;
     }
 
     @Test
     public void cacheable() {
+        System.out.println("CacheManager Type: " + cacheManager.getClass());
         log.info(simpleService.get(1).toString());
         // 第一次调用还没有缓存，所以执行了方法，输出 into get
         // into get

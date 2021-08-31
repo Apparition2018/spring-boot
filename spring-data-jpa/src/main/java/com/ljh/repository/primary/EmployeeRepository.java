@@ -1,7 +1,7 @@
 package com.ljh.repository.primary;
 
 import com.ljh.entity.primary.Employee;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * EmployeeRepository
@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author ljh
  * created on 2021/8/31 12:55
  */
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 }

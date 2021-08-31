@@ -2,10 +2,9 @@
 
 ## 参考网站
 1. [第四篇：SpringBoot中Cache缓存的使用](https://blog.csdn.net/weixin_36279318/article/details/82820880)
-2. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
-3. [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
-4. [Caching Data with Pivotal GemFire](https://spring.io/guides/gs/caching-gemfire/)
-5. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
+2. [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
+3. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
+4. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
 ---
 ## 核心接口
 <img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
@@ -33,7 +32,10 @@
 >|unless|@Cacheable<br/>@CachePut|缓存的条件，对结果进行判断|@Cacheable(value="cache", unless="#result==null")|
 >|sync|@Cacheable|同步，防止高并发情况下，多个请求穿透到数据库|@Cacheable(value="cache, sync=true)
 >|allEntries|@CacheEvict|清空缓存下所有内容|@CacheEvict(value="cache", allEntries="true")|
->|beforeInvocation|@CacheEvict|在方法执行前清空|@CacheEvict(value="cache", beforeInvocation="true")| 
+>|beforeInvocation|@CacheEvict|在方法执行前清空|@CacheEvict(value="cache", beforeInvocation="true")|
+>|keyGenerator| |用于指定 key 生成器|@Cacheable(keyGenerator = "myKeyGenerator")|
+>|cacheManager| |用于指定 CacheManager|@Cacheable(cacheManager = "myCacheManager")|
+>|cacheResolver| |用于指定 CacheResolver|@Cacheable(cacheResolver = "myCacheResolver")|
 >### [缓存 SpEL 可用元数据](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-spel-context)
 >- [SpEL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions)
 >- [SpEl 运算符](https://blog.csdn.net/yuhui123999/article/details/84288177)

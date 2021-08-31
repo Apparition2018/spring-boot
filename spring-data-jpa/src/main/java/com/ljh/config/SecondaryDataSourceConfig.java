@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,9 +42,9 @@ public class SecondaryDataSourceConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    @ConfigurationProperties(prefix = "spring.jta.atomikos.datasource.secondary")
     public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
     }
 
     @Bean(name = "secondaryEntityManagerFactoryBean")
