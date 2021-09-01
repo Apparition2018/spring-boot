@@ -1,6 +1,6 @@
 package com.ljh;
 
-import com.ljh.service.Ehcache3Service;
+import com.ljh.service.JCacheService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,21 +15,21 @@ import org.springframework.cache.CacheManager;
  */
 @Slf4j
 @SpringBootTest
-public class Ehcache3ServiceTest {
+public class JCacheServiceTest {
 
-    private final Ehcache3Service ehcache3Service;
+    private final JCacheService jCacheService;
     private final CacheManager cacheManager;
 
     @Autowired
-    public Ehcache3ServiceTest(Ehcache3Service ehcache3Service, CacheManager cacheManager) {
-        this.ehcache3Service = ehcache3Service;
+    public JCacheServiceTest(JCacheService jCacheService, CacheManager cacheManager) {
+        this.jCacheService = jCacheService;
         this.cacheManager = cacheManager;
     }
 
     @Test
     public void get() {
         System.out.println("CacheManager Type: " + cacheManager.getClass());
-        log.info(ehcache3Service.get(1).toString());
-        log.info(ehcache3Service.get(1).toString());
+        log.info(jCacheService.get(1).toString());
+        log.info(jCacheService.get(1).toString());
     }
 }

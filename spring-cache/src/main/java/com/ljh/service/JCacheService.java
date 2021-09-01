@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 // jcache 对应 ehcache.xml 中的 <cache></cache>
 @CacheConfig(cacheNames = "ehcache3")
-public class Ehcache3Service {
+public class JCacheService {
 
     @Resource(name = "users")
     private List<User> users;

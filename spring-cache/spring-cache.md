@@ -1,18 +1,11 @@
 # Spring Cache
 
 ## 参考网站
-1. [第四篇：SpringBoot中Cache缓存的使用](https://blog.csdn.net/weixin_36279318/article/details/82820880)
+1. [SpringBoot 中 Cache 缓存的使用](https://blog.csdn.net/weixin_36279318/article/details/82820880)
 2. [Cache Abstraction](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache)
-3. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
-4. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
----
-## 核心接口
-<img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
-1. CachingProvider: 定义创建、配置、获取、管理和控制多个 CacheManager
-2. CacheManager: 定义创建、配置、获取、管理和控制多个唯一命名的 Cache
-3. Cache: 一个类似 Map 的数据结构并临时存储以 key 为索引的值
-4. Entry: 一个存储再 Cache 的 key-value 对
-5. Expiry: Entry 的有效期
+3. [Spring Boot Features - Caching](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.caching)
+4. [Caching Data with Spring](https://spring.io/guides/gs/caching/)
+5. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
 ---
 ## 注解
 |注解|解释|
@@ -85,17 +78,26 @@ public class SpringCacheApplication {}
 ```
 2. [SimpleService](.\src\main\java\com\ljh\service\SimpleService.java)
 ---
-## 整合 Ehcache3
+## 整合 JCache
+- [Introduction to JCache](https://www.baeldung.com/jcache)
+>### 核心接口
+><img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
+>1. CachingProvider: 定义创建、配置、获取、管理和控制多个 CacheManager
+>2. CacheManager: 定义创建、配置、获取、管理和控制多个唯一命名的 Cache
+>3. Cache: 一个类似 Map 的数据结构并临时存储以 key 为索引的值
+>4. Entry: 一个存储再 Cache 的 key-value 对
+>5. Expiry: Entry 的有效期
 1. 引入依赖
 ```xml
 <project>
     <dependency>
-        <groupId>org.ehcache</groupId>
-        <artifactId>ehcache</artifactId>
-    </dependency>
-    <dependency>
         <groupId>javax.cache</groupId>
         <artifactId>cache-api</artifactId>
+    </dependency>
+    <!-- 使用 ehcache3 实现 JCache -->
+    <dependency>
+        <groupId>org.ehcache</groupId>
+        <artifactId>ehcache</artifactId>
     </dependency>
 </project>
 ```
