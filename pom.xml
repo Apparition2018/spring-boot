@@ -18,7 +18,7 @@
         <module>spring-boot-common</module>
         <!-- 探秘 Spring AOP -->
         <module>spring-aop</module>
-        <module>spring-data-jpa</module>
+        <module>spring-data</module>
         <module>spring-cache</module>
         <module>message-queue</module>
         <module>querydsl</module>

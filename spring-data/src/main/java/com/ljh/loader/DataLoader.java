@@ -15,11 +15,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader {
 
+    private final EmployeeRepository employeeRepository;
+
+    public DataLoader(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
     @Bean
-    CommandLineRunner init(EmployeeRepository repository) {
+    CommandLineRunner init() {
         return args -> {
-            repository.save(new Employee("Frodo Baggins", "ring bearer"));
-            repository.save(new Employee("Bilbo Baggins", "burglar"));
+            employeeRepository.save(new Employee("Frodo Baggins", "ring bearer"));
+            employeeRepository.save(new Employee("Bilbo Baggins", "burglar"));
         };
     }
 }

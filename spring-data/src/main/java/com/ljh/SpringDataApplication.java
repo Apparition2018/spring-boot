@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * created on 2021/8/30 11:40
  */
 @SpringBootApplication
-public class SpringDataJpaApplication {
+public class SpringDataApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringDataJpaApplication.class);
+        SpringApplication.run(SpringDataApplication.class);
     }
 }
