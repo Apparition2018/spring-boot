@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 
 /**
  * 使用 MongoDB：https://blog.didispace.com/spring-boot-learning-24-6-1/
@@ -16,6 +17,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class MongodbTests {
 
+    @Autowired
+    private MongoTemplate mongoTemplate;
     @Autowired
     private UserMongoRepository userMongoRepository;
 
@@ -36,7 +39,7 @@ public class MongodbTests {
 
         // 删除一个User，再验证User总数
         user = userMongoRepository.findByName("mama");
-        userMongoRepository.delete(user);
-        Assertions.assertEquals(1, userMongoRepository.findAll().size());
+        mongoTemplate.remove(user);
+        Assertions.assertEquals(1, mongoTemplate.findAll(User2.class).size());
     }
 }

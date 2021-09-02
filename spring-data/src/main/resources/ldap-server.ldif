@@ -1,0 +1,20 @@
+dn: dc=zs,dc=com
+objectClass: top
+objectClass: domain
+objectclass: extensibleObject
+dc: zs
+
+dn: ou=people,dc=zs,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: people
+
+dn: uid=ljh1990,ou=people,dc=zs,dc=com
+objectclass: top
+objectclass: person
+objectclass: organizationalPerson
+objectclass: inetOrgPerson
+cn: fei
+sn: liang
+uid: ljh1990
+userPassword: {SHA}nFCebWjxfaLbHHG1Qk5UU4trbvQ=

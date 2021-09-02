@@ -34,7 +34,6 @@ public class HateoasTests {
 
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private EmployeeRepository repository;
 

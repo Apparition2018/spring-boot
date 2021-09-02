@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * 使用JTA实现多数据源的事务管理：https://blog.didispace.com/spring-boot-learning-24-3-12/
+ * 使用 JTA 实现多数据源的事务管理：https://blog.didispace.com/spring-boot-learning-24-3-12/
  *
  * @author ljh
  * created on 2021/8/31 17:41
