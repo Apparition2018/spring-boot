@@ -13,7 +13,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -34,7 +33,7 @@ public class EmployeeController {
     @GetMapping("/employees")
     ResponseEntity<CollectionModel<EntityModel<Employee>>> findAll() {
 
-        List<EntityModel<Employee>> employees = StreamSupport.stream(repository.findAll().spliterator(), false)
+        List<EntityModel<Employee>> employees = repository.findAll().stream()
                 .map(employee -> EntityModel.of(employee,
                         linkTo(methodOn(EmployeeController.class).findOne(employee.getId())).withSelfRel(),
                         linkTo(methodOn(EmployeeController.class).findAll()).withRel("employees")))

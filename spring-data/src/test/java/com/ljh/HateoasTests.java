@@ -23,6 +23,8 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
+ * HATEOAS (Hypermedia As Engine Of Application State)
+ * <p>
  * Spring HATEOAS - Basic Example：https://github.com/spring-projects/spring-hateoas-examples/tree/main/simplified
  *
  * @author ljh

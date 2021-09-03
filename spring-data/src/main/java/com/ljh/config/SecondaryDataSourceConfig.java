@@ -9,10 +9,9 @@ import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManager;
@@ -26,9 +25,10 @@ import java.util.Objects;
  */
 @Configuration
 @EnableTransactionManagement
+@DependsOn("platformTransactionManager")
 @EnableJpaRepositories(
         entityManagerFactoryRef = "secondaryEntityManagerFactoryBean",
-        transactionManagerRef = "secondaryTransactionManager",
+        transactionManagerRef = "platformTransactionManager",
         basePackages = {"com.ljh.repository.secondary"})
 public class SecondaryDataSourceConfig {
 
@@ -60,11 +60,6 @@ public class SecondaryDataSourceConfig {
     @Bean(name = "secondaryEntityManager")
     public EntityManager entityManager(EntityManagerFactoryBuilder builder) {
         return Objects.requireNonNull(entityManagerFactorySecondary(builder).getObject()).createEntityManager();
-    }
-
-    @Bean(name = "secondaryTransactionManager")
-    PlatformTransactionManager transactionManager(EntityManagerFactoryBuilder builder) {
-        return new JpaTransactionManager(Objects.requireNonNull(entityManagerFactorySecondary(builder).getObject()));
     }
 
     private Map<String, Object> getVendorProperties() {

@@ -3,8 +3,7 @@ package com.ljh.loader;
 import com.ljh.entity.primary.Employee;
 import com.ljh.repository.primary.EmployeeRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * DataLoader
@@ -12,8 +11,8 @@ import org.springframework.stereotype.Component;
  * @author ljh
  * created on 2021/8/31 12:53
  */
-@Component
-public class DataLoader {
+@Configuration
+public class DataLoader implements CommandLineRunner {
 
     private final EmployeeRepository employeeRepository;
 
@@ -21,11 +20,9 @@ public class DataLoader {
         this.employeeRepository = employeeRepository;
     }
 
-    @Bean
-    CommandLineRunner init() {
-        return args -> {
-            employeeRepository.save(new Employee("Frodo Baggins", "ring bearer"));
-            employeeRepository.save(new Employee("Bilbo Baggins", "burglar"));
-        };
+    @Override
+    public void run(String... args) throws Exception {
+        employeeRepository.save(new Employee("Frodo Baggins", "ring bearer"));
+        employeeRepository.save(new Employee("Bilbo Baggins", "burglar"));
     }
 }
