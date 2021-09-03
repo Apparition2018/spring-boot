@@ -13,7 +13,6 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
@@ -25,7 +24,6 @@ import java.util.Objects;
  * created on 2021/8/30 17:34
  */
 @Configuration
-@EnableTransactionManagement
 @DependsOn("platformTransactionManager")
 @EnableJpaRepositories(
         entityManagerFactoryRef = "primaryEntityManagerFactoryBean",
