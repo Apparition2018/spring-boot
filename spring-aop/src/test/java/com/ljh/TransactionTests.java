@@ -1,28 +1,25 @@
 package com.ljh;
 
-import com.ljh.transaction.service.DemoService;
+import com.ljh.transaction.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * TransactionTests
+ * `@Transactional
  *
  * @author Arsenal
  * created on 2020/1/2 17:57
  */
 @SpringBootTest
 public class TransactionTests {
-    
-    private final DemoService demoService;
 
     @Autowired
-    public TransactionTests(DemoService demoService) {
-        this.demoService = demoService;
-    }
-    
+    private UserService userService;
+
     @Test
     public void testWithoutTransaction() {
-        demoService.addUser("tom");
+        userService.addUser("tom");
+        userService.addUser("tom");
     }
 }

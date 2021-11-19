@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Chain {
     
-    private List<ChainHandler> handlers;
+    private final List<ChainHandler> handlers;
     
     private int index = 0;
 

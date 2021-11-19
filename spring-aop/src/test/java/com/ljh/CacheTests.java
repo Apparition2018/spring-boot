@@ -6,30 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * CacheTests
+ * `@Cacheable
  *
  * @author Arsenal
  * created on 2020/1/3 0:01
  */
 @SpringBootTest
 public class CacheTests {
-    
-    private final MenuService menuService;
 
     @Autowired
-    public CacheTests(MenuService menuService) {
-        this.menuService = menuService;
-    }
-    
+    private MenuService menuService;
+
     @Test
     public void testCache() {
         System.out.println("call: " + menuService.getMenuList());
         System.out.println("call: " + menuService.getMenuList());
     }
 
-    /**
-     * 无法拦截内部方法调用
-     */
     @Test
     public void testInnerCall() {
         System.out.println("call: " + menuService.getRecommends());

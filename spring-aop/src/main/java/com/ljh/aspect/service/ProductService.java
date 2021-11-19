@@ -32,7 +32,7 @@ public class ProductService {
     }
     
     public void findByTwoArgs(Long id, String name) {
-        System.out.println("execute find by iid and Name");
+        System.out.println("execute find by id and Name");
     }
 
 }
