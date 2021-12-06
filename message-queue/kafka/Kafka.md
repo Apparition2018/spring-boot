@@ -105,10 +105,10 @@
 >    - 最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输
 >    - 最少一次：消息不会被漏发送，最少被传输一次，但也有肯能被重复传输
 >    - 精确的一次(Exactly Once)：不会漏传输也不会重复传输，每个消息都仅仅传输一次
->- 事务保证  
+>- 事务保证
 >    - 内部重试问题：Procedure 幂等处理
 >    - 多分区原子写入
->       - <img alt="多分区原子写入" src="https://img.mukewang.com/604e42340001d3d319201080.jpg" width="500"/>  
+>       - <img alt="多分区原子写入" src="https://img.mukewang.com/604e42340001d3d319201080.jpg" width="500"/>
 >    - 避免僵尸实例
 >        - 每个事务 Producer 分配一个 transactional.id，在进程重新启动时能够识别相同的 Producer 实例
 >        - Kafka 增加了一个与 transactional.id 相关的 epoch，存储每个 transactional.id 内部元数据
@@ -116,8 +116,8 @@
 >### [零拷贝](https://www.imooc.com/video/17878)
 >- 网络传输持久性
 >- Java Nio channel.transferTo()
->- Linux sendfile 系统调用  
-><img alt="零拷贝" src="https://img.mukewang.com/604e41560001baea19201080.jpg" width="600"/>  
+>- Linux sendfile 系统调用
+><img alt="零拷贝" src="https://img.mukewang.com/604e41560001baea19201080.jpg" width="600"/>
 >- 文件传输到网络的公共数据路径
 >   - 操作系统将数据从磁盘读入到内核空间的页缓存
 >   - 应用程序将数据从内核空间读入到用户空间缓存
