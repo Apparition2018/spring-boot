@@ -21,7 +21,6 @@
         <module>spring-data</module>
         <module>spring-cache</module>
         <module>message-queue</module>
-        <module>nacos</module>
         <module>querydsl</module>
         <module>sso</module>
     </modules>

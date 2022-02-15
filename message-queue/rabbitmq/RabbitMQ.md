@@ -2,14 +2,16 @@
 
 ---
 ## 参考网站
-1. [消息队列的优缺点，区别](https://www.jianshu.com/p/eaafb1581e55)
-2. [RabbitMQ消息中间件极速入门与实战-慕课网](https://www.imooc.com/learn/1042)
-3. [RabbitMQ 端口号解析](https://blog.csdn.net/qq_37356556/article/details/104700411)
-4. [理解 RabbitMQ Exchange](https://blog.csdn.net/y4x5M0nivSrJaY3X92c/article/details/80416996)
+1. [Messaging that just works — RabbitMQ](https://www.rabbitmq.com)
+2. [rabbitmq-server | Github](https://github.com/rabbitmq/rabbitmq-server)
+3. [rabbitmq-tutorials | Github](https://github.com/rabbitmq/rabbitmq-tutorials)
+4. [RabbitMQ消息中间件极速入门与实战-慕课网](https://www.imooc.com/learn/1042)
+5. [RabbitMQ 端口号解析](https://blog.csdn.net/qq_37356556/article/details/104700411)
+6. [理解 RabbitMQ Exchange](https://blog.csdn.net/y4x5M0nivSrJaY3X92c/article/details/80416996)
 ---
 ## AMQP
 - Advanced Message Queuing Protocol 高级消息队列协议
-<img alt="AMQP 协议模型" src="https://img.mukewang.com/606f4d220001240219201080.jpg" width="500"/>
+<img alt="AMQP 协议模型" src="https://upload-images.jianshu.io/upload_images/11247052-3484249edc3746bb.jpg" width="500"/>
 ---
 ## 安装
 ```
@@ -24,7 +26,7 @@
 ---
 ## 核心概念
 <img alt="整体架构" src="https://img1.mukewang.com/6077b3da0001049719201080.jpg" width="500"/>
-<img alt="消息如何流转" src="https://img.mukewang.com/6077f01a0001cc0619201080.jpg" width="500"/>
+<img alt="消息如何流转" src="https://img1.mukewang.com/6077f01a0001cc0619201080.jpg" width="500"/>
 
 1. Server: 又称 Broker，接受客户端的连接，实现 AMQP 实体服务
 2. Connection: 连接，应用程序与 Broker 的网络连接

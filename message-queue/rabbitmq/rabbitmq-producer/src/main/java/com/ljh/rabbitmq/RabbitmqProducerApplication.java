@@ -4,15 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * ConsumerApplication
+ * RabbitmqProducerApplication
  *
  * @author Arsenal
- * created on 2021/4/17 2:22
+ * created on 2021/4/17 1:58
  */
 @SpringBootApplication
-public class ConsumerApplication {
+public class RabbitmqProducerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerApplication.class, args);
+        SpringApplication.run(RabbitmqProducerApplication.class, args);
     }
 }

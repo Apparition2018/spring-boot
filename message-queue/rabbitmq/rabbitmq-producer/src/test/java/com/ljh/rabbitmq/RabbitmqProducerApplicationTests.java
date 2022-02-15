@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.UUID;
 
 /**
- * ApplicationTests
+ * RabbitmqProducerApplicationTests
  *
  * @author Arsenal
  * created on 2021/4/17 2:00
  */
-@SpringBootTest(classes = ProducerApplication.class)
-public class ProducerApplicationTests {
+@SpringBootTest(classes = RabbitmqProducerApplication.class)
+public class RabbitmqProducerApplicationTests {
 
     @Test
     public void contextLoads() {
@@ -31,7 +31,7 @@ public class ProducerApplicationTests {
         Order order = new Order();
         order.setId("202104170000000001");
         order.setName("测试订单04171");
-        order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
+        order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID());
         orderSender.send(order);
     }
 
@@ -43,7 +43,7 @@ public class ProducerApplicationTests {
         Order order = new Order();
         order.setId("202104180000000002");
         order.setName("测试订单04181");
-        order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
+        order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID());
         orderService.createOrder(order);
     }
 }
