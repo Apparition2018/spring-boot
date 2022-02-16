@@ -1,7 +1,8 @@
-package com.ljh.rabbitmq;
+package com.ljh;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * RabbitmqProducerApplication
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Arsenal
  * created on 2021/4/17 1:58
  */
+@EnableScheduling
 @SpringBootApplication
 public class RabbitmqProducerApplication {
 

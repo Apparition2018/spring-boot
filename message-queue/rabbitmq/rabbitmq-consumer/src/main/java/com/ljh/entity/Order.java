@@ -1,9 +1,8 @@
-package com.ljh.rabbitmq.entity;
+package com.ljh.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -13,14 +12,11 @@ import java.io.Serializable;
  * @author Arsenal
  * created on 2021/4/17 1:58
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order implements Serializable {
-
     private static final long serialVersionUID = 4037830425016588023L;
-
     private String id;
     private String name;
     /**

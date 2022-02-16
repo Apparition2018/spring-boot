@@ -1,9 +1,11 @@
-package com.ljh.rabbitmq.entity;
+package com.ljh.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -13,14 +15,13 @@ import java.io.Serializable;
  * @author Arsenal
  * created on 2021/4/17 1:58
  */
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("t_order")
 public class Order implements Serializable {
-
     private static final long serialVersionUID = 4037830425016588023L;
-
+    @TableId(type = IdType.INPUT)
     private String id;
     private String name;
     /**

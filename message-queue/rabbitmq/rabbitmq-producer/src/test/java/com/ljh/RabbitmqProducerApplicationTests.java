@@ -1,8 +1,8 @@
-package com.ljh.rabbitmq;
+package com.ljh;
 
-import com.ljh.rabbitmq.entity.Order;
-import com.ljh.rabbitmq.producer.OrderSender;
-import com.ljh.rabbitmq.service.OrderService;
+import com.ljh.entity.Order;
+import com.ljh.producer.OrderSender;
+import com.ljh.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,11 +18,6 @@ import java.util.UUID;
 @SpringBootTest(classes = RabbitmqProducerApplication.class)
 public class RabbitmqProducerApplicationTests {
 
-    @Test
-    public void contextLoads() {
-
-    }
-
     @Autowired
     private OrderSender orderSender;
 
@@ -37,7 +32,7 @@ public class RabbitmqProducerApplicationTests {
 
     @Autowired
     private OrderService orderService;
-    
+
     @Test
     public void testCreateOrder() throws Exception {
         Order order = new Order();
