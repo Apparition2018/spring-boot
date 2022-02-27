@@ -33,19 +33,19 @@ public class SameParentDomainController {
      */
     @RequestMapping("login1")
     public String login1(ModelMap modelMap, HttpServletRequest request) {
-        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login1");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("ssoCookie")) {
                     String url = "http://check.x.com/same-parent/checkCookie";
                     if (doGet(url, cookie.getName(), cookie.getValue())) {
-                        return "thymeleaf/success1";
+                        return "success1";
                     }
                 }
             }
         }
-        return "thymeleaf/login-sp";
+        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login1");
+        return "login-sp";
     }
 
     /**
@@ -53,19 +53,19 @@ public class SameParentDomainController {
      */
     @RequestMapping("login2")
     public String login2(ModelMap modelMap, HttpServletRequest request) {
-        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login2");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("ssoCookie")) {
                     String url = "http://check.x.com/same-parent/checkCookie";
                     if (doGet(url, cookie.getName(), cookie.getValue())) {
-                        return "thymeleaf/success2";
+                        return "success2";
                     }
                 }
             }
         }
-        return "thymeleaf/login-sp";
+        modelMap.addAttribute("gotoUrl", "http://demo1.x.com/same-parent/login2");
+        return "login-sp";
     }
 
     /**

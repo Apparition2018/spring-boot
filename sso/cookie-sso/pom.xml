@@ -5,14 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ljh</groupId>
-        <artifactId>spring-boot</artifactId>
+        <artifactId>sso</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>sso</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>cookie-sso</artifactId>
 
-    <modules>
-        <module>cookie-sso</module>
-        <module>spring-security-sso</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+    </dependencies>
 </project>

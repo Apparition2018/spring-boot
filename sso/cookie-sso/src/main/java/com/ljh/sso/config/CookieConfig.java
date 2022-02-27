@@ -16,12 +16,10 @@ import org.springframework.context.annotation.Configuration;
 public class CookieConfig {
 
     /**
-     * 解决：
-     * An invalid domain [.xxx.com] was specified for this cookie
+     * 解决：An invalid domain [.xxx.com] was specified for this cookie
      */
     @Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory> cookieProcessorCustomizer() {
-        return (factory) -> factory.addContextCustomizers(
-                (context) -> context.setCookieProcessor(new LegacyCookieProcessor()));
+        return factory -> factory.addContextCustomizers(context -> context.setCookieProcessor(new LegacyCookieProcessor()));
     }
 }

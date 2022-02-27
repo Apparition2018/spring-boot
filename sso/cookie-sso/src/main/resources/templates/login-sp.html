@@ -6,15 +6,15 @@
 </head>
 <body>
 <div style="text-align: center;">
-    <h1>请登录 | 同域</h1>
-    <form action="/same/doLogin" method="post">
+    <h1>请登录 | 同父域</h1>
+    <form action="http://check.x.com/same-parent/doLogin" method="post">
         <label>用户名：
             <input type="text" name="username"/>
         </label>
         <label>密码：
             <input type="password" name="password"/>
         </label>
-        <input type="hidden" name="gotoUrl" th:value="${gotoUrl}">
+        <input type="hidden" name="gotoUrl" th:value="${gotoUrl}"/>
         <input type="submit"/>
     </form>
 </div>

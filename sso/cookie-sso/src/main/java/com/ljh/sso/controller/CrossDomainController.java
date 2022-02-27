@@ -36,7 +36,6 @@ public class CrossDomainController {
     static {
         ADD_COOKIE_URL_LIST.add("http://demo.x.com/cross/addCookie1");
         ADD_COOKIE_URL_LIST.add("http://demo.y.com/cross/addCookie2");
-
     }
 
     /**
@@ -44,8 +43,6 @@ public class CrossDomainController {
      */
     @RequestMapping("login1")
     public String login1(ModelMap modelMap, HttpServletRequest request) {
-        modelMap.addAttribute("doLogin", "/cross/doLogin1");
-        modelMap.addAttribute("gotoUrl", "thymeleaf/success1");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -60,7 +57,9 @@ public class CrossDomainController {
                 }
             }
         }
-        return "thymeleaf/login-c";
+        modelMap.addAttribute("doLogin", "/cross/doLogin1");
+        modelMap.addAttribute("gotoUrl", "success1");
+        return "login-c";
     }
 
     /**
@@ -68,8 +67,6 @@ public class CrossDomainController {
      */
     @RequestMapping("login2")
     public String login2(ModelMap modelMap, HttpServletRequest request) {
-        modelMap.addAttribute("doLogin", "/cross/doLogin2");
-        modelMap.addAttribute("gotoUrl", "thymeleaf/success2");
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
@@ -79,12 +76,14 @@ public class CrossDomainController {
                     map.put("cookieName", cookie.getName());
                     map.put("cookieValue", cookie.getValue());
                     if (doGet(url, map)) {
-                        return "thymeleaf/success2";
+                        return "success2";
                     }
                 }
             }
         }
-        return "thymeleaf/login-c";
+        modelMap.addAttribute("doLogin", "/cross/doLogin2");
+        modelMap.addAttribute("gotoUrl", "success2");
+        return "login-c";
     }
 
     /**
@@ -100,7 +99,7 @@ public class CrossDomainController {
             modelMap.addAttribute("addCookieUrlList", ADD_COOKIE_URL_LIST);
             return gotoUrl;
         }
-        return "thymeleaf/login-c";
+        return "login-c";
     }
 
     /**
@@ -116,7 +115,7 @@ public class CrossDomainController {
             modelMap.addAttribute("addCookieUrlList", ADD_COOKIE_URL_LIST);
             return gotoUrl;
         }
-        return "thymeleaf/login-c";
+        return "login-c";
     }
 
     /**

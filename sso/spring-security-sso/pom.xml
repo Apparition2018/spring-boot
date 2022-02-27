@@ -5,14 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ljh</groupId>
-        <artifactId>spring-boot</artifactId>
+        <artifactId>sso</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>sso</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>spring-security-sso</artifactId>
 
-    <modules>
-        <module>cookie-sso</module>
-        <module>spring-security-sso</module>
-    </modules>
 </project>
