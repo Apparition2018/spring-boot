@@ -5,6 +5,7 @@ Single Sign On
 ## 参考网站
 1. [单点登录的三种实现方式](https://mp.weixin.qq.com/s/OOQzl2WXS72CZMXLmXbeRA)
 2. [Java SSO 实战](https://www.bilibili.com/video/BV1hT4y157QF)
+3. [SpringSecurity 实现 SSO](https://mp.weixin.qq.com/s/9MCsxdkkWF4i4M6xbbO_xA)
 ---
 ## 根据域名分类
 1. 同域 SSO
