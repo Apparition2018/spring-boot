@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional operators</title>
+</head>
+<body>
+<p th:text="${x}&gt;50?'大于50':'不大于50'">判断x</p>
+<p th:text="${isLogin}?'已登录'">已登录</p>
+<p th:text="${y}?:'100'">默认值</p>
+</body>
+</html>

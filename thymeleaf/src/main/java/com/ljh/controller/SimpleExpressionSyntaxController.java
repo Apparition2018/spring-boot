@@ -31,7 +31,7 @@ public class SimpleExpressionSyntaxController {
                 .setAge(26)
                 .setSchool(new School("中大", "广州"));
         model.addAttribute(student);
-        return "variable";
+        return "expression/variable";
     }
 
     /**
@@ -39,7 +39,7 @@ public class SimpleExpressionSyntaxController {
      */
     @RequestMapping("message")
     public String message(Model model) {
-        return "message";
+        return "expression/message";
     }
 
     /**
@@ -48,6 +48,6 @@ public class SimpleExpressionSyntaxController {
     @RequestMapping("linkUrl")
     public String linkUrl(Model model) {
         model.addAttribute("name", "张三");
-        return "link-url";
+        return "expression/link-url";
     }
 }

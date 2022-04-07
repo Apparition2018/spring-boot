@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Null & Empty String</title>
+</head>
+<body>
+<p th:text=null>null 字面量</p>
+<p th:text="''">空字符串</p>
+<p th:if="${n1} == ${n2}">${n1} == ${n2}</p>
+<p th:if="${n1} == null">${n1} == null</p>
+<p th:if="${n2} == ''">${n2} == ''</p>
+<p th:if="${n1} eq ${n2}">${n1} eq ${n2}</p>
+<p th:if="${n1} eq null">${n1} eq null</p>
+<p th:if="${n2} eq ''">${n2} eq ''</p>
+</body>
+</html>

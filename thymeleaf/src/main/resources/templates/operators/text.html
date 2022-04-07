@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Text & Text operations</title>
+</head>
+<body>
+<p th:text="hello_thymeleaf">字面量令牌：不加单引号，但不能有空格和逗号</p>
+<p th:text="'学习 '+${info}">字符串连接：+</p>
+<p th:text="您好+|${n1},${n2}|">字面量替换：|</p>
+</body>
+</html>
