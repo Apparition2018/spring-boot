@@ -54,7 +54,7 @@ public class ThymeleafTests {
         resolver.setSuffix(".html");
         engine.setTemplateResolver(resolver);
         context.setVariable("name", "张三");
-        String html = engine.process("index", context);
+        String html = engine.process("hello", context);
         System.out.println("结果：" + html);
     }
 }

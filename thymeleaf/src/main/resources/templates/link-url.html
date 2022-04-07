@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Link URL Expressions</title>
+    <script src="@{/js/jquery.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<a th:href="@{test}">1. test</a>
+<br/>
+<a th:href="@{./queryStudent(id=1001)}">2. ./queryStudent(id=1001)</a>
+<br/>
+<a th:href="@{../user/list(id=1002, age=20, email='zs@163.com')}">3. ../user/list(id=1002, age=20, email=zs@163.com)</a>
+<br/>
+<a th:href="@{/user/home(id=1005, name=${name})}">4. /user/home(id=1005, name=${name})</a>
+<br/>
+<a th:href="@{https://www.baidu.com}">5. https://www.baidu.com</a>
+</body>
+</html>
