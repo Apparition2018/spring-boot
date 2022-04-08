@@ -8,7 +8,7 @@
 ---
 ## [标准表示语法](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#standard-expression-syntax)
 ### 简单表达式
-- @see SimpleExpressionSyntaxController.java
+- @see SimpleExpressionSyntaxController
 
 | 语法     | 名称                             | 描述      | 作用                         |
 |:-------|:-------------------------------|:--------|:---------------------------|
@@ -26,7 +26,7 @@
 | Null literal     | null 字面量 | 字面量令牌的特殊情况           |
 | Literal tokens   | 字面量令牌    | 不使用单引号，但不能有空格和逗号     |
 ### 操作和运算
-- @see OperatorsController.java
+- @see OperatorsController
 1. 文本操作
     1. 字符串连接：`+`
         - `<span th:text="'The name is ' + ${name}">`
