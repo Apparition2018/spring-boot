@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OtherController {
 
     /**
+     * th:text & th:utext
+     */
+    @RequestMapping("utext")
+    public String text(Model model) {
+        model.addAttribute("message", "<b>Welcome to China!</b>");
+        return "other/utext";
+    }
+
+    /**
      * null 和 空字符串
      */
     @RequestMapping("null")

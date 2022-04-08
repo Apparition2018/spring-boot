@@ -50,3 +50,15 @@
     - `_`：允许使用原标签的内容作为默认值
         - `<p th:text="${isLogin} ?: _">未登录</p>`
 ---
+## 设置标签内内容
+1. `th:text`：转义
+2. `th:utext`：不转义
+---
+## [设置属性值](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
+| 语法       | 作用        | 示例                                                        |
+|:---------|:----------|:----------------------------------------------------------|
+| th:attr  | 设置任意属性的值  | &lt;form th:attr="action=${action},method='post'"/&gt;    |
+| th:*     | 为特定属性设置值  | &lt;form th:action="${action}" th:method="post"&gt;       |
+| th:\*-\* | 一次设置多个属性值 | &lt;img th:src="@{/img/bird.jpg}" th:alt-title="bird"&gt; |
+|          | 布尔属性      | &lt;input type="checkbox" th:checked="${selected}"&gt;    |
+---

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>setting attr values</title>
+</head>
+<body>
+<p><b>th:attr</b></p>
+<form th:attr="action=${action},method='post'">
+    <label>账号：
+        <input type="text" name="username">
+    </label><br/>
+    <label>密码：
+        <input type="text" name="pwd">
+    </label><br/>
+    <input type="button" th:attr="value=${text},onclick='func()'">
+</form>
+<br/>
+<p><b>th:*</b></p>
+<form th:action="${action}" th:method="post">
+    <label>账号:
+        <input type="text" value="" name="username">
+    </label><br/>
+    <label>密码:
+        <input type="text" value="" name="pwd">
+    </label><br/>
+    <input type="button" th:value="${text}" th:onclick="func()">
+</form>
+<br/>
+<p><b>th:*-*</b></p>
+<img th:src="@{/img/bird.jpg}" th:alt-title="bird">
+<br/>
+<p><b>布尔属性</b></p>
+<label>跑步：
+    <input type="checkbox" th:checked="${selected}">
+</label><br/>
+<label>游泳：
+    <input type="checkbox" th:checked="${unselected}">
+</label>
+<script>
+    function func () {
+        alert("button click");
+    }
+</script>
+</body>
+</html>
