@@ -50,15 +50,47 @@
     - `_`：允许使用原标签的内容作为默认值
         - `<p th:text="${isLogin} ?: _">未登录</p>`
 ---
-## 设置标签内内容
+## 设置标签文本内容
 1. `th:text`：转义
 2. `th:utext`：不转义
 ---
 ## [设置属性值](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
-| 语法       | 作用        | 示例                                                        |
-|:---------|:----------|:----------------------------------------------------------|
-| th:attr  | 设置任意属性的值  | &lt;form th:attr="action=${action},method='post'"/&gt;    |
-| th:*     | 为特定属性设置值  | &lt;form th:action="${action}" th:method="post"&gt;       |
-| th:\*-\* | 一次设置多个属性值 | &lt;img th:src="@{/img/bird.jpg}" th:alt-title="bird"&gt; |
-|          | 布尔属性      | &lt;input type="checkbox" th:checked="${selected}"&gt;    |
+| 语法             | 作用        | 示例                                                             |
+|:---------------|:----------|:---------------------------------------------------------------|
+| th:attr        | 设置任意属性的值  | &lt;form th:attr="action=${action},method='post'"&gt;          |
+| th:*           | 为特定属性设置值  | &lt;form th:action="${action}" th:method="post"&gt;            |
+| data-th-*      | HTML5 友好  | &lt;form data-th-action="${action}" data-th-method="post"&gt;  |
+| th:\*-\*       | 一次设置多个属性值 | &lt;img th:src="@{/img/bird.jpg}" th:alt-title="bird"&gt;      |
+|                | 布尔属性      | &lt;input type="checkbox" th:checked="${selected}"&gt;         |
+| th:attrappend  | 属性值追加     | &lt;div class="b" th:attrappend="class=' c'"&gt;               |
+| th:attrprepend | 属性值前置     | &lt;div class="b" th:attrprepend="class='a '"&gt;              |
+| th:classappend | 类追加       | &lt;div class="b" th:classappend=" c"&gt;                      |
+| th:styleappend | 样式追加      | &lt;div style="width: 5px;" th:styleappend="'height: 5px'"&gt; |
+---
+## [迭代](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration)
+- 语法：`th:each="e,stat : ${collection}"`
+- 可迭代值：List, Iterable, Enumeration, Iterator, Map, Map.Entry, 数组 等
+- 迭代状态：默认状态变量名称是自定义的元素名称后面加 Stat
+
+| 属性      | 类型      | 描述            |
+|:--------|:--------|:--------------|
+| index   | int     | 索引，从0开始       |
+| count   | int     | 计数，从1开始       |
+| size    | int     | 元素总数          |
+| current | int     | 当前元素          |
+| even    | boolean | 当前计数是否为偶数     |
+| odd     | boolean | 当前计数是否为奇数     |
+| first   | boolean | 当前元素是否为第一个元素  |
+| last    | boolean | 当前元素是否为最后一个元素 |
+---
+## [条件判断](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#conditional-evaluation)
+1. `th:if` & `th:unless`
+
+| 类型        | false                  |
+|:----------|:-----------------------|
+| boolean   | false                  |
+| number    | zero                   |
+| character | zero                   |
+| string    | "false", "off" or "no" |
+2. `th:switch` & `th:case`
 ---

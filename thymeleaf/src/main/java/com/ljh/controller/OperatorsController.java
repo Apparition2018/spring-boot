@@ -48,7 +48,7 @@ public class OperatorsController {
     }
 
     /**
-     * no
+     * 无操作
      */
     @RequestMapping("no")
     public String no(Model model) {

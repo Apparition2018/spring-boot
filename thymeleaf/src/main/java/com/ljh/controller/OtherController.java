@@ -34,13 +34,27 @@ public class OtherController {
     }
 
     /**
-     * 条件运算符
+     * 条件表达式
      */
-    @RequestMapping("conditional")
-    public String conditional(Model model) {
+    @RequestMapping("conditionalExpressions")
+    public String conditionalExpressions(Model model) {
         model.addAttribute("x", 99);
         model.addAttribute("isLogin", true);
         model.addAttribute("y", null);
-        return "other/conditional";
+        return "other/conditional-expressions";
+    }
+
+    /**
+     * 条件判断
+     */
+    @RequestMapping("conditionalEvaluation")
+    public String conditionalEvaluation(Model model) {
+        model.addAttribute("num", "0");
+        model.addAttribute("str1", "false");
+        model.addAttribute("str2", "off");
+        model.addAttribute("str3", "no");
+        model.addAttribute("str4", "");
+        model.addAttribute("obj", null);
+        return "other/conditional-evaluation";
     }
 }

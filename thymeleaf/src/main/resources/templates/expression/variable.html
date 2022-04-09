@@ -9,12 +9,14 @@
 <p th:text="${name}"></p>
 <p th:text="${age}"></p>
 <br/>
+
 <p><b>获取对象的属性值</b></p>
 <p th:text="${student.id}"></p>
 <p th:text="${student.name}"></p>
 <p th:text="${student.email}"></p>
 <p th:text="${student.age}"></p>
 <br/>
+
 <p><b>获取引用的值</b></p>
 <p th:text="${student.school.schName}"></p>
 <p th:text="${student.school.getSchAddress()}"></p>

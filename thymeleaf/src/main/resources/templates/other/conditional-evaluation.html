@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional Evaluation</title>
+</head>
+<body>
+<p><b>th:if & th:unless</b></p>
+<div th:unless="${num}">0</div>
+<div th:unless="${str1}">false</div>
+<div th:unless="${str2}">off</div>
+<div th:unless="${str3}">on</div>
+<div th:if="${str4}">""</div>
+<div th:unless="${obj}">null</div>
+
+<p><b>th:switch & th:case</b></p>
+<div th:switch="${num}">
+    <div th:case="0">0</div>
+    <div th:case="1">1</div>
+</div>
+</body>
+</html>

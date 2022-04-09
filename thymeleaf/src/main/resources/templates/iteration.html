@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iteration</title>
+</head>
+<body>
+<p><b>List</b></p>
+<table th:border="1" th:cellspacing="1" th:cellpadding="1">
+    <thead>
+    <tr>
+        <td>信息</td>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>奇偶</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student, stat : ${list}">
+        <td th:text="${stat.count} + '/' + ${stat.size}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.age}"></td>
+        <td th:text="${stat.odd ? '奇' : '偶'}"></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+
+<p><b>Map</b></p>
+<div th:each="m : ${map}">
+    <span th:text="${m.key}"></span>
+    <span th:text="${m.value}"></span>
+</div>
+<br/>
+
+<p><b>MapList</b></p>
+<ul th:each="ml : ${mapList}">
+    <li th:each="entry : ${ml}" th:text="${entry.key}"></li>
+    <li th:each="entry : ${ml}" th:text="${entry.value}"></li>
+</ul>
+<br/>
+
+<p><b>Array</b></p>
+<ul>
+    <li th:each="studentName : ${array}" th:text="${studentName}"></li>
+</ul>
+</body>
+</html>
