@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inline & 文本模板模式</title>
+</head>
+<body>
+<p><b th:inline="none">[[...]]</b></p>
+<p>[[${name}]]</p>
+<br/>
+
+<p><b th:inline="none">[(...)]</b></p>
+<p>[(${info})]</p>
+<br/>
+
+<script type="text/javascript" th:inline="javascript">
+    const students = [[${students}]];
+
+    for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        console.log(student.id + " " + student.name);
+    }
+
+    /*[+
+        [# th:each="student : ${students}"]
+            console.log([[${student.id}]] + " " + [[${student.name}]]);
+        [/]
+    +]*/
+</script>
+</body>
+</html>

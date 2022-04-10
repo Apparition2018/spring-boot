@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expression Utility Objects</title>
+</head>
+<body th:with="myUrl='http://localhost:8080/web/hello.jsp?name=李四'">
+<p><b>#execInfo 模板信息</b></p>
+<p>templateNames：[[${#execInfo.templateNames}]]</p>
+<p>templateMode：[[${#execInfo.templateMode}]]</p>
+<br/>
+
+<p><b>#uris</b></p>
+<div th:with="escapePath=${#uris.escapePath(myUrl)}">
+    <p>escapePath：[[${escapePath}]]</p>
+    <p>unescapePath：[[${#uris.unescapePath(escapePath)}]]</p>
+</div>
+<br/>
+
+<p><b>#dates</b></p>
+<p>日期：[[${date}]]</p>
+<p>format：[[${#dates.format(date, 'yyyy-MM-dd HH:mm:ss')}]]</p>
+<br/>
+
+<p><b>#numbers</b></p>
+<p>价格：[[${price}]]</p>
+<p>formatInteger(price, 0)：[[${#numbers.formatInteger(price, 0)}]]</p>
+<p>formatInteger(price, 3)：[[${#numbers.formatInteger(price, 3)}]]</p>
+<p>formatDecimal(price, 2, 1)：[[${#numbers.formatDecimal(price, 2, 1)}]]</p>
+<br/>
+
+<p><b>#strings</b></p>
+<p th:if="!${#strings.isEmpty(name)}">字符串：[[${name}]]</p>
+<p>substring：[[${#strings.substring(name, 0, 4)}]]</p>
+<p>indexOf：[[${#strings.indexOf(name, 'm')}]]</p>
+<p>toUpperCase：[[${#strings.toUpperCase(name)}]]</p>
+</body>
+</html>

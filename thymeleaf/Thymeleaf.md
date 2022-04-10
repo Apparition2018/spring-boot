@@ -12,13 +12,19 @@
 ### 简单表达式
 - @see SimpleExpressionSyntaxController
 
-| 语法     | 名称                             | 描述      | 作用                         |
-|:-------|:-------------------------------|:--------|:---------------------------|
-| ${...} | Variable Expressions           | 变量表达式   | 取出上下文变量的值                  |
-| *{...} | Selection Variable Expressions | 选择变量表达式 | 取出对象的属性值                   |
-| #{...} | Message Expressions            | 消息表达式   | 国际化 (@see MyLocalResolver) |
-| @{...} | Link URL Expressions           | 链接表达式   | 各种超链接地址                    |
-| ~{...} | Fragment Expressions           | 片段表达式   | 引用代码片段                     |
+| 语法                    | 名称                             | 描述      | 作用                         |
+|:----------------------|:-------------------------------|:--------|:---------------------------|
+| ${...} <br/> ${{...}} | Variable Expressions           | 变量表达式   | 取出上下文变量的值<br/>自定义转换        |
+| *{...} <br/> *{{...}} | Selection Variable Expressions | 选择变量表达式 | 取出对象的属性值<br/>自定义转换         |
+| #{...}                | Message Expressions            | 消息表达式   | 国际化 (@see MyLocalResolver) |
+| @{...}                | Link URL Expressions           | 链接表达式   | 各种超链接地址                    |
+| ~{...}                | Fragment Expressions           | 片段表达式   | 引用代码片段                     |
+### 表达式基本对象
+- [表达式基本对象1](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-basic-objects)
+- [表达式基本对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-a-expression-basic-objects)
+### 表达式使用程序对象
+- [表达式使用程序对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-utility-objects)
+- [表达式使用程序对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-b-expression-utility-objects)
 ### 字面量
 | 名称               | 描述       | 说明                   |
 |:-----------------|:---------|:---------------------|
@@ -154,11 +160,11 @@
 ## [注释和块](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#comments-and-blocks)
 1. 注释
 
-| comment                  | 中文    | 浏览器访问 | Thymeleaf 模板引擎解析 |
-|:-------------------------|:------|:------|:-----------------|
-| &lt;!-- ... --&gt;       | 标准注释  | 显示注释  | 显示注释             |
-| &lt;!--/* ... */--&gt;   | 解析器注释 | 显示注释  | 移除注释，适合开发人员使用    |
-| &lt;!--/*/ ... /*/--&gt; | 原型注释  | 显示注释  | 显示注释内容，适合设计人员使用  |
+| comment                    | 中文    | 浏览器访问 | Thymeleaf 模板引擎解析 |
+|:---------------------------|:------|:------|:-----------------|
+| &lt;!-- ... --&gt;         | 标准注释  | 显示注释  | 显示注释             |
+| &lt;!--/* ... */--&gt;     | 解析器注释 | 显示注释  | 移除注释，适合开发人员使用    |
+| &lt;!--/\*/ ... /\*/--&gt; | 原型注释  | 显示注释  | 显示注释内容，适合设计人员使用  |
 2. `th:block`
     - Thymeleaf 唯一元素处理器
     - 只是一个属性容器，执行完属性后消失
@@ -174,4 +180,18 @@
 | text       | 文本内联，可以使用 th:each 等高级语法                   |
 | css        | 样式内联，&lt;style th:inline="css"&gt;        |
 | javascript | 脚本内联，&lt;style th:inline="javascript"&gt; |
+---
+## [文本模板模式](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#textual-template-modes)
+| 语法                                        | 说明                     |
+|:------------------------------------------|:-----------------------|
+| [#th:block]...[/th:block] <br/> [#]...[/] | 文本语法                   |
+| /\*[+...+]\*/                             | 文本原型注释块，添加代码           |
+| /\*[- \*/.../\* -]\*/ <br/> /\*[-...-]\*/ | 文本解析器注释块，删除代码          |
+| /\* [#] \*/ ... /\* [/] \*/               | 自然 JavaScript 和 CSS 模板 |
+---
+## [解耦模板和逻辑](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#decoupled-template-logic)
+- 将 *.html Thymeleaf 文件解耦为：①*.html 模板文件；②*.th.html 逻辑文件
+---
+## [标记选择器语法](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#multivalued-class-matching)
+
 ---

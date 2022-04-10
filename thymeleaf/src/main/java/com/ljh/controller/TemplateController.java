@@ -33,11 +33,4 @@ public class TemplateController {
         return "template/remove";
     }
 
-    /**
-     * 动态布局
-     */
-    @RequestMapping("flexible-layouts")
-    public String flexibleLayouts(Model model) {
-        return "template/flexible-layouts";
-    }
 }

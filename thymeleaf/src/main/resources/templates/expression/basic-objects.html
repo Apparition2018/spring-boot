@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expression Basic Objects</title>
+</head>
+<body>
+<p><b>#request</b></p>
+<p>contextPath：[[${#request.getContextPath()}]]</p>
+<p>getParameter('name')：[[${#request.getParameter('name')}]]</p>
+<p>getAttribute('requestData')：[[${#request.getAttribute('requestAttr')}]]</p>
+<br/>
+
+<p><b>#session</b></p>
+<p>getAttribute('sessionAttr')：[[${#session.getAttribute('sessionAttr')}]]</p>
+<p>getId()：[[${#session.getId()}]]</p>
+<p>getCreationTime()：[[${#session.getCreationTime()}]]</p>
+<br/>
+
+<p><b>#servletContext</b></p>
+<p>getAttribute('contextAttr')：[[${#servletContext.getAttribute('contextAttr')}]]</p>
+<p>getServerInfo()：[[${#servletContext.getServerInfo()}]]</p>
+<br/>
+
+<p><b>param</b></p>
+<p>数组第0个参数值：[[${param.foo[0]}]]</p>
+<p>数组第1个参数值：[[${param.foo[1]}]]</p>
+<p>请求参数数量：[[${param.size()}]]</p>
+<p>判断是否包含指定参数：[[${param.containsKey('name')}]]</p>
+<br/>
+
+<p><b>session</b></p>
+<p>获取指定属性值：[[${session.sessionAttr}]]</p>
+<p>size()：[[${session.size()}]]</p>
+<br/>
+
+<p><b>application</b></p>
+<p>获取指定属性值：[[${application.contextAttr}]]</p>
+<p>size()：[[${session.size()}]]</p>
+</body>
+</html>

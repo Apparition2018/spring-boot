@@ -5,20 +5,23 @@
     <title>Variable Expressions</title>
 </head>
 <body>
-<p><b>获取简单类型的数据</b></p>
-<p th:text="${name}"></p>
-<p th:text="${age}"></p>
-<br/>
-
-<p><b>获取对象的属性值</b></p>
+<p><b>${...}</b></p>
 <p th:text="${student.id}"></p>
 <p th:text="${student.name}"></p>
 <p th:text="${student.email}"></p>
 <p th:text="${student.age}"></p>
-<br/>
-
-<p><b>获取引用的值</b></p>
 <p th:text="${student.school.schName}"></p>
 <p th:text="${student.school.getSchAddress()}"></p>
+<br/>
+
+<p><b>${...}</b></p>
+<div th:block th:object="${student}">
+    <p th:text="*{id}"></p>
+    <p th:text="*{name}"></p>
+    <p th:text="*{email}"></p>
+    <p th:text="*{age}"></p>
+    <p th:text="*{school.schName}"></p>
+    <p th:text="*{school.getSchAddress()}"></p>
+</div>
 </body>
 </html>
