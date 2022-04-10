@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<p><b>不使用~{...}</b></p>
+<div th:insert="template/fragment::header"></div>
+<br/>
+
+<p><b>片段参数</b></p>
+<div th:insert="template/fragment::func(one='张三', two='李四')"></div>
+<br/>
+
+<p><b>使用model数据表示模板名称</b></p>
+<div th:insert="template/fragment::${templateName}"></div>
+<br/>
+
+<p><b>使用~{...}</b></p>
+<div th:insert="~{template/fragment::footer}"></div>
+</body>
+</html>

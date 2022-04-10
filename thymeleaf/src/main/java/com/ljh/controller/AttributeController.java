@@ -25,7 +25,7 @@ public class AttributeController {
      * th:styleappend   样式追加
      */
     @RequestMapping("attribute")
-    public String attr(Model model) {
+    public String attribute(Model model) {
         model.addAttribute("action", "/user/login");
         model.addAttribute("text", "请登录");
         model.addAttribute("selected", true);

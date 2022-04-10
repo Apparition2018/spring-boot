@@ -1,5 +1,7 @@
 # Thymeleaf
-
+```xml
+<html xmlns:th="http://www.thymeleaf.org"/>
+```
 ---
 ## Reference
 1. [Thymeleaf](https://www.thymeleaf.org)
@@ -93,4 +95,83 @@
 | character | zero                   |
 | string    | "false", "off" or "no" |
 2. `th:switch` & `th:case`
+---
+## [局部变量](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#local-variables)
+- `th:with`
+```html
+<div th:with="name='mary', age=${age}">
+    <span th:text="${name}"></span>
+    <span th:text="${age}"></span>
+</div>
+```
+---
+## [模板布局](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#conditional-evaluation)
+1. `th:fragment`
+    - `th:insert="~{...}"`：插入代码片段到标签体内
+    - `th:replace="~{...}"`：用代码片段替换标签体内容
+    - `th:include="~{...}"`：插入代码片段的内容到标签体内
+
+| 语法                                | 描述                                   |
+|:----------------------------------|:-------------------------------------|
+| ~{templatename::selector}         | 引用整个模板文件的代码片段                        |
+| ~{templatename}                   | selector 可以是 th:fragment 指定的名称或其他选择器 |
+| ~{::selector} 或 ~{this::selector} | 引用当前模板定义的代码片段                        |
+2. `th:remove`
+
+| 值             | 描述                    |
+|:--------------|:----------------------|
+| all           | 删除包含标签及其所有子标签         |
+| body          | 删除其所有子标签              |
+| tag           | 删除包含标签，不删除子标签         |
+| all-but-first | 删除包含标签及其所有子标签，除了第一个标签 |
+| none          | 什么都不做                 |
+3. 片段参数
+```html
+<div th:fragment="layout (title, content)">
+   <h1 th:replace="${title}">Title</h1>
+   <div th:replace="${content}">
+      <p>Layout content</p>
+   </div>
+   <footer>Layout footer</footer>
+</div>
+```
+4. 动态布局
+5. 布局继承
+---
+## [属性优先级](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#attribute-precedence)
+| Order | Feature                         | Attributes                             |
+|:------|:--------------------------------|:---------------------------------------|
+| 1     | Fragment inclusion              | th:insert, th:replace                  |
+| 2     | Fragment iteration              | th:each                                |
+| 3     | Conditional evaluation          | th:if, th:unless, th:switch, th:case   |
+| 4     | Local variable definition       | th:object, th:with                     |
+| 5     | General attribute modification  | th:attr, th:attrprepend, th:attrappend |
+| 6     | Specific attribute modification | th:value, th:href, th:src ...          |
+| 7     | Text (tag body modification)    | th:text, th:utext                      |
+| 8     | Fragment specification          | th:fragment                            |
+| 9     | Fragment removal                | th:remove                              |
+---
+## [注释和块](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#comments-and-blocks)
+1. 注释
+
+| comment                  | 中文    | 浏览器访问 | Thymeleaf 模板引擎解析 |
+|:-------------------------|:------|:------|:-----------------|
+| &lt;!-- ... --&gt;       | 标准注释  | 显示注释  | 显示注释             |
+| &lt;!--/* ... */--&gt;   | 解析器注释 | 显示注释  | 移除注释，适合开发人员使用    |
+| &lt;!--/*/ ... /*/--&gt; | 原型注释  | 显示注释  | 显示注释内容，适合设计人员使用  |
+2. `th:block`
+    - Thymeleaf 唯一元素处理器
+    - 只是一个属性容器，执行完属性后消失
+---
+## [内联](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#inlining)
+1. `[[...]]`：相当于 `th:text`
+2. `[(...)]`：相当于 `th:utext`
+3. `th:inline`
+
+| 值          | 描述                                        |
+|:-----------|:------------------------------------------|
+| none       | 禁用内联，原样输出 [[]] 和 [()] 字符串                 |
+| text       | 文本内联，可以使用 th:each 等高级语法                   |
+| css        | 样式内联，&lt;style th:inline="css"&gt;        |
+| javascript | 脚本内联，&lt;style th:inline="javascript"&gt; |
 ---
