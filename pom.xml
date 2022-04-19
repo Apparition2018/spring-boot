@@ -14,16 +14,28 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <!-- SpringBoot开发常用技术整合 -->
+        <!-- 8000：SpringBoot开发常用技术整合 -->
         <module>spring-boot-common</module>
-        <!-- 探秘 Spring AOP -->
+        <!-- 8001：探秘 Spring AOP -->
         <module>spring-aop</module>
+        <!-- 8002：spring-data -->
         <module>spring-data</module>
+        <!-- 8003：spring-cache -->
         <module>spring-cache</module>
-        <module>message-queue</module>
+        <!-- 8100：querydsl -->
         <module>querydsl</module>
-        <module>sso</module>
+        <!-- 8101：thymeleaf -->
         <module>thymeleaf</module>
+
+        <!-- 8200：kafka -->
+        <!-- 8201：rabbitmq-producer -->
+        <!-- 8202：rabbitmq-consumer -->
+        <!-- 8203：activemq -->
+        <module>message-queue</module>
+
+        <!-- 80：cookie-sso -->
+        <!-- 8204：spring-security-sso -->
+        <module>sso</module>
     </modules>
 
     <properties>
@@ -34,7 +46,7 @@
         <commons-io.version>2.11.0</commons-io.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <fastjson.version>1.2.80</fastjson.version>
-        <druid.version>1.2.8</druid.version>
+        <druid.version>1.2.9</druid.version>
         <mybatis-plus-boot-starter.version>3.5.1</mybatis-plus-boot-starter.version>
         <pagehelper-spring-boot-starter.version>1.4.2</pagehelper-spring-boot-starter.version>
         <mapper-spring-boot-starter.version>4.2.1</mapper-spring-boot-starter.version>

@@ -1,7 +1,6 @@
 package com.ljh.controller;
 
 import com.ljh.vo.Student;
-import org.apache.commons.collections.ArrayStack;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,8 +73,8 @@ public class OtherController {
 
     /**
      * 注释
-     * 直接访问        http://localhost:8080/other/comment.html
-     * Template 访问  http://localhost:8080/other/comment
+     * 直接访问        http://localhost:8101/other/comment.html
+     * Template 访问  http://localhost:8101/other/comment
      */
     @RequestMapping("comment")
     public String comment(Model model) {

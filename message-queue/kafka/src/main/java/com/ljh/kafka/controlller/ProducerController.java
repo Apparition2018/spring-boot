@@ -34,7 +34,7 @@ public class ProducerController {
     }
 
     /**
-     * http://127.0.0.1:8080/kafka/hello    GET
+     * http://127.0.0.1:8200/kafka/hello    GET
      */
     @GetMapping(value = "/hello", produces = {"application/json"})
     public Response sendKafka() {
@@ -42,7 +42,7 @@ public class ProducerController {
     }
 
     /**
-     * http://127.0.0.1:8080/kafka/hello    POST
+     * http://127.0.0.1:8200/kafka/hello    POST
      */
     @PostMapping(value = "/send", produces = {"application/json"})
     public Response sendKafka(@RequestBody MessageEntity messageEntity) {

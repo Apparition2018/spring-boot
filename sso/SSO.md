@@ -14,3 +14,4 @@ Single Sign On
     1. 设置专门的 SSO 服务器
         - 两个开源实现：①Apereo CAS；②XXL-SSO
     2. Local Storage 实现跨域
+---
