@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * QuerydslApplicationTests
+ * QuerydslTests
  *
  * @author Arsenal
  * created on 2021/3/16 23:09
@@ -28,21 +28,19 @@ import java.util.List;
 @SpringBootTest
 @Rollback(false)
 @Transactional
-public class QuerydslApplicationTests {
+public class QuerydslTests {
 
     private final EntityManager entityManager;
-
     private final JPAQueryFactory jpaQueryFactory;
-    
+
     @Autowired
-    public QuerydslApplicationTests(EntityManager entityManager, JPAQueryFactory jpaQueryFactory) {
+    public QuerydslTests(EntityManager entityManager, JPAQueryFactory jpaQueryFactory) {
         this.entityManager = entityManager;
         this.jpaQueryFactory = jpaQueryFactory;
     }
-    
+
     @BeforeEach
     void before() {
-        
     }
 
     /**
@@ -79,7 +77,7 @@ public class QuerydslApplicationTests {
         long delete = jpaQueryFactory.delete(qUser).where(booleanBuilder).execute();
         log.info("delete: {}", delete);
     }
-    
+
     /**
      * 查询
      */

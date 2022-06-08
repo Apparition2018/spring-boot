@@ -10,13 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.UUID;
 
 /**
- * RabbitmqProducerApplicationTests
+ * RabbitmqProducerTests
  *
  * @author Arsenal
  * created on 2021/4/17 2:00
  */
 @SpringBootTest(classes = RabbitmqProducerApplication.class)
-public class RabbitmqProducerApplicationTests {
+public class RabbitmqProducerTests {
 
     @Autowired
     private OrderSender orderSender;
