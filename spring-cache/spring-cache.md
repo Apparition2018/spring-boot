@@ -8,43 +8,43 @@
 5. [spring-cache 数据库一致性解决方案](https://www.jianshu.com/p/7c4053b81ea2)
 ---
 ## 注解
-|注解|解释|
-|:---|:---|
-|@EnableCaching|开启缓存注解的支持|
-|@Cacheable|已有缓存数据直接返回，否则执行方法并缓存结果|
-|@CachePut|执行方法并缓存结果|
-|@CacheEvict|清楚缓存|
-|@CacheConfig|统一配置 @Cacheable @CachePut @CacheEvict 的参数|
-|@Caching|组合 @Cacheable @CachePut @CacheEvict 一起使用|
->### 注解主要参数
->|名称|注解|解释|示例|
->|:---|:---|:---|:---|
->|value<br/>cacheNames| |缓存的名称|@Cacheable("cache")<br/>@Cacheable(value={"cache1", "cache2"})|
->|key| |缓存的键，缺省则按照方法的所有参数进行组合|@Cacheable(value="cache", key="#name")|
->|condition| |缓存的条件，对参数进行判断|@Cacheable(value="cache", condition="#name.length()>2")|
->|unless|@Cacheable<br/>@CachePut|缓存的条件，对结果进行判断|@Cacheable(value="cache", unless="#result==null")|
->|sync|@Cacheable|同步，防止高并发情况下，多个请求穿透到数据库|@Cacheable(value="cache, sync=true)
->|allEntries|@CacheEvict|清空缓存下所有内容|@CacheEvict(value="cache", allEntries="true")|
->|beforeInvocation|@CacheEvict|在方法执行前清空|@CacheEvict(value="cache", beforeInvocation="true")|
->|keyGenerator| |用于指定 key 生成器|@Cacheable(keyGenerator = "myKeyGenerator")|
->|cacheManager| |用于指定 CacheManager|@Cacheable(cacheManager = "myCacheManager")|
->|cacheResolver| |用于指定 CacheResolver|@Cacheable(cacheResolver = "myCacheResolver")|
->### [缓存 SpEL 可用元数据](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-spel-context)
->- [SpEL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions)
->- [SpEl 运算符](https://blog.csdn.net/yuhui123999/article/details/84288177)
->
->|名称|位置|描述|示例|
->|:---|:---|:---|:---|
->|methodName|root 对象|当前被调用的方法名|#root.methodname|
->|method|root 对象|当前被调用的方法|#root.method.name|
->|target|root 对象|当前被调用的目标对象实例|#root.target|
->|targetClass|root 对象|当前被调用的目标对象的类|#root.targetClass|
->|args|root 对象|当前被调用的方法的参数列表|#root.args[0]|
->|caches|root 对象|当前方法调用使用的缓存列表|#root.caches[0].name|
->|argument name|执行上下文|当前方法的参数|#user.name|
->|result|执行上下文|方法执行后的返回值|#result|
->- 注1：可省略 #root，因为 spring 默认使用 root 对象的属性，如：@Cacheable("methodName")
->- 注2：使用方法参数时，可直接使用 #arg 或 #p索引，如：@Cacheable("#name") @Cacheable("p0")
+| 注解             | 解释                                        |
+|:---------------|:------------------------------------------|
+| @EnableCaching | 开启缓存注解的支持                                 |
+| @Cacheable     | 已有缓存数据直接返回，否则执行方法并缓存结果                    |
+| @CachePut      | 执行方法并缓存结果                                 |
+| @CacheEvict    | 清楚缓存                                      |
+| @CacheConfig   | 统一配置 @Cacheable @CachePut @CacheEvict 的参数 |
+| @Caching       | 组合 @Cacheable @CachePut @CacheEvict 一起使用  |
+### 注解主要参数
+| 名称                   | 注解                       | 解释                     | 示例                                                             |
+|:---------------------|:-------------------------|:-----------------------|:---------------------------------------------------------------|
+| value<br/>cacheNames |                          | 缓存的名称                  | @Cacheable("cache")<br/>@Cacheable(value={"cache1", "cache2"}) |
+| key                  |                          | 缓存的键，缺省则按照方法的所有参数进行组合  | @Cacheable(value="cache", key="#name")                         |
+| condition            |                          | 缓存的条件，对参数进行判断          | @Cacheable(value="cache", condition="#name.length()>2")        |
+| unless               | @Cacheable<br/>@CachePut | 缓存的条件，对结果进行判断          | @Cacheable(value="cache", unless="#result==null")              |
+| sync                 | @Cacheable               | 同步，防止高并发情况下，多个请求穿透到数据库 | @Cacheable(value="cache, sync=true)                            |
+| allEntries           | @CacheEvict              | 清空缓存下所有内容              | @CacheEvict(value="cache", allEntries="true")                  |
+| beforeInvocation     | @CacheEvict              | 在方法执行前清空               | @CacheEvict(value="cache", beforeInvocation="true")            |
+| keyGenerator         |                          | 用于指定 key 生成器           | @Cacheable(keyGenerator = "myKeyGenerator")                    |
+| cacheManager         |                          | 用于指定 CacheManager      | @Cacheable(cacheManager = "myCacheManager")                    |
+| cacheResolver        |                          | 用于指定 CacheResolver     | @Cacheable(cacheResolver = "myCacheResolver")                  |
+### [缓存 SpEL 可用元数据](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-spel-context)
+- [SpEL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions)
+- [SpEl 运算符](https://blog.csdn.net/yuhui123999/article/details/84288177)
+
+| 名称            | 位置      | 描述            | 示例                   |
+|:--------------|:--------|:--------------|:---------------------|
+| methodName    | root 对象 | 当前被调用的方法名     | #root.methodname     |
+| method        | root 对象 | 当前被调用的方法      | #root.method.name    |
+| target        | root 对象 | 当前被调用的目标对象实例  | #root.target         |
+| targetClass   | root 对象 | 当前被调用的目标对象的类  | #root.targetClass    |
+| args          | root 对象 | 当前被调用的方法的参数列表 | #root.args[0]        |
+| caches        | root 对象 | 当前方法调用使用的缓存列表 | #root.caches[0].name |
+| argument name | 执行上下文   | 当前方法的参数       | #user.name           |
+| result        | 执行上下文   | 方法执行后的返回值     | #result              |
+- 注1：可省略 #root，因为 spring 默认使用 root 对象的属性，如：@Cacheable("methodName")
+- 注2：使用方法参数时，可直接使用 #arg 或 #p索引，如：@Cacheable("#name") @Cacheable("p0")
 ---
 ## [自定义 Key 生成器](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-cacheable-key)
 1. [myKeyGenerator](.\src\main\java\com\ljh\config\KeyGeneratorConfig.java)
