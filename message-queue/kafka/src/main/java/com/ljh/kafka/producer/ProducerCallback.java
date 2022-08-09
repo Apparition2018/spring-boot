@@ -1,6 +1,7 @@
 package com.ljh.kafka.producer;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ljh.kafka.common.MessageEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -16,7 +17,6 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Slf4j
 public class ProducerCallback implements ListenableFutureCallback<SendResult<String, MessageEntity>> {
 
-    private final Gson gson = new Gson();
     private final long startTime;
     private final String key;
     private final MessageEntity messageEntity;
@@ -34,19 +34,24 @@ public class ProducerCallback implements ListenableFutureCallback<SendResult<Str
 
     @Override
     public void onSuccess(SendResult<String, MessageEntity> sendResult) {
-        if (sendResult == null) {
-            return;
-        }
-        long elapsedTime = System.currentTimeMillis() - startTime;
-        RecordMetadata recordMetadata = sendResult.getRecordMetadata();
-        if (recordMetadata != null) {
-            String record = "message(" +
-                    "key = " + key + "," +
-                    " messageEntity = " + gson.toJson(messageEntity) + "," +
-                    " sent to partition(" + recordMetadata.partition() + ")" +
-                    " with offset(" + recordMetadata.offset() + ")" +
-                    " in " + elapsedTime + " ms";
-            log.info(record);
+        try {
+            if (sendResult == null) {
+                return;
+            }
+            String messageEntityStr = JsonMapper.builder().build().writeValueAsString(messageEntity);
+            RecordMetadata recordMetadata = sendResult.getRecordMetadata();
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            if (recordMetadata != null) {
+                String record = "message(" +
+                        "key = " + key + "," +
+                        " messageEntity = " + messageEntityStr + "," +
+                        " sent to partition(" + recordMetadata.partition() + ")" +
+                        " with offset(" + recordMetadata.offset() + ")" +
+                        " in " + elapsedTime + " ms";
+                log.info(record);
+            }
+        } catch (JsonProcessingException e) {
+            log.error(e.getMessage(), e);
         }
     }
-} 
+}

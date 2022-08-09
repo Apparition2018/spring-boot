@@ -1,6 +1,7 @@
 package com.ljh.cases.datalog.util;
 
-import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ljh.cases.datalog.anno.DataLog;
 import com.ljh.cases.datalog.domain.ChangeItem;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +39,7 @@ public class DiffUtil {
      * 获取新操作的 change item
      */
     public static List<ChangeItem> getInsertChangeItems(Object obj) {
-        Map<String, String> valueMap = getBeanSimpleFieldValueMap(obj, true/*filter null*/);
+        Map<String, String> valueMap = getBeanSimpleFieldValueMap(obj, true);
         Map<String, String> fieldCnNameMap = getFieldNameMap(obj.getClass());
         List<ChangeItem> items = new ArrayList<>();
         for (Map.Entry<String, String> entry : valueMap.entrySet()) {
@@ -78,7 +79,8 @@ public class DiffUtil {
                     changeItems.add(changeItem);
                 }
             }
-        } catch (IntrospectionException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+        } catch (IntrospectionException | IllegalAccessException | InvocationTargetException |
+                 NoSuchMethodException e) {
             log.error("There is error when convert change item", e);
         }
         return changeItems;
@@ -87,9 +89,9 @@ public class DiffUtil {
     /**
      * 获取删除操作的 change item
      */
-    public static ChangeItem getDeleteChangeItem(Object obj) {
+    public static ChangeItem getDeleteChangeItem(Object obj) throws JsonProcessingException {
         ChangeItem changeItem = new ChangeItem();
-        changeItem.setOldValue(JSON.toJSONString(obj));
+        changeItem.setOldValue(JsonMapper.builder().build().writeValueAsString(obj));
         changeItem.setNewValue("");
         return changeItem;
     }
@@ -99,7 +101,7 @@ public class DiffUtil {
      * 只获取简单类型，不获取复杂类型，包括集合
      */
     public static Map<String, String> getBeanSimpleFieldValueMap(Object bean, boolean filterNull) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(16);
         if (bean == null) {
             return map;
         }
@@ -165,7 +167,7 @@ public class DiffUtil {
      * 从注解读取中文名
      */
     public static Map<String, String> getFieldNameMap(Class<?> clazz) {
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>(16);
         for (Field field : clazz.getDeclaredFields()) {
             if (field.isAnnotationPresent(DataLog.class)) {
                 DataLog dataLog = field.getAnnotation(DataLog.class);

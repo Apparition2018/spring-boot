@@ -1,6 +1,6 @@
 package com.ljh.kafka.controlller;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ljh.kafka.common.ErrorCode;
 import com.ljh.kafka.common.MessageEntity;
 import com.ljh.kafka.common.Response;
@@ -23,14 +23,13 @@ public class ProducerController {
 
     @Value("${kafka.topic.default}")
     private String topic;
-
-    private final Gson gson = new Gson();
-
     private final SimpleProducer simpleProducer;
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    public ProducerController(SimpleProducer simpleProducer) {
+    public ProducerController(SimpleProducer simpleProducer, ObjectMapper objectMapper) {
         this.simpleProducer = simpleProducer;
+        this.objectMapper = objectMapper;
     }
 
     /**
@@ -47,7 +46,7 @@ public class ProducerController {
     @PostMapping(value = "/send", produces = {"application/json"})
     public Response sendKafka(@RequestBody MessageEntity messageEntity) {
         try {
-            log.info("kafka 的消息 = {}", gson.toJson(messageEntity));
+            log.info("kafka 的消息 = {}", objectMapper.writeValueAsString(messageEntity));
             simpleProducer.send(topic, "key", messageEntity);
             log.info("发送 kafka 成功");
             return new Response(ErrorCode.SUCCESS, "发送 Kafka 成功");

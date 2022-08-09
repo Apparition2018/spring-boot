@@ -22,6 +22,8 @@
         <module>spring-data</module>
         <!-- 8003：spring-cache -->
         <module>spring-cache</module>
+        <!-- 8004：spring-jdbc -->
+        <module>spring-jdbc</module>
         <!-- 8100：querydsl -->
         <module>querydsl</module>
         <!-- 8101：thymeleaf -->
@@ -45,15 +47,12 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <commons-io.version>2.11.0</commons-io.version>
-        <!-- fastjson 2.x -->
-        <fastjson.version>1.2.80</fastjson.version>
         <druid.version>1.2.11</druid.version>
         <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
         <pagehelper-spring-boot-starter.version>1.4.3</pagehelper-spring-boot-starter.version>
         <mapper-spring-boot-starter.version>4.2.1</mapper-spring-boot-starter.version>
         <mybatis-generator.version>1.4.1</mybatis-generator.version>
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
-        <activiti.version>7.1.0.M6</activiti.version>
     </properties>
 
     <dependencies>
@@ -103,16 +102,6 @@
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
 
         <dependency>

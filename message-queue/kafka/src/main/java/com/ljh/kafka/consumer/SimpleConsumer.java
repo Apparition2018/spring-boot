@@ -1,6 +1,7 @@
 package com.ljh.kafka.consumer;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ljh.kafka.common.MessageEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -16,10 +17,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleConsumer {
 
-    private final Gson gson = new Gson();
-
     @KafkaListener(topics = "${kafka.topic.default}", containerFactory = "kafkaListenerContainerFactory")
-    public void receive(MessageEntity messageEntity) {
-        log.info(gson.toJson(messageEntity));
+    public void receive(MessageEntity messageEntity) throws JsonProcessingException {
+        log.info(JsonMapper.builder().build().writeValueAsString(messageEntity));
     }
 }
