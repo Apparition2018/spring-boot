@@ -24,6 +24,8 @@
         <module>spring-cache</module>
         <!-- 8004：spring-jdbc -->
         <module>spring-jdbc</module>
+        <!-- 8005：spring-boot-tomcat -->
+        <module>spring-boot-tomcat</module>
         <!-- 8100：querydsl -->
         <module>querydsl</module>
         <!-- 8101：thymeleaf -->
