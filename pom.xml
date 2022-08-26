@@ -14,8 +14,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <!-- 8000：SpringBoot开发常用技术整合 -->
-        <module>spring-boot-common</module>
         <!-- 8001：探秘 Spring AOP -->
         <module>spring-aop</module>
         <!-- 8002：spring-data -->
