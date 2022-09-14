@@ -31,7 +31,7 @@
 | cacheResolver        |                          | 用于指定 CacheResolver     | @Cacheable(cacheResolver = "myCacheResolver")                  |
 ### [缓存 SpEL 可用元数据](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-spel-context)
 - [SpEL](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions)
-- [SpEl 运算符](https://blog.csdn.net/yuhui123999/article/details/84288177)
+- [SpEl 运算符](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#expressions-operators)
 
 | 名称            | 位置      | 描述            | 示例                   |
 |:--------------|:--------|:--------------|:---------------------|
@@ -47,7 +47,7 @@
 - 注2：使用方法参数时，可直接使用 #arg 或 #p索引，如：@Cacheable("#name") @Cacheable("p0")
 ---
 ## [自定义 Key 生成器](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotations-cacheable-key)
-1. [myKeyGenerator](.\src\main\java\com\ljh\config\KeyGeneratorConfig.java)
+1. [myKeyGenerator](./src/main/java/com/ljh/config/KeyGeneratorConfig.java)
 2. 使用
 ```java
 public class UserService {
@@ -57,7 +57,7 @@ public class UserService {
 ```
 ---
 ## [自定义注解](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#cache-annotation-stereotype)
-1. [UserCacheable](.\src\main\java\com\ljh\annotation\UserCacheable.java)
+1. [UserCacheable](./src/main/java/com/ljh/annotation/UserCacheable.java)
 2. 使用
 ```java
 public class UserService {
@@ -76,17 +76,17 @@ public class UserService {
 @EnableCaching
 public class SpringCacheApplication {}
 ```
-2. [SimpleService](.\src\main\java\com\ljh\service\SimpleService.java)
+2. [SimpleService](./src/main/java/com/ljh/service/SimpleService.java)
 ---
 ## 整合 JCache
 - [Introduction to JCache](https://www.baeldung.com/jcache)
->### 核心接口
-><img alt="" src="https://img-blog.csdn.net/20180923131228786?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zNjI3OTMxOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="500"/><br/>
->1. CachingProvider: 定义创建、配置、获取、管理和控制多个 CacheManager
->2. CacheManager: 定义创建、配置、获取、管理和控制多个唯一命名的 Cache
->3. Cache: 一个类似 Map 的数据结构并临时存储以 key 为索引的值
->4. Entry: 一个存储再 Cache 的 key-value 对
->5. Expiry: Entry 的有效期
+- 核心接口    
+    1. CachingProvider: 定义创建、配置、获取、管理和控制多个 CacheManager
+    2. CacheManager: 定义创建、配置、获取、管理和控制多个唯一命名的 Cache
+    3. Cache: 一个类似 Map 的数据结构并临时存储以 key 为索引的值
+    4. Entry: 一个存储再 Cache 的 key-value 对
+    5. Expiry: Entry 的有效期
+    <img alt="" src="https://img-blog.csdn.net/20180923131228786" width="500"/>
 1. 引入依赖
 ```xml
 <project>
@@ -101,8 +101,8 @@ public class SpringCacheApplication {}
     </dependency>
 </project>
 ```
-2. [application.yml 配置](.\src\main\resources\application-jcache.yml)
-3. [ehcache.xml](.\src\main\resources\ehcache.xml)
+2. [application.yml 配置](./src/main/resources/application-jcache.yml)
+3. [ehcache.xml](./src/main/resources/ehcache.xml)
 ---
 ## 整合 Redis
 1. 引入依赖
@@ -118,5 +118,5 @@ public class SpringCacheApplication {}
     </dependency>
 </project>
 ```
-2. [application.yml 配置](.\src\main\resources\application-redis.yml)
+2. [application.yml 配置](./src/main/resources/application-redis.yml)
 ---
