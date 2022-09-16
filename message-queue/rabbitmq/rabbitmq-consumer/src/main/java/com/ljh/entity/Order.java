@@ -20,7 +20,7 @@ public class Order implements Serializable {
     private String id;
     private String name;
     /**
-     * 存储消息发送的唯一标识
+     * 消息发送的唯一标识
      */
     private String messageId;
 }

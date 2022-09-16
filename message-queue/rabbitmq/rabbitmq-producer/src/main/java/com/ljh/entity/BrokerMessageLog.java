@@ -18,19 +18,12 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BrokerMessageLog {
-
     @TableId(type = IdType.INPUT)
     private String messageId;
-
     private String message;
-
     private Integer tryCount = 0;
-
     private Integer status;
-
     private Date nextRetryTime;
-
     private Date createTime;
-
     private Date updateTime;
 }

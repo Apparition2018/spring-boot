@@ -17,11 +17,9 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 public class Message {
-
     @Id
     @GeneratedValue
     private Long id;
-
     private String title;
     private String message;
 

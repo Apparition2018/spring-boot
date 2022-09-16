@@ -16,7 +16,7 @@ public class Client {
     public static void main(String[] args) {
         // 生成JDK动态代理代理类文件：https://www.freesion.com/article/4664896920/
         System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
-        
+
         Subject subject = (Subject) Proxy.newProxyInstance(Client.class.getClassLoader(), new Class[]{Subject.class}, new JdkProxy(new RealSubject()));
         subject.hello();
     }

@@ -25,18 +25,19 @@
 - 异常处理
 ---
 ## AOP 基本概念
-|      |               |                                                                                            |
-|:-----|:--------------|:-------------------------------------------------------------------------------------------|
-| 横切   | cross-cutting | 与对象核心功能无关的公共行为                                                                             |
-| 关注点  | concern       | 一块我们感兴趣的区域                                                                                 |
-| 切面   | Aspect        | 横切面对象，对横切关注点的抽象(可以借助@Aspect声明)                                                             |
-| 连接点  | JoinPoint     | 被拦截到的点，可以是方法，字段和构造器，Spring只支持拦截方法                                                          |
-| 切入点  | Pointcut      | 对连接点进行拦截的定义  @Pointcut                                                                     |
-| 通知   | advice        | 拦截到连接点之后要执行的代码  1）前置@Before 2）后置@After 3）异常@AfterThrowing 4）最终@AfterReturing 5）环绕通知@Around |
-| 目标对象 | target        | 代理的目标对象                                                                                    |
-| 织入   | weave         | 将切面应用到目标对象并导致代理对象创建的过程                                                                     |
-| 引入   | introduction  | 为类动态地添加一些方法或字段                                                                             |
-## AOP 主要注解
+|      |               |                                                                               |
+|:-----|:--------------|:------------------------------------------------------------------------------|
+| 横切   | cross-cutting | 与对象核心功能无关的公共行为                                                                |
+| 关注点  | concern       | 一块我们感兴趣的区域                                                                    |
+| 切面   | Aspect        | 横切面对象，对横切关注点的抽象 (@Aspect 注释的类)                                                |
+| 连接点  | JoinPoint     | 程序执行过程中要拦截的点，可以是方法、字段和构造器，Spring AOP 连接点只能是方法                                 |
+| 通知   | advice        | 在连接点的具体行为  ①前置@Before ②后置@After ③异常@AfterThrowing ④最终@AfterReturing ⑤环绕Around |
+| 切入点  | Pointcut      | 匹配连接点  @Pointcut                                                              |
+| 目标对象 | target        | 代理的目标对象                                                                       |
+| 织入   | weave         | 将切面应用到目标对象并导致代理对象创建的过程                                                        |
+| 引入   | introduction  | 为类动态地添加一些方法或字段                                                                |
+---
+## AspectJ 注解
 - @Aspect
 - @Pointcut
 - @Advice
@@ -64,7 +65,7 @@
     - 匹配对象：this(), target(), bean()
     - 匹配参数：args(), execution()
 - wildcards
-    - \*: 匹配任意数量的字符下·
+    - \*: 匹配任意数量的字符
     - \+: 匹配指定类及其子类
     - ..: 一般用于匹配任意数的子包或参数
 - operators
@@ -72,46 +73,23 @@
     - ||
     - !
 ---
-## AOP 原理
+## Spring AOP 实现原理
 ### 织入时机
-1. 编译器(Aspect)
-2. 类加载时(AspectJ 5+)
-3. 运行时(Spring AOP)
-    - 静态代理：重用性不强
-    
-    <img src="https://img3.mukewang.com/5e0db1c60001328619201080.jpg" alt="代理模式" width="400"><br/>
-    
-    - 动态代理
-        - 基于接口代理：JDK
-        - 基于继承代理：Cglib
->#### JDK 与 Cglib 代理区别
->- JDK 只能针对有接口的类的接口方法进行动态代理，由于接口不能有 private 方法，所以无法对 private 方法进行代理
->- Cglib 基于继承来实现代理，无法对 static / final 类进行代理，无法对 private / static 方法进行代理
+1. Aspect：编译时织入，静态代理
+2. AspectJ 5+：类加载时织入，静态代理
+3. Spring AOP：运行时织入，动态代理
+    - JDK：基于接口，Spring 默认使用
+        - 由于接口不能有 private 方法，所以无法对 private 方法进行代理
+    - CGLib：Code Generation Library，基于继承
+        - 无法对 static/final 类、private/final 方法 进行代理
 ### Spring 如何选择动态代理模式
-```java
-@SuppressWarning("serial")
-public class DefaultAopProxyFactory implements AopProxyFactory, Serializable {
-    @Override
-    public AopProxy createAopProxy(AdvisedSupport config) throws AopConfigException {
-        if (!config.isOptimize() && !config.isProxyTargetClass() && !this.hasNoUserSuppliedProxyInterfaces(config)) {
-            return new JdkDynamicAopProxy(config);
-        } else {
-            Class<?> targetClass = config.getTargetClass();
-            if (targetClass == null) {
-                throw new AopConfigException("TargetSource cannot determine target class: Either an interface or a target is required for proxy creation.");
-            } else {
-                return (AopProxy)(!targetClass.isInterface() && !Proxy.isProxyClass(targetClass) ? new ObjenesisCglibAopProxy(config) : new JdkDynamicAopProxy(config));
-            }
-        }
-    }
-}
-```
-- 如果目标对象实现了接口，则采用 JDK 动态代理
-- 如果目标对象没有实现接口，则采用 Cglib 动态代理
-- 如果目标对象实现了接口，且强制使用 Cglib 代理，则使用 Cglib 代理
+- @see DefaultAopProxyFactory#createAopProxy(AdvisedSupport)
+- 目标对象实现了至少一个接口，使用 JDK 动态代理
+- 目标对象没有实现任何接口，使用 CGLib 动态代理
+- 目标对象实现了至少一个接口，但强制使用 CGLib 代理，则使用 CGLib 代理
 ```java
 @SpringBootApplication
-// 强制使用 Cglib 代理
+// 强制使用 CGLib 代理
 @EnableAspectAutoProxy(proxyTargetClass = true)
 public class AopDemoApplication() { }
 ```

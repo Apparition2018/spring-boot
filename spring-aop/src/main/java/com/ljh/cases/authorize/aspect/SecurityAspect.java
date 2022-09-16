@@ -26,7 +26,6 @@ public class SecurityAspect {
 
     @Pointcut("@annotation(com.ljh.cases.authorize.anno.AdminOnly)")
     public void adminOnly() {
-
     }
 
     @Before("adminOnly()")

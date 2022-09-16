@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
  * created on 2020/1/2 16:38
  */
 public class JdkProxy implements InvocationHandler {
-    
+
     private final RealSubject realSubject;
 
     public JdkProxy(RealSubject realSubject) {

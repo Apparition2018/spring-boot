@@ -1,7 +1,7 @@
 package com.ljh.cases.authorize.service;
 
-import com.ljh.cases.authorize.domain.Product;
 import com.ljh.cases.authorize.anno.AdminOnly;
+import com.ljh.cases.authorize.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +32,4 @@ public class ProductService {
 //        authService.checkAccess();
         System.out.println("delete product");
     }
-
 }

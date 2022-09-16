@@ -8,14 +8,14 @@ package com.ljh.proxy.chain;
  * created on 2020/1/2 17:26
  */
 public class Client {
-    
+
     static class HandlerA extends Handler {
         @Override
         protected void handlerProcess() {
             System.out.println("handle by a");
         }
     }
-    
+
     static class HandlerB extends Handler {
         @Override
         protected void handlerProcess() {
@@ -34,10 +34,10 @@ public class Client {
         Handler handlerA = new HandlerA();
         Handler handlerB = new HandlerB();
         Handler handlerC = new HandlerC();
-        
+
         handlerA.setSuccess(handlerB);
         handlerB.setSuccess(handlerC);
-        
+
         handlerA.execute();
     }
 }

@@ -13,7 +13,6 @@ import org.springframework.data.annotation.Id;
 @Data
 @AllArgsConstructor
 public class User2 {
-
     @Id
     private Long id;
     private String name;

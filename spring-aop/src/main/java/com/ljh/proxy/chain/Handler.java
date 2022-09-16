@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public abstract class Handler {
-    
+
     private Handler success;
 
     public void execute() {
@@ -21,7 +21,6 @@ public abstract class Handler {
             success.execute();
         }
     }
-    
+
     protected abstract void handlerProcess();
-    
 }

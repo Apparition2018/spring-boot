@@ -2,8 +2,8 @@ package com.ljh.cases.datalog.aspect;
 
 import com.ljh.cases.datalog.dao.ActionDao;
 import com.ljh.cases.datalog.domain.Action;
-import com.ljh.cases.datalog.enums.ActionType;
 import com.ljh.cases.datalog.domain.ChangeItem;
+import com.ljh.cases.datalog.enums.ActionType;
 import com.ljh.cases.datalog.util.DiffUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -37,12 +37,10 @@ public class DataLogAspect {
 
     @Pointcut("execution(public * com.ljh.cases.datalog.dao.*.save*(..))")
     public void save() {
-
     }
 
     @Pointcut("execution(public * com.ljh.cases.datalog.dao.*.deleteById*(..))")
     public void deleteById() {
-
     }
 
     /**
@@ -115,5 +113,4 @@ public class DataLogAspect {
         }
         return returnObj;
     }
-
 }

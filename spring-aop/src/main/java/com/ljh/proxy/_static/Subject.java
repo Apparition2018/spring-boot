@@ -7,8 +7,8 @@ package com.ljh.proxy._static;
  * created on 2020/1/2 16:29
  */
 public interface Subject {
-    
+
     void request();
-    
+
     void hello();
 }

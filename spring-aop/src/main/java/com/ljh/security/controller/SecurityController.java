@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class SecurityController {
-    
+
     @RequestMapping("/index")
     public String index() {
         return "index";
@@ -33,6 +33,5 @@ public class SecurityController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String admin() {
         return "only admin can access";
-    } 
-    
+    }
 }

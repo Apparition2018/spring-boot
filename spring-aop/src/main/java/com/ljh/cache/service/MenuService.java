@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Component
 public class MenuService {
-    
+
     @Cacheable(cacheNames = {"menu"})
     public List<String> getMenuList() {
         System.out.println("");

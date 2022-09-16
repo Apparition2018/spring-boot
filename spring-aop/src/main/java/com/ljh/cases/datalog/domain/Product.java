@@ -19,25 +19,16 @@ import java.util.Date;
 @Entity
 @Data
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @DataLog(name = "产品名称")
     private String name;
-
     private String category;
-
     private String detail;
-
     private BigDecimal buyPrice;
-
     private BigDecimal sellPrice;
-
     private String provider;
-
     private Date onlineTime;
-
     private Date updateTime;
 }

@@ -8,9 +8,9 @@ package com.ljh.proxy._static;
  * created on 2020/1/2 16:31
  */
 public class Proxy implements Subject {
-    
+
     private final RealSubject realSubject;
-    
+
     public Proxy(RealSubject realSubject) {
         this.realSubject = realSubject;
     }

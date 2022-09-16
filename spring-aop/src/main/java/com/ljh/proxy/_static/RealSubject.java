@@ -8,10 +8,10 @@ package com.ljh.proxy._static;
  * created on 2020/1/2 16:30
  */
 public class RealSubject implements Subject {
-    
+
     @Override
     public void request() {
-        System.out.println("real subject execute request");    
+        System.out.println("real subject execute request");
     }
 
     @Override

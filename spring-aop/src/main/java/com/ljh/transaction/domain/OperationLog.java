@@ -16,13 +16,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class OperationLog {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
     private String content;
-    
     private Date createAt;
 
     @PrePersist

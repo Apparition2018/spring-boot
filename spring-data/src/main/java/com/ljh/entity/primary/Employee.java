@@ -19,7 +19,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
-
     @Id
     @GeneratedValue
     private Long id;

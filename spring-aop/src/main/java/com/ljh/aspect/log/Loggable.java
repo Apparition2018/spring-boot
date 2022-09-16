@@ -7,6 +7,5 @@ package com.ljh.aspect.log;
  * created on 2020/1/2 14:55
  */
 public interface Loggable {
-    
     public void log();
 }

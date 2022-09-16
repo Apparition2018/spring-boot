@@ -17,5 +17,4 @@ public class LogService implements Loggable {
     public void log() {
         System.out.println("log from LogService");
     }
-
 }

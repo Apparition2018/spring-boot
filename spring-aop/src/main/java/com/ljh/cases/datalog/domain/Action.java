@@ -15,18 +15,11 @@ import java.util.List;
  */
 @Data
 public class Action {
-
     private String id;
-
     private Long objectId;
-
     private String objectClass;
-
     private String operator;
-
     private Date operateTime;
-
     private ActionType actionType;
-
     private List<ChangeItem> changes = new ArrayList<>();
 }
