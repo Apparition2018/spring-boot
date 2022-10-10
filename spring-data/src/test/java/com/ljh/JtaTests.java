@@ -34,5 +34,4 @@ public class JtaTests {
             Assertions.assertEquals(0, messageRepository.findAll().size());
         }
     }
-
 }

@@ -45,7 +45,7 @@ public class SpringDataJpaTests {
         Assertions.assertEquals(60, userRepository.findByName("FFF").getAge().longValue());
 
         // findByNameQuery()
-        Assertions.assertEquals(60, userRepository.findByNameQuery("FFF").getAge().longValue());
+        Assertions.assertEquals(60, userRepository.queryByName("FFF").getAge().longValue());
 
         // findByNameAndAge()
         Assertions.assertEquals("FFF", userRepository.findByNameAndAge("FFF", 60).getName());

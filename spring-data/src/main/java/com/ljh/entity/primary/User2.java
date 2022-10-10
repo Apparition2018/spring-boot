@@ -3,6 +3,7 @@ package com.ljh.entity.primary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * User2 (MongoDB)
@@ -12,6 +13,7 @@ import org.springframework.data.annotation.Id;
  */
 @Data
 @AllArgsConstructor
+@Document
 public class User2 {
     @Id
     private Long id;
