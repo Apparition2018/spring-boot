@@ -19,13 +19,15 @@ import java.util.Map;
 @Controller
 public class IterationController {
 
+    private final List<Student> students;
+
+    public IterationController(List<Student> students) {
+        this.students = students;
+    }
+
     @RequestMapping("iteration")
     public String iteration(Model model) {
-        List<Student> studentList = new ArrayList<>();
-        studentList.add(new Student().setId(1001).setName("刘备").setAge(20));
-        studentList.add(new Student().setId(1002).setName("关羽").setAge(21));
-        studentList.add(new Student().setId(1003).setName("张飞").setAge(22));
-        model.addAttribute("list", studentList);
+        model.addAttribute("list", students);
 
         Map<String, String> studentMap = new HashMap<>();
         studentMap.put("id", "1001");

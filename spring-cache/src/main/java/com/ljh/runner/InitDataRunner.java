@@ -1,4 +1,4 @@
-package com.ljh.config;
+package com.ljh.runner;
 
 import com.ljh.entity.User;
 import org.springframework.boot.CommandLineRunner;
@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * 初始化数据
@@ -18,16 +19,16 @@ import java.util.List;
 public class InitDataRunner implements CommandLineRunner {
     private final List<User> users = new ArrayList<>();
 
+    @Bean("users")
+    public List<User> getUsers() {
+        return users;
+    }
+
     @Override
     public void run(String... args) throws Exception {
         for (int i = 0; i < 10; i++) {
             User user = new User(i, "姓名" + i, i + "@163.com", i % 2);
             users.add(user);
         }
-    }
-
-    @Bean("users")
-    public List<User> getUsers() {
-        return users;
     }
 }

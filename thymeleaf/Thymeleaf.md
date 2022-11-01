@@ -8,6 +8,9 @@
 2. [Thymeleaf 教程](https://fanlychie.github.io/post/thymeleaf.html)
 3. [Thymeleaf 视频教程](https://www.bilibili.com/video/BV1cq4y1E79S)
 ---
+## Thymeleaf API
+- @see [ThymeleafTests](src/test/java/com/ljh/ThymeleafTests.java)
+---
 ## [标准表示语法](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#standard-expression-syntax)
 ### 简单表达式
 - @see SimpleExpressionSyntaxController
@@ -22,9 +25,15 @@
 ### 表达式基本对象
 - [表达式基本对象1](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-basic-objects)
 - [表达式基本对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-a-expression-basic-objects)
-### 表达式使用程序对象
-- [表达式使用程序对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-utility-objects)
-- [表达式使用程序对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-b-expression-utility-objects)
+    - `#reqeust`
+    - `#session`
+    - `#servletContext`
+### 表达式功能对象
+- [表达式功能对象1](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-utility-objects)
+- [表达式功能对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-b-expression-utility-objects)
+   - `#dates`
+   - `#numbers`
+   - `#stirings`
 ### 字面量
 | 名称               | 描述       | 说明                   |
 |:-----------------|:---------|:---------------------|
@@ -134,11 +143,11 @@
 3. 片段参数
 ```html
 <div th:fragment="layout (title, content)">
-   <h1 th:replace="${title}">Title</h1>
-   <div th:replace="${content}">
-      <p>Layout content</p>
-   </div>
-   <footer>Layout footer</footer>
+    <h1 th:replace="${title}">Title</h1>
+    <div th:replace="${content}">
+        <p>Layout content</p>
+    </div>
+    <footer>Layout footer</footer>
 </div>
 ```
 4. 动态布局

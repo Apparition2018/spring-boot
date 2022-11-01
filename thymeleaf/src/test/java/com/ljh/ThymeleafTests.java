@@ -6,6 +6,11 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import javax.swing.filechooser.FileSystemView;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * ThymeleafTests
  *
@@ -14,8 +19,8 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
  */
 public class ThymeleafTests {
 
-    TemplateEngine engine;
-    Context context;
+    private TemplateEngine engine;
+    private Context context;
 
     @BeforeEach
     public void init() {
@@ -56,5 +61,21 @@ public class ThymeleafTests {
         context.setVariable("name", "张三");
         String html = engine.process("hello", context);
         System.out.println("结果：" + html);
+    }
+
+    /**
+     * 模板文件静态化
+     */
+    @Test
+    public void testTemplateFile2() throws IOException {
+        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
+        resolver.setPrefix("templates/");
+        resolver.setSuffix(".html");
+        engine.setTemplateResolver(resolver);
+        context.setVariable("name", "张三");
+        String desktopPath = FileSystemView.getFileSystemView().getHomeDirectory().getPath();
+        try (FileWriter writer = new FileWriter(desktopPath + "/hello_copy.html")) {
+            engine.process("hello", context, writer);
+        }
     }
 }

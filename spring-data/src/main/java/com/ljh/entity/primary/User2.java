@@ -13,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Data
 @AllArgsConstructor
-@Document
+@Document(collection = "user")
 public class User2 {
     @Id
     private Long id;

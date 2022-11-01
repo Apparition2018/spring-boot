@@ -66,7 +66,7 @@ public class SimpleExpressionSyntaxController {
     }
 
     /**
-     * Expression Utility Objects   表达式实用程序对象
+     * Expression Utility Objects   表达式功能对象
      */
     @RequestMapping("utilityObjects")
     public String utilityObjects(Model model) {
