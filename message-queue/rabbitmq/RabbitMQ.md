@@ -14,18 +14,18 @@
 <img alt="AMQP 协议模型" src="https://upload-images.jianshu.io/upload_images/11247052-3484249edc3746bb.jpg" width="500"/>
 ---
 ## 安装
+1. `vim /etc/hostname`：`bhz81`
+2. `vim /etc/hosts`
 ```
-1. vim /etc/hostname
-    bhz81
-2. vim /etc/hosts
-    192.168.11.81 bhz81
-    192.168.11.82 bhz82
-    192.168.11.83 bhz83
+192.168.11.81 bhz81
+192.168.11.82 bhz82
+192.168.11.83 bhz83
+```
 3. 防火墙设置
-```
 ---
 ## 核心概念
 <img alt="整体架构" src="https://img1.mukewang.com/6077b3da0001049719201080.jpg" width="500"/>
+<br/>
 <img alt="消息如何流转" src="https://img1.mukewang.com/6077f01a0001cc0619201080.jpg" width="500"/>
 
 1. Server: 又称 Broker，接受客户端的连接，实现 AMQP 实体服务
@@ -52,7 +52,7 @@
     spring.rabbitmq.publisher-confirm-type=correlated
     spring.rabbitmq.publisher-returns=true
     ```
-    2. 发送：`RabbitTemplate.convertAndSend(exchange, routingKey, object, corrleationData)`
+    2. 发送：`rabbitTemplate.convertAndSend(exchange, routingKey, object, corrleationData)`
 2. Consumer
     1. application.properties
     ```properties
