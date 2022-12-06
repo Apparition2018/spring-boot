@@ -3,9 +3,17 @@ package com.ljh;
 import com.ljh.entity.primary.Employee2;
 import com.ljh.entity.primary.Zip;
 import com.ljh.repository.primary.ZipRepository;
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.model.GridFSFile;
+import com.mongodb.client.gridfs.model.GridFSUploadOptions;
+import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.UpdateResult;
+import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -14,7 +22,13 @@ import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
+import org.springframework.util.DigestUtils;
 
+import javax.annotation.Resource;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -29,9 +43,11 @@ import java.util.Map;
 @SpringBootTest
 public class MongoTemplateTests {
 
-    @Autowired
+    @Resource
     private MongoTemplate mongoTemplate;
-    @Autowired
+    @Resource(name = "myGridFsTemplate")
+    private GridFsTemplate gridFsTemplate;
+    @Resource
     private ZipRepository zipRepository;
 
     @Test
@@ -192,6 +208,42 @@ public class MongoTemplateTests {
         TypedAggregation<Zip> typedAggregation = Aggregation.newAggregation(Zip.class, operations);
         AggregationResults<Map> aggregationResults = mongoTemplate.aggregate(typedAggregation, Map.class);
         aggregationResults.getMappedResults().forEach(System.out::println);
+    }
+
+    @Test
+    public void testGridFS() throws IOException {
+        /* https://www.mongodb.com/docs/drivers/java/sync/v4.8/fundamentals/gridfs/ */
+        MongoDatabase db = mongoTemplate.getDb();
+        GridFSBucket gridFSBucket = GridFSBuckets.create(db, "file");
+        File file = new File("C:/Users/HP/Desktop/img/heart.png");
+        String fileMd5 = DigestUtils.md5DigestAsHex(Files.newInputStream(file.toPath()));
+        // 根据 md5 查找并删除文件
+        gridFSBucket.find(Filters.eq("metadata.md5", fileMd5)).forEach(gridFSFile -> gridFSBucket.delete(new ObjectId(String.valueOf(gridFSFile.getObjectId()))));
+        GridFSUploadOptions options = new GridFSUploadOptions()
+                .chunkSizeBytes(1048576)
+                // 元数据
+                .metadata(new Document("type", "image").append("content_type", "image/png").append("md5", fileMd5));
+        // 上传文件
+        ObjectId objectId = gridFSBucket.uploadFromStream(file.getName(), Files.newInputStream(file.toPath()), options);
+        System.out.println(objectId.toHexString());
+    }
+
+    @Test
+    public void testGridFS2() throws IOException {
+        File file = new File("C:/Users/HP/Desktop/img/heart.png");
+        String fileMd5 = DigestUtils.md5DigestAsHex(Files.newInputStream(file.toPath()));
+        // 根据 md5 查找文件
+        GridFSFile gridFSFile = gridFsTemplate.findOne(new Query(Criteria.where("metadata.md5").is(fileMd5)));
+        if (gridFSFile != null) {
+            // 删除文件
+            gridFsTemplate.delete(new Query(Criteria.where("_id").is(gridFSFile.getObjectId())));
+        }
+        BasicDBObject metadata = new BasicDBObject();
+        metadata.put("type", "image");
+        metadata.put("content_type", "image/png");
+        metadata.put("md5", fileMd5);
+        // 上传文件
+        gridFsTemplate.store(Files.newInputStream(file.toPath()), file.getName(), metadata);
     }
 
     @Test
