@@ -2,7 +2,6 @@ package com.ljh.cases.authorize.service;
 
 import com.ljh.cases.authorize.anno.AdminOnly;
 import com.ljh.cases.authorize.domain.Product;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,22 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
-    private final AuthService authService;
-
-    @Autowired
-    public ProductService(AuthService authService) {
-        this.authService = authService;
-    }
-
     @AdminOnly
     public void insert(Product product) {
-//        authService.checkAccess();
         System.out.println("insert product");
     }
 
     @AdminOnly
     public void delete(Long id) {
-//        authService.checkAccess();
         System.out.println("delete product");
     }
 }

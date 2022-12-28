@@ -1,5 +1,6 @@
 spring:
   cache:
+    # ehcache3
     type: jcache
     jcache:
       config: classpath:ehcache.xml

@@ -44,17 +44,19 @@ public class DataLogAspect {
     }
 
     /**
-     * 1)判断是什么类型的操作，增加、删除、还是更新
-     * 增加/更新 save(Product)，通过 id 区分是增加还是更新
-     * 删除 delete(id)
-     * 2)获取 change item
-     * (1)新增操作，before 直接获取，after 记录下新增之后的 id
-     * (2)更新操作，before 获取操作之前的记录，after 获取操作之后的记录，然后 diff
-     * (3)删除操作，before 根据 id 取记录
-     * 3)保存操作记录
-     * actionType
-     * objectId
-     * objectClass
+     * <pre>
+     * 1 判断是什么类型的操作，增加、删除、还是更新
+     *   增加/更新 save(Product)，通过 id 区分是增加还是更新
+     *   删除 delete(id)
+     * 2 获取 change item
+     *   2.1 新增操作，before 直接获取，after 记录下新增之后的 id
+     *   2.2 更新操作，before 获取操作之前的记录，after 获取操作之后的记录，然后 diff
+     *   2.3 删除操作，before 根据 id 取记录
+     * 3 保存操作记录
+     *   actionType
+     *   objectId
+     *   objectClass
+     * </pre>
      */
     @Around("save() || deleteById()")
     public Object addOperateLog(ProceedingJoinPoint joinPoint) {

@@ -16,9 +16,7 @@ class AuthorizeTests {
     @Test
     public void insertTest() {
         CurrentUserHolder.set("tom");
-        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> {
-            productService.delete(1L);
-        });
+        RuntimeException exception = Assertions.assertThrows(RuntimeException.class, () -> productService.delete(1L));
         Assertions.assertEquals("operation not allow", exception.getMessage());
     }
 

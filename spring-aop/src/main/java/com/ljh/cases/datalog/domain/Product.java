@@ -1,7 +1,9 @@
 package com.ljh.cases.datalog.domain;
 
 import com.ljh.cases.datalog.anno.DataLog;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +19,9 @@ import java.util.Date;
  * created on 2020/1/3 0:18
  */
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
- * 使用 Spring Data JPA 访问 MySQL：https://blog.didispace.com/spring-boot-learning-21-3-4/
- * Spring Data JPA 的多数据源配置：https://blog.didispace.com/spring-boot-learning-21-3-8/
+ * <a href="https://blog.didispace.com/spring-boot-learning-21-3-4/">使用 Spring Data JPA 访问 MySQL</a>
+ * <p><a href="https://blog.didispace.com/spring-boot-learning-21-3-8/">Spring Data JPA 的多数据源配置</a>
  *
  * @author ljh
  * created on 2021/8/30 11:50
@@ -37,6 +37,8 @@ public class SpringDataJpaTests {
         userRepository.save(new User("HHH", 80));
         userRepository.save(new User("III", 90));
         userRepository.save(new User("JJJ", 100));
+
+        System.err.println(userRepository.findAll());
 
         // findAll()
         Assertions.assertEquals(10, userRepository.findAll().size());

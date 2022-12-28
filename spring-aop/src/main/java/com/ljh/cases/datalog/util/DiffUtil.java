@@ -98,7 +98,7 @@ public class DiffUtil {
 
     /**
      * 获取 bean 的 fileName 和 value
-     * 只获取简单类型，不获取复杂类型，包括集合
+     * <p>只获取简单类型，不获取复杂类型，包括集合
      */
     public static Map<String, String> getBeanSimpleFieldValueMap(Object bean, boolean filterNull) {
         Map<String, String> map = new HashMap<>(16);
