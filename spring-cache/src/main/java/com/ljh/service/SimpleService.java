@@ -11,6 +11,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * SimpleService
+ *
  * @author ljh
  * created on 2021/7/12 17:52
  */

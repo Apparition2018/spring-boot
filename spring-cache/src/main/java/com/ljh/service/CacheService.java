@@ -10,14 +10,19 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
+ * CacheService
+ *
  * @author ljh
- * created on 2021/7/13 17:12
+ * @since 2023/2/23 8:49
  */
 @Slf4j
-@Service
-// jcache 对应 ehcache.xml 中的 <cache></cache>
-@CacheConfig(cacheNames = "ehcache3")
-public class JCacheService {
+@Service(CacheService.CACHE_NAME)
+// 当使用 jcache 时，对应 ehcahce.xml 的 <cache alias/>
+@CacheConfig(cacheNames = CacheService.CACHE_NAME)
+public class CacheService {
+
+    // ${spring.profiles.active}
+    public static final String CACHE_NAME = "jcache";
 
     @Resource(name = "users")
     private List<User> users;

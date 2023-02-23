@@ -1,4 +1,4 @@
-package com.ljh.runner;
+package com.ljh.init;
 
 import com.ljh.vo.Student;
 import org.springframework.boot.CommandLineRunner;

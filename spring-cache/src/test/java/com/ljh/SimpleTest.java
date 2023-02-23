@@ -11,25 +11,27 @@ import org.springframework.cache.CacheManager;
 import java.util.Random;
 
 /**
+ * SimpleTest
+ *
  * @author ljh
  * created on 2021/7/12 17:55
  */
 @Slf4j
 @SpringBootTest
-public class SimpleServiceTest {
+public class SimpleTest {
 
     private final SimpleService simpleService;
     private final CacheManager cacheManager;
 
     @Autowired
-    public SimpleServiceTest(SimpleService simpleService, CacheManager cacheManager) {
+    public SimpleTest(SimpleService simpleService, CacheManager cacheManager) {
         this.simpleService = simpleService;
         this.cacheManager = cacheManager;
     }
 
     @Test
     public void cacheable() {
-        System.out.println("CacheManager Type: " + cacheManager.getClass());
+        System.err.println("CacheManager Type: " + cacheManager.getClass());
         log.info(simpleService.get(1).toString());
         // 第一次调用还没有缓存，所以执行了方法，输出 into get
         // into get
