@@ -50,9 +50,7 @@ public class OrderSender {
         // rabbitTemplate.convertAndSend("order-exchange3", "order.003", order, correlationData);
     }
 
-    /**
-     * confirm 回调函数
-     */
+    /** confirm 回调函数 */
     private final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {

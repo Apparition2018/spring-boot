@@ -31,9 +31,9 @@
 ### 表达式功能对象
 - [表达式功能对象1](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#expression-utility-objects)
 - [表达式功能对象2](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#appendix-b-expression-utility-objects)
-   - `#dates`
-   - `#numbers`
-   - `#stirings`
+    - `#dates`
+    - `#numbers`
+    - `#stirings`
 ### 字面量
 | 名称               | 描述       | 说明                   |
 |:-----------------|:---------|:---------------------|

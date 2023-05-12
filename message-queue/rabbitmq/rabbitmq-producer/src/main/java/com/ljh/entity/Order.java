@@ -24,8 +24,6 @@ public class Order implements Serializable {
     @TableId(type = IdType.INPUT)
     private String id;
     private String name;
-    /**
-     * 消息发送的唯一标识
-     */
+    /** 消息发送的唯一标识 */
     private String messageId;
 }

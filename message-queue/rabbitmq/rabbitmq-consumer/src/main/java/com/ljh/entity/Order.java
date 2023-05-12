@@ -19,8 +19,6 @@ public class Order implements Serializable {
     private static final long serialVersionUID = 4037830425016588023L;
     private String id;
     private String name;
-    /**
-     * 消息发送的唯一标识
-     */
+    /** 消息发送的唯一标识 */
     private String messageId;
 }

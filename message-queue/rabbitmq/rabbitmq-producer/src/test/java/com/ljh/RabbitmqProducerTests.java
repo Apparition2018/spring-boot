@@ -22,7 +22,7 @@ public class RabbitmqProducerTests {
     private OrderSender orderSender;
 
     @Test
-    public void testSend1() {
+    public void testSend() {
         Order order = new Order();
         order.setId("202104170000000001");
         order.setName("测试订单04171");

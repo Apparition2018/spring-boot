@@ -2,7 +2,7 @@
 
 ---
 ## 参考网站
-1. [Apache Kafka](kafka.apache.org)
+1. [Apache Kafka](https://kafka.apache.org/)
 2. [Kafka流处理平台介绍-慕课网](https://www.imooc.com/learn/1043)
 ---
 ## 事件流平台
@@ -60,71 +60,71 @@
 
 ---
 ## 消息结构
-|Offset|Length|CRC32|Magic|Attributes|Timestamp|key Length|Key|Value Length|Value|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|4 bytes|4 bytes|4 bytes|1 bytes|1 bytes|8 bytes|4bytes| |4bytes| |
+| Offset  | Length  |  CRC32  |  Magic  | Attributes | Timestamp | key Length | Key | Value Length | Value |
+|:-------:|:-------:|:-------:|:-------:|:----------:|:---------:|:----------:|:---:|:------------:|:-----:|
+| 4 bytes | 4 bytes | 4 bytes | 1 bytes |  1 bytes   |  8 bytes  |   4bytes   |     |    4bytes    |       |
 ---
 ## 安装和使用
 1. [windows10安装zookeeper-3.6.2并生成zookeeper服务](https://www.cnblogs.com/fps2tao/p/13869428.html)
 2. [ZooKeeper audit is disabled](https://blog.csdn.net/u011702673/article/details/109963726)
 3. [windows下搭建kafka](https://www.cnblogs.com/seeall/p/14464516.html)
->### Zookeeper
->```
->1. 配置文件：./conf/zoo.cfg
->   1.1 dataDir=D:\dev\apache-zookeeper-3.6.2-bin\data
->   1.2 dataLogDir=D:\dev\apache-zookeeper-3.6.2-bin\logs
->   1.3 admin.serverPort=8888
->   1.4 audit.enable=true
->2. 添加环境
->   2.1 添加 ZOOKEEPER_HOME=D:\dev\apache-zookeeper-3.6.2-bin
->   2.2 PATCH 添加 %ZOOKEEPER_HOME%\bin
->3. 启动和测试
->   3.1 ./bin/zkServer.cmd
->   3.2 ./bin/zkCli.cmd
->```
->### Kafka
->1. [在Windows安装运行Kafka](https://blog.csdn.net/qq_42715450/article/details/114278321)
->```
->1. 配置文件：./config/server.properties
->   1.1 log.dirs=D:\dev\kafka_2.13-2.7.0\logs
->2. 启动
->   2.1 启动 Zookeeper ./bin/zkServer.cmd
->   2.2 启动 Kafka ./bin/windows/kafka-server-start.bat ./config/server.properties
->3. 命令测试
->   3.1 cd bin 或 cd bin/windows
->   3.2 创建主题：kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic test-topic
->   3.3 查看主题：kafka-topics.bat --list --zookeeper localhost:2181
->   3.4 创建生产者：kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
->   3.5 创建消费者：kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
->   3.6 在生产者输入 first message，消费者可以看到 first message
->```
+### Zookeeper
+```
+1. 配置文件：./conf/zoo.cfg
+    1.1 dataDir=D:\dev\apache-zookeeper-3.6.2-bin\data
+    1.2 dataLogDir=D:\dev\apache-zookeeper-3.6.2-bin\logs
+    1.3 admin.serverPort=8888
+    1.4 audit.enable=true
+2. 添加环境
+    2.1 添加 ZOOKEEPER_HOME=D:\dev\apache-zookeeper-3.6.2-bin
+    2.2 PATCH 添加 %ZOOKEEPER_HOME%\bin
+3. 启动和测试
+    3.1 ./bin/zkServer.cmd
+    3.2 ./bin/zkCli.cmd
+```
+### Kafka
+1. [在Windows安装运行Kafka](https://blog.csdn.net/qq_42715450/article/details/114278321)
+```
+1. 配置文件：./config/server.properties
+    1.1 log.dirs=D:\dev\kafka_2.13-2.7.0\logs
+2. 启动
+    2.1 启动 Zookeeper ./bin/zkServer.cmd
+    2.2 启动 Kafka ./bin/windows/kafka-server-start.bat ./config/server.properties
+3. 命令测试
+    3.1 cd bin 或 cd bin/windows
+    3.2 创建主题：kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic test-topic
+    3.3 查看主题：kafka-topics.bat --list --zookeeper localhost:2181
+    3.4 创建生产者：kafka-console-producer.bat --broker-list localhost:9092 --topic test-topic
+    3.5 创建消费者：kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+    3.6 在生产者输入 first message，消费者可以看到 first message
+```
 ---
 ## Kafka 高级特性
->### [消息事务](https://www.imooc.com/video/17877)
->- 数据传输的事务定义
->    - 最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输
->    - 最少一次：消息不会被漏发送，最少被传输一次，但也有肯能被重复传输
->    - 精确的一次(Exactly Once)：不会漏传输也不会重复传输，每个消息都仅仅传输一次
->- 事务保证
->    - 内部重试问题：Procedure 幂等处理
->    - 多分区原子写入
->       - <img alt="多分区原子写入" src="https://img.mukewang.com/604e42340001d3d319201080.jpg" width="500"/>
->    - 避免僵尸实例
->        - 每个事务 Producer 分配一个 transactional.id，在进程重新启动时能够识别相同的 Producer 实例
->        - Kafka 增加了一个与 transactional.id 相关的 epoch，存储每个 transactional.id 内部元数据
->        - 一旦 epoch 被触发，任何具有相同的 transactional.id 和更旧的 epoch 的 Producer 被视为僵尸，Kafka 会拒绝来自这些 Procedure 的后续事务性写入
->### [零拷贝](https://www.imooc.com/video/17878)
->- 网络传输持久性
->- Java Nio channel.transferTo()
->- Linux sendfile 系统调用
-><img alt="零拷贝" src="https://img.mukewang.com/604e41560001baea19201080.jpg" width="600"/>
->- 文件传输到网络的公共数据路径
->   - 操作系统将数据从磁盘读入到内核空间的页缓存
->   - 应用程序将数据从内核空间读入到用户空间缓存
->   - 应用程序将数据写回到内核空间的 socket 缓存
->   - 操作系统将数据从 socket 缓冲区复制到网卡缓冲区，以便将数据经网络发出
->- 零拷贝
->   - 操作系统将数据从磁盘读入到内核空间的页缓存
->   - 将数据的位置和长度的信息的描述符增加至内核空间（socket 缓存区）
->   - 操作系统将数据从内核空间复制到网卡缓冲区，以便将数据经网络发出
+### [消息事务](https://www.imooc.com/video/17877)
+- 数据传输的事务定义
+    - 最多一次：消息不会被重复发送，最多被传输一次，但也有可能一次不传输
+    - 最少一次：消息不会被漏发送，最少被传输一次，但也有肯能被重复传输
+    - 精确的一次(Exactly Once)：不会漏传输也不会重复传输，每个消息都仅仅传输一次
+- 事务保证
+    - 内部重试问题：Procedure 幂等处理
+    - 多分区原子写入
+        - <img alt="多分区原子写入" src="https://img.mukewang.com/604e42340001d3d319201080.jpg" width="500"/>
+    - 避免僵尸实例
+        - 每个事务 Producer 分配一个 transactional.id，在进程重新启动时能够识别相同的 Producer 实例
+        - Kafka 增加了一个与 transactional.id 相关的 epoch，存储每个 transactional.id 内部元数据
+        - 一旦 epoch 被触发，任何具有相同的 transactional.id 和更旧的 epoch 的 Producer 被视为僵尸，Kafka 会拒绝来自这些 Procedure 的后续事务性写入
+### [零拷贝](https://www.imooc.com/video/17878)
+- 网络传输持久性
+- Java Nio channel.transferTo()
+- Linux sendfile 系统调用
+<img alt="零拷贝" src="https://img.mukewang.com/604e41560001baea19201080.jpg" width="600"/>
+- 文件传输到网络的公共数据路径
+    - 操作系统将数据从磁盘读入到内核空间的页缓存
+    - 应用程序将数据从内核空间读入到用户空间缓存
+    - 应用程序将数据写回到内核空间的 socket 缓存
+    - 操作系统将数据从 socket 缓冲区复制到网卡缓冲区，以便将数据经网络发出
+- 零拷贝
+    - 操作系统将数据从磁盘读入到内核空间的页缓存
+    - 将数据的位置和长度的信息的描述符增加至内核空间（socket 缓存区）
+    - 操作系统将数据从内核空间复制到网卡缓冲区，以便将数据经网络发出
 ---

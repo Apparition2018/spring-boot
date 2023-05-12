@@ -50,5 +50,6 @@ public class RetryMessageTask {
                 }
             }
         });
+        log.info("----------定时任务结束----------");
     }
 }

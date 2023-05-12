@@ -37,15 +37,17 @@ public class OrderReceiver {
 
     @RabbitListener(bindings =
     @QueueBinding(value = @Queue(value = "${bindings.order.queue.name}", durable = "${bindings.order.queue.durable}"),
-            exchange = @Exchange(value = "${bindings.order.exchange.name}",
-                    type = "${bindings.order.exchange.type}",
+            exchange = @Exchange(value = "${bindings.order.exchange.name}", type = "${bindings.order.exchange.type}",
                     ignoreDeclarationExceptions = "${bindings.order.exchange.ignoreDeclarationExceptions}"),
             key = "${bindings.order.key}"))
     @RabbitHandler
     public void onOrderMessage2(Message<Order> message, Channel channel) throws IOException {
         log.info("----------收到消息，开始消费----------");
         log.info("消息ID：" + message.getPayload().getMessageId());
-        Long deliveryTag = (Long) message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
-        channel.basicAck(deliveryTag, false);
+        Object deliveryTagObj = message.getHeaders().get(AmqpHeaders.DELIVERY_TAG);
+        if (deliveryTagObj != null) {
+            Long deliveryTag = (Long) deliveryTagObj;
+            channel.basicAck(deliveryTag, false);
+        }
     }
 }
