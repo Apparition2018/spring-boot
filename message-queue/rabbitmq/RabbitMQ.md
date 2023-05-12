@@ -1,9 +1,10 @@
 # RabbitMQ
+![RabbitMQ 模型](https://img1.mukewang.com/645db3940001eb0e19201080-500-284.jpg)
 
 ---
 ## Reference
 1. [Messaging that just works — RabbitMQ](https://www.rabbitmq.com)
-2. [AMQP | Spring Boot](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#messaging.amqp)
+2. [Spring AMQP](https://docs.spring.io/spring-amqp/reference/html/)
 3. [rabbitmq-server | Github](https://github.com/rabbitmq/rabbitmq-server)
 4. [rabbitmq-tutorials | Github](https://github.com/rabbitmq/rabbitmq-tutorials)
 ---
@@ -45,30 +46,28 @@
 ---
 ## 基本使用
 ### Producer
-1. application.properties
+1. [application.properties](rabbitmq-producer/src/main/resources/application.properties)
     ```properties
     spring.rabbitmq.addresses=127.0.0.1:5672
     spring.rabbitmq.username=guest
     spring.rabbitmq.password=guest
     spring.rabbitmq.connection-timeout=15000
-    spring.rabbitmq.template.mandatory=true
-    spring.rabbitmq.publisher-confirm-type=correlated
+    spring.rabbitmq.publisher-confirm-type=CORRELATED
     spring.rabbitmq.publisher-returns=true
+    spring.rabbitmq.template.mandatory=true
     ```
 2. 发送：`rabbitTemplate.convertAndSend(exchange, routingKey, object, corrleationData)`
 ### Consumer
-1. application.properties
+1. [application.properties](rabbitmq-consumer/src/main/resources/application.properties)
     ```properties
     spring.rabbitmq.addresses=127.0.0.1:5672
     spring.rabbitmq.username=guest
     spring.rabbitmq.password=guest
-    spring.rabbitmq.listener.simple.acknowledge-mode=manual
+    spring.rabbitmq.listener.simple.acknowledge-mode=MANUAL
     ```
-2. 接收
+2. 接收，@see OrderReceiver
     ```java
     public class Receiver {
-        // @RabbitListener 创建并绑定 exchange 和 queue
-        
         @RabbitListener(bindings =
         @QueueBinding(value = @Queue(value = "order-queue", durable = "true"),
                 exchange = @Exchange(value = "order-exchange", type = "topic"),

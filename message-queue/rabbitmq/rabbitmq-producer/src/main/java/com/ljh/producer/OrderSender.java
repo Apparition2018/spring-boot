@@ -1,6 +1,6 @@
 package com.ljh.producer;
 
-import com.ljh.constant.Constants;
+import com.ljh.constant.MQ;
 import com.ljh.entity.Order;
 import com.ljh.service.BrokerMessageLogService;
 import lombok.extern.slf4j.Slf4j;
@@ -32,12 +32,11 @@ public class OrderSender {
         CorrelationData correlationData = new CorrelationData();
         correlationData.setId(order.getMessageId());
         rabbitTemplate.convertAndSend(
-                // exchange
-                "order-exchange",
+                MQ.Exchange.Order.name,
                 // routingKey
                 // order.* 可模糊匹配 order.001
                 // order.# 可模糊匹配 order.001.001 等
-                "order.001",
+                MQ.Routing.KEY,
                 order,
                 correlationData);
     }
@@ -45,23 +44,23 @@ public class OrderSender {
     public void sendWithCallback(Order order) throws Exception {
         rabbitTemplate.setConfirmCallback(confirmCallback);
         CorrelationData correlationData = new CorrelationData(order.getMessageId());
-        rabbitTemplate.convertAndSend("order-exchange2", "order.002", order, correlationData);
+        rabbitTemplate.convertAndSend(MQ.Exchange.Order2.name, MQ.Routing.KEY2, order, correlationData);
         // 测试失败，exchange 不存在
-        // rabbitTemplate.convertAndSend("order-exchange3", "order.003", order, correlationData);
+        // rabbitTemplate.convertAndSend("order-exchange4", "order.004", order, correlationData);
     }
 
     /** confirm 回调函数 */
     private final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause) {
-            log.info("correlationData: " + correlationData);
+            log.info("correlationData: {}, ack: {}", correlationData, ack);
             String messageId = Objects.requireNonNull(correlationData).getId();
             if (ack) {
                 // 成功则更新状态
-                brokerMessageLogService.updateStatusByMessageId(messageId, Constants.ORDER_SEND_SUCCESS);
+                brokerMessageLogService.updateStatusByMessageId(messageId, MQ.Status.SEND_SUCCESS);
             } else {
                 // 失败则进行具体的后续操作，重试或补偿等手段
-                log.info("----------异常处理----------");
+                log.info("----- 异常处理 -----");
             }
         }
     };

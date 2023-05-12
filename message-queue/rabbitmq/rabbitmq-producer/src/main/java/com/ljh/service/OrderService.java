@@ -1,7 +1,7 @@
 package com.ljh.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ljh.constant.Constants;
+import com.ljh.constant.MQ;
 import com.ljh.dao.BrokerMessageLogMapper;
 import com.ljh.dao.OrderMapper;
 import com.ljh.entity.BrokerMessageLog;
@@ -40,7 +40,7 @@ public class OrderService {
         BrokerMessageLog brokerMessageLog = new BrokerMessageLog();
         brokerMessageLog.setMessageId(order.getMessageId());
         brokerMessageLog.setMessage(objectMapper.writeValueAsString(order));
-        brokerMessageLog.setStatus(Constants.ORDER_SENDING);
+        brokerMessageLog.setStatus(MQ.Status.SENDING);
         brokerMessageLog.setNextRetryTime(DateUtils.addSeconds(new Date(), 10));
         brokerMessageLogMapper.insert(brokerMessageLog);
         orderSender.sendWithCallback(order);
