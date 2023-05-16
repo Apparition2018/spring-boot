@@ -1,4 +1,4 @@
-package com.ljh.entity.primary;
+package com.ljh.entity.mongo;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 @Data
 @Document("zip")
-public class Zip {
+public class ZipMO {
     @Id
     private Integer id;
     private String city;

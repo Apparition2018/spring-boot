@@ -1,6 +1,6 @@
-package com.ljh.repository.primary;
+package com.ljh.repository.ldap;
 
-import com.ljh.entity.primary.Person;
+import com.ljh.entity.ldap.Person;
 import org.springframework.data.ldap.repository.LdapRepository;
 
 /**

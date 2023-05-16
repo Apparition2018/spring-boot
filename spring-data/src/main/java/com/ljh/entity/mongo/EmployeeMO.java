@@ -1,4 +1,4 @@
-package com.ljh.entity.primary;
+package com.ljh.entity.mongo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @Document("emp")
-public class Employee2 {
+public class EmployeeMO {
     @Id
     private Integer id;
     @Field("username")

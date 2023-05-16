@@ -1,6 +1,6 @@
-package com.ljh.repository.primary;
+package com.ljh.repository.mongo;
 
-import com.ljh.entity.primary.Zip;
+import com.ljh.entity.mongo.ZipMO;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @author ljh
  * created on 2022/12/2 17:03
  */
-public interface ZipRepository extends MongoRepository<Zip, String> {
+public interface ZipRepository extends MongoRepository<ZipMO, String> {
 }

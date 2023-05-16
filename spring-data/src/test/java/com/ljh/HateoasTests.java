@@ -24,8 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * HATEOAS (Hypermedia As Engine Of Application State)
- * <p>
- * Spring HATEOAS - Basic Example：https://github.com/spring-projects/spring-hateoas-examples/tree/main/simplified
+ * <p><a href="https://github.com/spring-projects/spring-hateoas-examples/tree/main/simplified">Spring HATEOAS - Basic Example</a>
  *
  * @author ljh
  * created on 2021/8/31 14:13

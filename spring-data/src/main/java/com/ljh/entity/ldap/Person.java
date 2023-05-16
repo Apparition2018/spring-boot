@@ -1,4 +1,4 @@
-package com.ljh.entity.primary;
+package com.ljh.entity.ldap;
 
 import lombok.Data;
 import org.springframework.ldap.odm.annotations.Attribute;

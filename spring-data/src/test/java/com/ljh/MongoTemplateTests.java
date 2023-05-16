@@ -1,8 +1,8 @@
 package com.ljh;
 
-import com.ljh.entity.primary.Employee2;
-import com.ljh.entity.primary.Zip;
-import com.ljh.repository.primary.ZipRepository;
+import com.ljh.entity.mongo.EmployeeMO;
+import com.ljh.entity.mongo.ZipMO;
+import com.ljh.repository.mongo.ZipRepository;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.gridfs.GridFSBucket;
@@ -60,52 +60,52 @@ public class MongoTemplateTests {
 
     @Test
     public void testInsert() {
-        Employee2 emp = new Employee2(1, "小明", 30, 10000.00, new Date());
+        EmployeeMO emp = new EmployeeMO(1, "小明", 30, 10000.00, new Date());
         // save     _id 存在时更新数据
         // insert   _id 存在时抛出异常，支持批量操作
         mongoTemplate.insert(emp);
 
-        List<Employee2> empList = Arrays.asList(
-                new Employee2(2, "张三", 21, 5000.00, new Date()),
-                new Employee2(3, "李四", 26, 8000.00, new Date()),
-                new Employee2(4, "王五", 22, 5000.00, new Date()),
-                new Employee2(5, "张龙", 28, 6000.00, new Date()),
-                new Employee2(6, "赵虎", 24, 7000.00, new Date()),
-                new Employee2(7, "赵六", 28, 12000.00, new Date())
+        List<EmployeeMO> empList = Arrays.asList(
+                new EmployeeMO(2, "张三", 21, 5000.00, new Date()),
+                new EmployeeMO(3, "李四", 26, 8000.00, new Date()),
+                new EmployeeMO(4, "王五", 22, 5000.00, new Date()),
+                new EmployeeMO(5, "张龙", 28, 6000.00, new Date()),
+                new EmployeeMO(6, "赵虎", 24, 7000.00, new Date()),
+                new EmployeeMO(7, "赵六", 28, 12000.00, new Date())
         );
-        mongoTemplate.insert(empList, Employee2.class);
+        mongoTemplate.insert(empList, EmployeeMO.class);
     }
 
     @Test
     public void testFind() {
         System.err.println("===== findAll =====");
-        mongoTemplate.findAll(Employee2.class).forEach(System.out::println);
+        mongoTemplate.findAll(EmployeeMO.class).forEach(System.out::println);
 
         System.err.println("===== findById =====");
-        System.out.println(mongoTemplate.findById(1, Employee2.class));
+        System.out.println(mongoTemplate.findById(1, EmployeeMO.class));
 
         System.err.println("===== findOne =====");
-        System.out.println(mongoTemplate.findOne(new Query(), Employee2.class));
+        System.out.println(mongoTemplate.findOne(new Query(), EmployeeMO.class));
 
         System.err.println("===== salary < 4000 and salary > 1000 =====");
-        mongoTemplate.find(new Query(Criteria.where("salary").gt(4000).lt(1000)), Employee2.class).forEach(System.out::println);
+        mongoTemplate.find(new Query(Criteria.where("salary").gt(4000).lt(1000)), EmployeeMO.class).forEach(System.out::println);
 
         System.err.println("===== name like '%张%' =====");
-        mongoTemplate.find(new Query(Criteria.where("name").regex("张")), Employee2.class).forEach(System.out::println);
+        mongoTemplate.find(new Query(Criteria.where("name").regex("张")), EmployeeMO.class).forEach(System.out::println);
 
         System.err.println("===== name = '张三' or salary > 5000 =====");
         mongoTemplate.find(new Query(new Criteria().orOperator(Criteria.where("name").is("张三"), Criteria.where("salary").gt(5000))),
-                Employee2.class).forEach(System.out::println);
+                EmployeeMO.class).forEach(System.out::println);
 
         System.err.println("===== order by salary desc limit 0, 4 =====");
-        mongoTemplate.find(new Query().with(Sort.by(Sort.Order.desc("salary"))).skip(0).limit(4), Employee2.class).forEach(System.out::println);
+        mongoTemplate.find(new Query().with(Sort.by(Sort.Order.desc("salary"))).skip(0).limit(4), EmployeeMO.class).forEach(System.out::println);
     }
 
     @Test
     public void testFindByJson() {
         String json = "{$or:[{age:{$gt:25}},{salary:{$gte:8000}}]}";
         BasicQuery query = new BasicQuery(json);
-        mongoTemplate.find(query, Employee2.class).forEach(System.out::println);
+        mongoTemplate.find(query, EmployeeMO.class).forEach(System.out::println);
     }
 
     @Test
@@ -113,24 +113,24 @@ public class MongoTemplateTests {
         UpdateResult updateResult;
 
         System.err.println("===== updateFirst: update emp set salary = 10000 where salary = 13000 =====");
-        updateResult = mongoTemplate.updateFirst(new Query(Criteria.where("salary").gte(10000)), new Update().set("salary", 13000), Employee2.class);
+        updateResult = mongoTemplate.updateFirst(new Query(Criteria.where("salary").gte(10000)), new Update().set("salary", 13000), EmployeeMO.class);
         // 返回修改的文档数
         System.out.println(updateResult.getMatchedCount());
 
         System.err.println("===== updateMulti: update emp set salary = 10000 where salary = 14000 =====");
-        updateResult = mongoTemplate.updateMulti(new Query(Criteria.where("salary").gte(10000)), new Update().set("salary", 14000), Employee2.class);
+        updateResult = mongoTemplate.updateMulti(new Query(Criteria.where("salary").gte(10000)), new Update().set("salary", 14000), EmployeeMO.class);
         System.out.println(updateResult.getMatchedCount());
 
         System.err.println("===== upsert: 没有匹配的文档，则新插入文档 =====");
         updateResult = mongoTemplate.upsert(new Query(Criteria.where("salary").gte(15000)),
                 new Update().set("salary", 14000).set("username", "孙七").set("age", 30).set("birthday", new Date())
-                        .setOnInsert("id", 11), Employee2.class);
+                        .setOnInsert("id", 11), EmployeeMO.class);
         System.out.println(updateResult.getMatchedCount());
     }
 
     @Test
     public void testDelete() {
-        mongoTemplate.remove(new Query(Criteria.where("salary").gte(10000)), Employee2.class);
+        mongoTemplate.remove(new Query(Criteria.where("salary").gte(10000)), EmployeeMO.class);
 
         mongoTemplate.dropCollection("emp");
     }
@@ -205,7 +205,7 @@ public class MongoTemplateTests {
     }
 
     private void print(AggregationOperation... operations) {
-        TypedAggregation<Zip> typedAggregation = Aggregation.newAggregation(Zip.class, operations);
+        TypedAggregation<ZipMO> typedAggregation = Aggregation.newAggregation(ZipMO.class, operations);
         AggregationResults<Map> aggregationResults = mongoTemplate.aggregate(typedAggregation, Map.class);
         aggregationResults.getMappedResults().forEach(System.out::println);
     }
