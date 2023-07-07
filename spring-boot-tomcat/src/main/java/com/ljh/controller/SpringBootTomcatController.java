@@ -15,17 +15,17 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * DemoController
+ * SpringBootTomcatController
  *
  * @author ljh
  * created on 2022/8/24 16:58
  */
 @RestController
-public class DemoController {
+public class SpringBootTomcatController {
 
     private final DemoRepository demoRepository;
 
-    public DemoController(DemoRepository demoRepository) {
+    public SpringBootTomcatController(DemoRepository demoRepository) {
         this.demoRepository = demoRepository;
     }
 

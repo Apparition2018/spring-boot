@@ -73,7 +73,7 @@
 ---
 ## [设置属性值](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 | 语法             | 作用        | 示例                                                             |
-|:---------------|:-----|:---------------------------------------------------------------|
+|:---------------|:----------|:---------------------------------------------------------------|
 | th:attr        | 设置任意属性的值  | &lt;form th:attr="action=${action},method='post'"&gt;          |
 | th:*           | 为特定属性设置值  | &lt;form th:action="${action}" th:method="post"&gt;            |
 | data-th-*      | HTML5 友好  | &lt;form data-th-action="${action}" data-th-method="post"&gt;  |
@@ -104,7 +104,7 @@
 1. `th:if` & `th:unless`
 
 | 类型        | false                  |
-|:-----|:-----------------------|
+|:----------|:-----------------------|
 | boolean   | false                  |
 | number    | zero                   |
 | character | zero                   |

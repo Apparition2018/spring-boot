@@ -7,7 +7,6 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import javax.swing.filechooser.FileSystemView;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
