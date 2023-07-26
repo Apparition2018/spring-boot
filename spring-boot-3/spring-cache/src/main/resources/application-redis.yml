@@ -1,0 +1,9 @@
+spring:
+  cache:
+    type: redis
+  data:
+    redis:
+      host: 43.136.102.115
+      port: 6379
+      password: 123456
+      database: 2

@@ -2,109 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-parent -->
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.13</version>
-        <relativePath/>
-    </parent>
     <groupId>com.ljh</groupId>
     <artifactId>spring-boot</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
-        <!-- 8001：探秘 Spring AOP -->
-        <module>spring-aop</module>
-        <!-- 8002：spring-data -->
-        <module>spring-data</module>
-        <!-- 8003：spring-cache -->
-        <module>spring-cache</module>
-        <!-- 8004：spring-jdbc -->
-        <module>spring-jdbc</module>
-        <!-- 8005：spring-boot-tomcat -->
-        <module>spring-boot-tomcat</module>
-        <!-- 8100：querydsl -->
-        <module>querydsl</module>
-        <!-- 8101：thymeleaf -->
-        <module>thymeleaf</module>
-
-        <!-- 8200：kafka -->
-        <!-- 8201：rabbitmq-producer -->
-        <!-- 8202：rabbitmq-consumer -->
-        <!-- 8203：activemq -->
-        <module>message-queue</module>
-
-        <!-- 80：cookie-sso -->
-        <!-- 8204：spring-security-sso -->
-        <module>sso</module>
+        <module>spring-boot-2</module>
+        <module>spring-boot-3</module>
     </modules>
-
-    <properties>
-        <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
-        <commons-beanutils.version>1.9.4</commons-beanutils.version>
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
-        <mybatis-plus-boot-starter.version>3.5.3.1</mybatis-plus-boot-starter.version>
-        <!-- https://mvnrepository.com/artifact/com.mysema.maven/apt-maven-plugin -->
-        <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
